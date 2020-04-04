@@ -1,16 +1,13 @@
 
 
-import java.io.IOException;
-
-
-
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import ApplicationModel.Student;
 
 /**
  * Servlet implementation class SimpleServlet
@@ -19,6 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 public class SimpleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	Student studentModel = new Student();
+	
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -46,13 +46,13 @@ public class SimpleServlet extends HttpServlet {
 		String user = request.getParameter("username");
 		System.out.println("username entered is "+ user);
 		//check if user exist in model 
-		RequestDispatcher req = request.getRequestDispatcher("register.html");
-		req.include(request, response);
-		//if not send to error
+		if(studentModel.isAUSStudent(user)) {
+			RequestDispatcher req = request.getRequestDispatcher("register.html");
+			req.include(request, response);
 		}
 		else if(null != request.getParameter("login_button")){
 			response.sendRedirect("login.html");
-		} 
+		}
+		else {response.sendRedirect("error.html");}
 	}
 
-}
