@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>AUS Course Tutoring</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min
+.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+body {
+	background-image:
+		url(AUS-campus.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+h2 {
+	text-align: center;
+}
+
+p {
+	text-align: center;
+}
+#parent {
+	margin: 2% auto 10% auto;
+	/* 5% from the top, 15% from the bottom and centered */
+	width: 100%;
+	height: auto; /* Could be more or less, depending on screen size */
+}
+</style>
+</head>
+<body>
+<div id ="parent">
+	<header class="w3-container" style="padding: auto">
+		<h1 class="w3-center w3-xjumbo"><b>AUS COURSE TUTORING ON DEMAND</b></h1>
+		&nbsp;&nbsp;
+		<p class = "w3-large">This WebSite allows students to register for tutoring sessions
+			for any course offered by AUS. Students can also apply to become
+			tutors and offer tutoring sessions. AUS Faculty Members
+			can also login to our WebSite to monitor student activities as long
+			as they have been registered by an admin.</p>
+	</header>
+		&nbsp;&nbsp;
+	<div class="w3-container w3-center">
+		<form method="Post" action="SimpleServlet">
+			<label for="register" class="w3-large w3-padding-large w3-black"> New
+				Student? Register with AUS ID: </label>
+			<div class="input-group">
+				<input type="text" class="form-control" id="username"
+					placeholder="Enter g000xxxxx/b000xxxxx" name="username" required />
+				<input type="submit" name="register_button" value="Register" />
+			</div>
+			&nbsp;&nbsp;
+			<div class="form-group">
+				<button type="submit" class="w3-black  w3-large w3-padding-large" 
+					name="login_button" formnovalidate>Already Registered?
+					Click Here to Login!</button>
+			</div>
+		</form>
+	</div>
+	</div>
+		<div class="w3-container w3-black w3-bottom w3-opacity"
+		style="padding: 0px 16px">
+		<h1 class="w3-margin w3-xlarge w3-center">#StayHome #StaySafe</h1>
+	</div>
+</body>
+</html>

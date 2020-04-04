@@ -4,6 +4,7 @@ import java.io.IOException;
 
 
 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,6 +30,7 @@ public class SimpleServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -37,6 +39,7 @@ public class SimpleServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		if(null != request.getParameter("register_button")) {
@@ -47,7 +50,7 @@ public class SimpleServlet extends HttpServlet {
 		req.include(request, response);
 		//if not send to error
 		}
-		else {
+		else if(null != request.getParameter("login_button")){
 			response.sendRedirect("login.html");
 		} 
 	}
