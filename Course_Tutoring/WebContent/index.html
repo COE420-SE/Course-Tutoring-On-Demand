@@ -15,7 +15,15 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 }
-
+input[type=text], input[type=password] {
+  width: 50%;
+  padding: 10px 20px;
+  margin: 0px 8px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  class: w3-center
+}
 h2 {
 	text-align: center;
 }
@@ -46,12 +54,12 @@ p {
 		&nbsp;&nbsp;
 	<div class="w3-container w3-center">
 		<form method="Post" action="SimpleServlet">
-			<label for="register" class="w3-large w3-padding-large w3-black"> New
+			<label for="register" class="w3-large w3-padding-large w3-black" style="border: 1px solid #ccc"> New
 				Student? Register with AUS ID: </label>
-			<div class="input-group">
-				<input type="text" class="form-control" id="username"
+			<div class="w3-center">
+				<input type="text" id="username"
 					placeholder="Enter xxxxx" name="username" required />
-				<input type="submit" name="register_button" value="Register" />
+				<input type="submit" class = "w3-black" name="register_button" value="Register" style="padding: 10px 15px; margin:auto;border: 1px solid #ccc"/>
 			</div>
 			&nbsp;&nbsp;
 			<div class="form-group">
