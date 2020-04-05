@@ -10,51 +10,59 @@
 	href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script>
+	function includeHTML() {
+		var z, i, elmnt, file, xhttp;
+		/* Loop through a collection of all HTML elements: */
+		z = document.getElementsByTagName("*");
+		for (i = 0; i < z.length; i++) {
+			elmnt = z[i];
+			/*search for elements with a certain atrribute:*/
+			file = elmnt.getAttribute("w3-include-html");
+			if (file) {
+				/* Make an HTTP request using the attribute value as the file name: */
+				xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4) {
+						if (this.status == 200) {
+							elmnt.innerHTML = this.responseText;
+						}
+						if (this.status == 404) {
+							elmnt.innerHTML = "Page not found.";
+						}
+						/* Remove the attribute, and call this function once more: */
+						elmnt.removeAttribute("w3-include-html");
+						includeHTML();
+					}
+				}
+				xhttp.open("GET", file, true);
+				xhttp.send();
+				/* Exit the function: */
+				return;
+			}
+		}
+	}
+</script>
+<body>
+	<div w3-include-html="Student.html"></div>
+	<div class="w3-center w3-small w3-bar">
+		<label for="home" class="btn w3-green">Tutor Features</label>
+		<button class="btn" type="submit" name="book_button">Create a
+			Session</button>
+		<button class="btn" type="submit" name="cancel_button">Cancel
+			a Session</button>
+		<button class="btn" type="submit" name="feedback_button">View
+			Feedback</button>
+	</div>
+</body>
+<script>
+	includeHTML();
+</script>
 <style>
-.btn {
-	border: 2px solid black;
-	background-color: black;
-	color: white;
-	padding: 10px 20px;
-	font-size: 14px;
-	cursor: pointer;
-}
-
 body {
 	background-image:
 		url(tutor.PNG);
 	background-repeat: no-repeat;
 	background-size: cover;
-}
-
-}
-body, h1, h2, h3, h4, h5, h6 {
-	font-family: "Lato", sans-serif
-}
-</style>
-<body>
-	<div class="w3-container w3-top w3-black">
-		<div class="w3-center w3-small">
-			<label for = "home" class="btn w3-green">Home</label>
-			<button class="btn" type ="submit" name="book_button">Book a Session</button>
-			<button class="btn" type ="submit" name="cancel_button">Cancel a Booking</button>
-			<button class="btn" type ="submit" name="feedback_button">Feedback</button>
-			<button class="btn" type ="submit" name="request_button">Request a Session</button>
-			<button class="btn" type = "submit" name="notify_button">NotificationDashBoard</button>
-		</div>
-			<div class="w3-container w3-black">
-		<div class="w3-center w3-small">
-			<label for = "home" class="btn w3-green">Tutor Features</label>
-			<button class="btn" type ="submit" name="book_button">Create a Session</button>
-			<button class="btn" type ="submit" name="cancel_button">Cancel a Session</button>
-			<button class="btn" type ="submit" name="feedback_button">View Feedback</button>
-		</div>
-	</div>
-	</div>
-	&nbsp;&nbsp;
-	<div class="w3-container w3-black w3-opacity w3-bottom" style="padding: auto">
-		<h1 class="w3-margin w3-large w3-center">#StayHome #StaySafe</h1>
-	</div>
-	<a class="w3-margin w3-large w3-bottom" style="color: white" href="index.html"><b>Logout</b></a>
-</body>
+}</style>
 </html>
