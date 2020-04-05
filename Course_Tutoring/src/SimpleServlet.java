@@ -59,8 +59,5 @@ public class SimpleServlet extends HttpServlet {
 		else if (null != request.getParameter("login_button")) {
 			response.sendRedirect("login.html");
 		} 
-		else {
-			response.sendRedirect("error.html");
-		}
 	}
 }

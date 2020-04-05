@@ -5,14 +5,15 @@ import java.sql.SQLException;
 import JDBC.MockAUSDatabase;
 
 public class Student extends User {
-boolean Apply_for_tutor;
+	boolean Apply_for_tutor;
+	MockAUSDatabase mock;
 
 public Student() {
+	mock = new MockAUSDatabase();
 	// TODO Auto-generated constructor stub
 }
 
 public boolean isAUSStudent(String studentID) {
-	MockAUSDatabase mock = new MockAUSDatabase();
 	boolean student_exists = false;
 	try {
 		student_exists = mock.searchStudentByID(studentID);
