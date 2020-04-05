@@ -21,7 +21,7 @@
 }
 
 body {
-	background-image: url(tutor.PNG);
+	background-image: url(aus_campus.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -32,29 +32,22 @@ body {
 	right: 16px;
 	font-size: 18px;
 }
-
 body, h1, h2, h3, h4, h5, h6 {
 	font-family: "Lato", sans-serif
 }
 </style>
 <body>
-	<form method="Post" action="StudentServlet">
+	<form method="Post" action="DepartServlet">
 		<div class="w3-container w3-top w3-black">
 			<div class="w3-center w3-small">
 				<label for="home" class="btn w3-green">Home</label>
-				<button class="btn" type="submit" name="book_button">Book a
-					Session</button>
-				<button class="btn" type="submit" name="cancel_button">Cancel
-					a Booking</button>
-				<button class="btn" type="submit" name="feedback_button">Feedback</button>
-				<button class="btn" type="submit" name="request_button">Request
-					a Session</button>
+				<button class="btn" type="submit" name="process_button">Process Tutor Request</button>
+				<button class="btn" type="submit" name="add_button">Add a Faculty User</button>
+				<button class="btn" type="submit" name="viewf_button">View Feedback</button>
+				<button class="btn" type="submit" name="remove_button">Remove a Tutor</button>
+				<button class="btn" type="submit" name="display_button">Display Sessions</button>
 				<button class="btn" type="submit" name="notify_button">NotificationDashBoard</button>
 			</div>
-		</div>
-		<div class="w3-container w3-right-align" style="padding: auto">
-			<button class="w3-button w3-black w3-large" name="tutor_button">Do
-				you want to be a Tutor? Apply Now!</button>
 		</div>
 		&nbsp;&nbsp;
 		<div class="w3-container w3-black w3-opacity w3-bottom">

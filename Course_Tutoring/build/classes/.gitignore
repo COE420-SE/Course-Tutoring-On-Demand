@@ -1,4 +1,9 @@
+/AccountModel.class
+/ApplicationModel/
+/DepartServlet.class
 /JDBC/
 /LoginServlet.class
 /RegisterServlet.class
 /SimpleServlet.class
+/StudentServlet.class
+/TutorServlet.class
