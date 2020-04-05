@@ -54,7 +54,7 @@ public class SimpleServlet extends HttpServlet {
 				RequestDispatcher req = request.getRequestDispatcher("register.html");
 				req.include(request, response);
 			}
-			else response.sendRedirect("index.html");
+			else response.sendRedirect("doesnotexist.html");
 		} 
 		else if (null != request.getParameter("login_button")) {
 			response.sendRedirect("login.html");
