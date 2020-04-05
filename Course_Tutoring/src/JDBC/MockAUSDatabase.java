@@ -31,7 +31,7 @@ public class MockAUSDatabase {
 	}
 	public boolean searchStudentByID(String studentID) throws SQLException{
 		
-		boolean exist = retreiveAUSStudent(studentID).isBeforeFirst();
+		boolean exist = retreiveAUSStudent(studentID).next();
 		return exist;
 		
 	}
