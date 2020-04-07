@@ -15,6 +15,7 @@ public Student() {
 
 public boolean isAUSStudent(String studentID) {
 	boolean student_exists = false;
+	//add check to see if its not in the student table
 	try {
 		student_exists = mock.searchStudentByID(studentID);
 	} catch (SQLException e) {
