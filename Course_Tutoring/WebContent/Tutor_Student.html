@@ -11,6 +11,9 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script>
+	function myFunction() {
+	document.getElementById("message").style.display = "none";
+	}
 	function includeHTML() {
 		var z, i, elmnt, file, xhttp;
 		/* Loop through a collection of all HTML elements: */
@@ -34,10 +37,12 @@
 						elmnt.removeAttribute("w3-include-html");
 						includeHTML();
 					}
+					window.myFunction() 
 				}
 				xhttp.open("GET", file, true);
 				xhttp.send();
 				/* Exit the function: */
+				
 				return;
 			}
 		}
@@ -46,7 +51,7 @@
 <body>
 	<div w3-include-html="Student.html"></div>
 	<form method="Post" action="TutorServlet">
-	<div class="w3-center w3-small w3-bar">
+	<div class="w3-container w3-center" style="padding: 40px 16px">
 		<label for="home" class="btn w3-green">Tutor Features</label>
 		<button class="btn" type="submit" name="create_button">Create a
 			Session</button>
@@ -54,7 +59,7 @@
 			a Session</button>
 		<button class="btn" type="submit" name="vfeedback_button">View
 			Feedback</button>
-		<button class="btn" type="submit" name="notify_button">Tutor:NotificationDashBoard</button>
+		<button class="btn" type="submit" name="notify_button">Tutor:NotificationDashboard</button>
 	</div>
 	</form>
 </body>
