@@ -17,7 +17,7 @@ import ApplicationModel.Student;
 public class SimpleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	Student studentModel = new Student();
+	Student studentModel;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -47,10 +47,11 @@ public class SimpleServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		if (null != request.getParameter("register_button")) {
-			String user = request.getParameter("username");
-			System.out.println("username entered is " + user);
+			String student_mail = request.getParameter("username");
+			System.out.println("username entered is " + student_mail);
 			// check if user exist in model
-			if (studentModel.isAUSStudent(user)) {
+			studentModel = new Student(student_mail);
+			if (studentModel.checkRegister()) {
 				RequestDispatcher req = request.getRequestDispatcher("register.html");
 				req.include(request, response);
 			}

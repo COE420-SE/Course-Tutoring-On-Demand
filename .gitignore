@@ -3,3 +3,6 @@ Course_Tutoring/.classpath
 Course_Tutoring/.classpath
 Course_Tutoring/.classpath
 *.class
+Course_Tutoring/build/classes/SimpleServlet.class
+Course_Tutoring/build/classes/ApplicationModel/User.class
+Course_Tutoring/build/classes/ApplicationModel/Student.class

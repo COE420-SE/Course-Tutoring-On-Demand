@@ -22,4 +22,9 @@ public class Faculty_Table {
 				}
 				else return false;
 
-	}}
+	}
+	
+//	public boolean insertFaculty()
+
+
+}
