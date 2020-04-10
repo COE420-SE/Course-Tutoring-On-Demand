@@ -16,7 +16,7 @@ import ApplicationModel.Student;
 public class StudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	Student studentModel = new Student();
+	//Student studentModel = new Student();
 
 	/**
 	 * @see HttpServlet#HttpServlet()

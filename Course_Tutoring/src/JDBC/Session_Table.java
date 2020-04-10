@@ -13,10 +13,10 @@ public class Session_Table {
 		dbCon = new DBConnection();
 	}
 	
-	public boolean insertNewSession(Session_Detail newSession){}
+	public boolean insertNewSession(Session_Detail newSession){return true;}
 	
 	public ResultSet retreievSessions() {
-		
+		return rs;
 	}
 	
 }
