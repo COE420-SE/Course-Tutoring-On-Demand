@@ -1,12 +1,21 @@
 package ApplicationModel;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import JDBC.Users_Database;
+
 public class User {
 	
-	int User_ID;
-	String user_name;
-	String user_email;
+	static int User_ID;
+	static String user_name;
+	static String user_email;
+	Users_Database users_table;
 
-	User(){}
+	User(){
+		users_table = new Users_Database();
+	}
 
 public int getUser_ID() {
 		return User_ID;
@@ -33,6 +42,53 @@ public int getUser_ID() {
 		this.user_email = email;
 		
 	}
-	public void getNotifications(String receiver) {}
-
+	public ArrayList<String >getNotifications(ResultSet messages) {
+		ArrayList<String> message = new ArrayList<String>();
+		try {
+			if(!messages.isBeforeFirst()) {return null;}
+			while(messages.next()){
+				message.add(messages.getString("MESSAGE"));
+				}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
+		return message;
+	}
+	
+	public String validateUser(String email, String password) {
+		
+		String user_type = null;
+		try {
+			user_type = users_table.checkCredentials(email, password);
+			if(user_type!= null)
+			{
+				setUser_email(email);
+				return user_type;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;}
+		
+		return null;
+	}
+	
+	public ArrayList<Session_Detail>getSessions(ResultSet messages) {
+		ArrayList<Session_Detail> session = new ArrayList<Session_Detail>();
+		try {
+			if(!messages.isBeforeFirst()) {return null;}
+			while(messages.next()){
+				}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
+		return session;
+	}
+	
 	}

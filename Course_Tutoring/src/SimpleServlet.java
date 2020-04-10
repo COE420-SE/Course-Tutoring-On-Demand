@@ -1,6 +1,7 @@
 
 import java.io.IOException;
 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,8 +17,8 @@ import ApplicationModel.Student;
 @WebServlet("/SimpleServlet")
 public class SimpleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	Student studentModel;
+	
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -51,7 +52,7 @@ public class SimpleServlet extends HttpServlet {
 			System.out.println("username entered is " + student_mail);
 			// check if user exist in model
 			studentModel = new Student(student_mail);
-			if (studentModel.checkRegister()) {
+			if (studentModel.canRegister()) {
 				RequestDispatcher req = request.getRequestDispatcher("register.html");
 				req.include(request, response);
 			}

@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import ApplicationModel.Department_Admin;
-import sun.print.PSPrinterJob.PluginPrinter;
 
 public class Admins_Table {
 	DBConnection dbCon;

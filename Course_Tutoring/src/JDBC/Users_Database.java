@@ -41,5 +41,8 @@ public class Users_Database {
 		}
 
 	
-		
+		public boolean deleteUser(String email) {
+			
+			return true;
+		}
 }

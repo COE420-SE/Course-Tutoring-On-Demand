@@ -34,7 +34,7 @@ public boolean isAUSStudent(String student_email) {
 	return student_exists;
 }
 
-public boolean checkRegister() {
+public boolean canRegister() {
 	
 	//check if user exists in Course Tutoring System
 	try {

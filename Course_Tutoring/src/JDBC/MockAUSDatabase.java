@@ -14,7 +14,7 @@ public class MockAUSDatabase {
 	}
 	
 	public ResultSet retreiveAUSStudent(String student_email) {
-		String student = "SELECT * FROM MOCK_AUS_STUDENT WHERE MSTUDENT_EMAIL = "+student_email;
+		String student = "SELECT * FROM MOCK_AUS_STUDENT WHERE MSTUDENT_ID = "+student_email;
 			try {
 				rs = dbCon.executeStatement(student);
 			} catch (SQLException e) {

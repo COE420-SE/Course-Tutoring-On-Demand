@@ -15,7 +15,7 @@ public class Student_Table {
 	
 	public boolean StudentExists(String email) throws SQLException {
 		
-		String student_email = "SELECT * FROM STUDENT WHERE STUDENT_EMAIL = "+ email;
+		String student_email = "SELECT * FROM STUDENT WHERE STUDENT_ID = "+ email;
 		rs = dbCon.executeStatement(student_email);
 		if(rs.isBeforeFirst()) {return true;}
 		else {return false;}
