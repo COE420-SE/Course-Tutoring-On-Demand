@@ -4,25 +4,43 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import JDBC.Courses_Table;
+import JDBC.Department_Table;
+import JDBC.Student_Table;
 import JDBC.Users_Database;
+import jdk.javadoc.internal.doclets.formats.html.AllClassesFrameWriter;
 
 public class User {
 	
-	static int User_ID;
+	static String User_ID;
 	static String user_name;
 	static String user_email;
+	static ArrayList<Courses> AUScourses;
+	static ArrayList<Department> AUSdepartments; 
 	Users_Database users_table;
+	Courses_Table course_table;
+	Department_Table depat_table;
 
 	User(){
 		users_table = new Users_Database();
+		
+		ResultSet courseSet = course_table.retreiveAUSCourses();
+		
+		courseSet.beforeFirst();
+		while (courseSet.next()) {
+			
+			AUScourses.add(new Courses(course_ID, course_Name, departmentID));
+		}
+		
+		
 	}
 
-public int getUser_ID() {
+public String getUser_ID() {
 		return User_ID;
 	}
 
-	public void setUser_ID(int user_ID) {
-		User_ID = user_ID;
+	public void setUser_ID(String stud_id) {
+		User_ID = stud_id;
 	}
 
 	public String getUser_name() {
@@ -30,7 +48,7 @@ public int getUser_ID() {
 	}
 
 	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+		User.user_name = user_name;
 	}
 
 	public String getUser_email() {
@@ -39,9 +57,11 @@ public int getUser_ID() {
 
 	
 	public void setUser_email(String email) {
-		this.user_email = email;
+		User.user_email = email;
 		
 	}
+	
+		//set everything including getting all the department and courses
 	public ArrayList<String >getNotifications(ResultSet messages) {
 		ArrayList<String> message = new ArrayList<String>();
 		try {
@@ -65,7 +85,6 @@ public int getUser_ID() {
 			user_type = users_table.checkCredentials(email, password);
 			if(user_type!= null)
 			{
-				setUser_email(email);
 				return user_type;
 			}
 		} catch (SQLException e) {

@@ -8,10 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ApplicationModel.User;
+import JDBC.Faculty_Table;
+
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
+	User login_user;
     
     /**
      * @see HttpServlet#HttpServlet()
@@ -39,11 +43,31 @@ public class LoginServlet extends HttpServlet{
 		//che
 		String user = request.getParameter("username");
 		String pswd = request.getParameter("pwd");
-		System.out.println("username entered is "+ user + pswd);
-		//
-		if(AccountModel.validateUser(user, pswd)) {
-		RequestDispatcher req = request.getRequestDispatcher("success.jsp");
+		System.out.println("username and password entered is "+ user + pswd);
+		
+		//student, tutpr, Faculty_Table, System, department
+		
+		String user_type = login_user.validateUser(user, pswd);
+		//redirect to student view
+		if(user_type.toLowerCase() == "student") {
+		RequestDispatcher req = request.getRequestDispatcher("Student.html");
 		req.include(request, response);
+		}
+		else if(user_type.toLowerCase() == "tutor") {
+			RequestDispatcher req = request.getRequestDispatcher("Tutor_Student.html");
+			req.include(request, response);
+		}
+		else if(user_type.toLowerCase() == "department") {
+			RequestDispatcher req = request.getRequestDispatcher("DepartmentAdmin.html");
+			req.include(request, response);
+		}
+		else if(user_type.toLowerCase() == "system") {
+			RequestDispatcher req = request.getRequestDispatcher("SystemAdmin.html");
+			req.include(request, response);
+		}
+		else if(user_type.toLowerCase() == "faculty") {
+			RequestDispatcher req = request.getRequestDispatcher("faculty.html");
+			req.include(request, response);
 		}
 		else {
 			response.sendRedirect("error.html");

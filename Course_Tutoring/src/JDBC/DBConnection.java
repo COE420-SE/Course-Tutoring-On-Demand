@@ -9,8 +9,8 @@ import java.sql.Statement;
 
 public class DBConnection {
 	String DBURL = "jdbc:oracle:thin:@coeoracle.aus.edu:1521:orcl";
-    String DBUSER = "G00074266";
-    String DBPASS = "G00074266";
+    String DBUSER = "G00071029";
+    String DBPASS = "G00071029";
 
     boolean validLogin = false;
 

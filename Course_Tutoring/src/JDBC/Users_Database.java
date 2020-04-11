@@ -18,7 +18,7 @@ public class Users_Database {
 	
 	public String checkCredentials(String email, String password) throws SQLException {
 		
-		String stud_id = student.checkStudent(email, password);
+		String stud_id = student.checkStudentDetails(email, password);
 		// check if user is a student or a tutor;
 		if(stud_id!= null) {
 			

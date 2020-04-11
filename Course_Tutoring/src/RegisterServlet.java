@@ -40,18 +40,14 @@ public class RegisterServlet extends HttpServlet{
 		// get password and call register
 	
 		if (null != request.getParameter("register_button")) {
-			String student_mail = request.getParameter("username");
-			System.out.println("username entered is " + student_mail);
+			String student_psw = request.getParameter("psw");
+			System.out.println("password is " + student_psw);
 			// check if user exist in model
-			//
-				RequestDispatcher req = request.getRequestDispatcher("register.html");
-				req.include(request, response);
+			boolean registartion = student_model.Registration(student_psw);
+			if (registartion) {
+				response.sendRedirect("login.html");
 			}
-			else response.sendRedirect("doesnotexist.html");
-		} 
-//		else if (null != request.getParameter("login_button")) {
-//			response.sendRedirect("login.html");
-//		} 
-			//response.sendRedirect("login.html");
+			else response.sendRedirect("error.html");
 	}
+		}}
 

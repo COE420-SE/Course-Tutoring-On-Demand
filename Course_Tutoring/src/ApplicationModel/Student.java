@@ -17,28 +17,33 @@ public Student(String email) {
 	student_table = new Student_Table();
 	
 	super.setUser_email(email);
-	
 	// TODO Auto-generated constructor stub
 }
 
-public boolean isAUSStudent(String student_email) {
-	boolean student_exists = false;
+public boolean isAUSStudent(String student_mail) {
 	//add check to see if its not in the student table
 	try {
-		student_exists = mock.searchStudentByID(student_email);
+		rsResultSet = mock.retreiveAUSStudent(student_mail);
+		if(rsResultSet.isBeforeFirst()){
+			System.out.println("Student exists in AUS database");
+			return true;
+		}
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	System.out.print("checking in model");
-	return student_exists;
+	System.out.println("Student doesnt exist in AUS database");
+	return false;
 }
 
+//check if the student can register in the system
 public boolean canRegister() {
 	
-	//check if user exists in Course Tutoring System
+	//get student details
+	ResultSet temp = student_table.getStudentDetails(user_email);
+	
 	try {
-		if(!student_table.StudentExists(user_email)) {
+		if(student_table.StudentExists(temp)) {
 			//if not check if user exists in the mock database 
 			if (isAUSStudent(user_email)) {
 				return true;
@@ -48,17 +53,18 @@ public boolean canRegister() {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+	System.out.println("cant register");
 	return false;
-	
 }
 
+//registers the student
 public boolean Registration(String password) {
 	
 	//Retrieve student record form mock database
-	rsResultSet = mock.retreiveAUSStudent(user_email);
+	ResultSet mock_result = mock.retreiveAUSStudent(user_email);
 	
 	//insert the data into the course tutoring database
-	if(student_table.insertStudent(rsResultSet, password)) {
+	if(student_table.insertStudent(mock_result, password)) {
 		return true;
 	}
 	return false;
