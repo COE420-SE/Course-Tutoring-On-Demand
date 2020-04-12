@@ -18,31 +18,31 @@ public class Users_Database {
 	
 	public String checkCredentials(String email, String password) throws SQLException {
 		
+		//check if user is a student 
+		//function return student id if exists
 		String stud_id = student.checkStudentDetails(email, password);
-		// check if user is a student or a tutor;
+
 		if(stud_id!= null) {
-			
+			//check if student is a tutor
 			if (student.isStudentTutor(stud_id)) {
 				return "tutor";
 			}
 			else return "student";
 		}
 		
-		String admin_type = admin.checkAdmin(email, password);
+		//check if user is an admin
+		String admin_type = admin.checkAdminDetails(email, password);
 		if (admin_type!= null) {
 			//return system or department
 			return admin_type;
 		}
 		
-		if(faculty.checkFaculty(email, password))
+		//check if user is a faculty user.
+		if(faculty.checkFacultyDetails(email, password))
 		{	return "faculty";}
 		
 		else return null;
 		}
 
 	
-		public boolean deleteUser(String email) {
-			
-			return true;
-		}
 }

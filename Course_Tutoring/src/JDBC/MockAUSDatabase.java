@@ -13,8 +13,10 @@ public class MockAUSDatabase {
 		
 	}
 	
-	public ResultSet retreiveAUSStudent(String student_id) {
-		String studentSQL = "SELECT * FROM MOCK_AUS_STUDENT WHERE MSTUDENT_ID = "+student_id;
+	//get record details of student
+	//return result set
+	public ResultSet retreiveAUSStudent(String student_email) {
+		String studentSQL = "SELECT * FROM MOCK_AUS_STUDENT WHERE MSTUDENT_ID = '"+student_email+"'";
 			try {
 				rs = dbCon.executeStatement(studentSQL);
 			} catch (SQLException e) {
@@ -23,13 +25,6 @@ public class MockAUSDatabase {
 				e.printStackTrace();
 				return null;
 			}
-
 		return rs;
-	}
-	
-	public boolean searchStudentByID(String studentID) throws SQLException{
-
-		ResultSet rr = retreiveAUSStudent(studentID);
-		return  rr.isBeforeFirst();
 	}
 }

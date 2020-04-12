@@ -14,7 +14,7 @@ public class Admins_Table {
 		dbCon = new DBConnection();
 	}
 	
-	public String checkAdmin(String email, String password) throws SQLException {
+	public String checkAdminDetails(String email, String password) throws SQLException {
 	
 		String adminString = "SELECT * FROM ADMINS WHERE ADMIN_EMAIL = "+email+" AND ADMIN_PASSWORD = "+password;
 	   

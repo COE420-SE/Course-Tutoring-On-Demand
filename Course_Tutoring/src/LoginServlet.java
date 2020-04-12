@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ApplicationModel.Student;
 import ApplicationModel.User;
 import JDBC.Faculty_Table;
 
@@ -50,6 +51,7 @@ public class LoginServlet extends HttpServlet{
 		String user_type = login_user.validateUser(user, pswd);
 		//redirect to student view
 		if(user_type.toLowerCase() == "student") {
+			Student student = new Student(user);
 		RequestDispatcher req = request.getRequestDispatcher("Student.html");
 		req.include(request, response);
 		}

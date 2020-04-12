@@ -12,7 +12,7 @@ public class Faculty_Table {
 		dbCon = new DBConnection();
 	}
 	
-	public boolean checkFaculty(String email, String password) throws SQLException {
+	public boolean checkFacultyDetails(String email, String password) throws SQLException {
 	
 		String facultyString = "SELECT * FROM FACULTY WHERE FACULTY_EMAIL = "+email+" AND FACULTY_PASSWORD = "+password;
 	   
@@ -21,8 +21,10 @@ public class Faculty_Table {
 				return true;
 				}
 				else return false;
-
 	}
+	
+	//seperate the above function into 2 
+	//getFacultyDetails
 	
 //	public boolean insertFaculty()
 

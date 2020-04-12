@@ -18,9 +18,8 @@ public class Notifications_Table {
 		
 		try {
 			
-			String sqlString = "INSERT INTO NOTIFICATION VALUES( "+sender+
-					", "+receiver+
-					", "+message+" )";
+			String sqlString = "INSERT INTO NOTIFICATION VALUES("+
+			sender+", "+receiver+", '"+message+"')";
 			int result = dbCon.executePrepared(sqlString);
 			
 			if(result>0) {return true;}

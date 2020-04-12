@@ -20,6 +20,11 @@ public Student(String email) {
 	// TODO Auto-generated constructor stub
 }
 
+public Student(String mail, String password) {
+	
+	//set al fields
+}
+
 public boolean isAUSStudent(String student_mail) {
 	//add check to see if its not in the student table
 	try {
