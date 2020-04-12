@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import JDBC.Courses_Table;
 import JDBC.Department_Table;
+import JDBC.MockAUSDatabase;
 import JDBC.Session_Table;
 import JDBC.Student_Table;
 import JDBC.Users_Database;
@@ -24,7 +25,7 @@ public class User {
 	Department_Table depat_table;
 	Session_Table session_Table;
 
-	User(){
+	public User(){
 		users_table = new Users_Database();
 	}
 
@@ -91,11 +92,12 @@ public void initializeUsers(String usertype, String userID) {
 		//check which user, get details and set the attributes
 	}
 	
-	public String validateUser(String email, String password) {
-		
-		String user_type = null;
+   public String validateUser(String email, String password) {
+	 
+		String user_type;
 		try {
 			user_type = users_table.checkCredentials(email, password);
+
 			if(user_type!= null)
 			{
 				//initialize user

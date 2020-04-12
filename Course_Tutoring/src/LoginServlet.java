@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import ApplicationModel.Student;
 import ApplicationModel.User;
 import JDBC.Faculty_Table;
+import jdk.internal.jline.console.UserInterruptException;
 
 
 @WebServlet("/LoginServlet")
@@ -47,11 +48,11 @@ public class LoginServlet extends HttpServlet{
 		System.out.println("username and password entered is "+ user + pswd);
 		
 		//student, tutpr, Faculty_Table, System, department
-		
-		String user_type = login_user.validateUser(user, pswd);
+		login_user = new User();
+	    String user_type = login_user.validateUser(user, pswd);
 		//redirect to student view
 		if(user_type.toLowerCase() == "student") {
-			Student student = new Student(user);
+			Student student = new Student();
 		RequestDispatcher req = request.getRequestDispatcher("Student.html");
 		req.include(request, response);
 		}

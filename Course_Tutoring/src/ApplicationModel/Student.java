@@ -12,18 +12,21 @@ public class Student extends User {
 	Student_Table student_table;
 	ResultSet rsResultSet;
 
-public Student(String email) {
+public Student() {
 	mock = new MockAUSDatabase();
 	student_table = new Student_Table();
-	
-	super.setUser_email(email);
 	// TODO Auto-generated constructor stub
 }
 
-public Student(String mail, String password) {
+public Student(String mail) {
+	mock = new MockAUSDatabase();
+	student_table = new Student_Table();
 	
+	setUser_email(mail);
 	//set al fields
 }
+
+
 
 public boolean isAUSStudent(String student_mail) {
 	//add check to see if its not in the student table
@@ -48,7 +51,7 @@ public boolean canRegister() {
 	ResultSet temp = student_table.getStudentDetails(user_email);
 	
 	try {
-		if(student_table.StudentExists(temp)) {
+		if(!student_table.StudentExists(temp)) {
 			//if not check if user exists in the mock database 
 			if (isAUSStudent(user_email)) {
 				return true;
@@ -66,12 +69,15 @@ public boolean canRegister() {
 public boolean Registration(String password) {
 	
 	//Retrieve student record form mock database
+	System.out.println("in registration");
 	ResultSet mock_result = mock.retreiveAUSStudent(user_email);
-	
+	System.out.println("testing registration");
 	//insert the data into the course tutoring database
 	if(student_table.insertStudent(mock_result, password)) {
 		return true;
 	}
+	
+	System.out.println("problem in inserting");
 	return false;
 }
 

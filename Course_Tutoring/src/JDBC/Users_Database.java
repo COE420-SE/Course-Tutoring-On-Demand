@@ -13,10 +13,13 @@ public class Users_Database {
 	public Users_Database() {
 		// TODO Auto-generated constructor stub
 		dbCon = new DBConnection();
+		student = new Student_Table();
 	}
 	
 	
 	public String checkCredentials(String email, String password) throws SQLException {
+		
+		System.out.print("in ceck credentials");
 		
 		//check if user is a student 
 		//function return student id if exists

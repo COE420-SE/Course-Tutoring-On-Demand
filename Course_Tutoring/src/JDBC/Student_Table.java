@@ -42,14 +42,23 @@ public class Student_Table {
 		
 	//checks if the student email and password match for login purposes
 	//return the student_ID if exists null otherwise
-	public String checkStudentDetails(String email, String password) throws SQLException {
+	public String checkStudentDetails(String email, String password){
 		
+        System.out.println("checking in student details");
 		String student_password = "SELECT * FROM STUDENT WHERE STUDENT_EMAIL = '" + email+"' AND STUDENT_PASSWORD = '"+ password+"'";
-		rs = dbCon.executeStatement(student_password);
-		if(rs.isBeforeFirst()) {
-			System.out.println("Student "+email+": details match" );
-			return rs.getString("STUDENT_ID");}
-		else return null;
+		try {
+			rs = dbCon.executeStatement(student_password);
+			if(rs.isBeforeFirst()) {
+				rs.next();
+				System.out.println("Student "+email+": details match" );
+				return rs.getString("STUDENT_ID");}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error querying select student");
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 	
 	//check if the student is also a tutor
@@ -71,6 +80,7 @@ public class Student_Table {
 		
 	try {
 		
+		old.beforeFirst();
 		old.next();
 		String STUDENT_ID = old.getString("MSTUDENT_ID");
 		String STUDENT_NAME = old.getString("MSTUDENT_NAME");
@@ -85,8 +95,9 @@ public class Student_Table {
 				", '"+STUDENT_NAME+
 				"', '"+STUDENT_EMAIL+
 				"', '"+STUDENT_MAJOR+
-				"', '"+Apply_Tutor+
-				"', '"+STUDENT_PASSWORD+"')";
+				"', "+Apply_Tutor+
+				", '"+STUDENT_PASSWORD+"')";
+		
 		int result = dbCon.executePrepared(sqlString);
 		
 		if(result>0) {return true;}

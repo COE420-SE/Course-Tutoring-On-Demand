@@ -13,7 +13,7 @@ import ApplicationModel.Student;
 @WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
-	Student student_model;
+	Student stud;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -43,11 +43,15 @@ public class RegisterServlet extends HttpServlet{
 			String student_psw = request.getParameter("psw");
 			System.out.println("password is " + student_psw);
 			// check if user exist in model
-			boolean registartion = student_model.Registration(student_psw);
+			stud = new Student();
+			
+			
+			System.out.println("what is the emial"+stud.getUser_email());
+			boolean registartion = stud.Registration(student_psw);
 			if (registartion) {
 				response.sendRedirect("login.html");
 			}
-			else response.sendRedirect("error.html");
+			//else response.sendRedirect("error.html");
 	}
 		}}
 
