@@ -6,10 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sun.crypto.provider.RSACipher;
+import com.sun.nio.sctp.Notification;
 
+import JDBC.Admins_Table;
 import JDBC.Courses_Table;
 import JDBC.Department_Table;
+import JDBC.Faculty_Table;
 import JDBC.MockAUSDatabase;
+import JDBC.Notifications_Table;
 import JDBC.Session_Table;
 import JDBC.Student_Table;
 import JDBC.Users_Database;
@@ -17,27 +21,11 @@ import jdk.javadoc.internal.doclets.formats.html.AllClassesFrameWriter;
 
 public class User {
 	
-	public List<Courses> getAUScourses() {
-		return AUScourses;
-	}
-
-	public static void setAUScourses(List<Courses> aUScourses) {
-		AUScourses = aUScourses;
-	}
-
-	public static ArrayList<Department> getAUSdepartments() {
-		return AUSdepartments;
-	}
-
-	public static void setAUSdepartments(ArrayList<Department> aUSdepartments) {
-		AUSdepartments = aUSdepartments;
-	}
-
 	static String User_ID;
 	static String user_name;
 	static String user_email;
 	static String user_department;
-	static List<Courses> AUScourses;
+	static ArrayList<Courses> AUScourses;
 	static ArrayList<Department> AUSdepartments; 
 	Users_Database users_table;
 	Courses_Table course_table;
@@ -49,6 +37,22 @@ public class User {
 		course_table = new Courses_Table();
 		depat_table = new Department_Table();
 		session_Table = new Session_Table();
+	}
+	
+	public ArrayList<Courses> getAUScourses() {
+		return AUScourses;
+	}
+
+	public static void setAUScourses(ArrayList<Courses> aUScourses) {
+		AUScourses = aUScourses;
+	}
+
+	public static ArrayList<Department> getAUSdepartments() {
+		return AUSdepartments;
+	}
+
+	public static void setAUSdepartments(ArrayList<Department> aUSdepartments) {
+		AUSdepartments = aUSdepartments;
 	}
 
 public String getUser_ID() {
@@ -76,8 +80,17 @@ public String getUser_ID() {
 		User.user_email = email;
 		
 	}
+	public static String getUser_department() {
+			return user_department;
+	}
+	 
+	public static void setUser_department(String user_department) {
+			User.user_department = user_department;
+	}
+	//getter and setter finish
+		
 	
-		//set everything including getting all the department and courses
+	//set everything including getting all the department and courses
 	public ArrayList<String >getNotifications(ResultSet messages) {
 		ArrayList<String> message = new ArrayList<String>();
 		try {
@@ -94,12 +107,32 @@ public String getUser_ID() {
 		return message;
 	}
 	
-	public boolean insertNotification(String sender, String receiver,String message) {}
+	//insert notification 
+	//return true if inserted successfull and false otherwise
+	public boolean insertNotification(String sender, String receiver,String message) {
+		
+		Notifications_Table notification = new Notifications_Table();
+		return notification.insertNotification(sender, receiver, message);
+	}
 	
+	//initialize AUS departments
 	public void initializeAUSDepartments() {
+		ResultSet deptSet = depat_table.retreiveAUSDepartments();
+		AUSdepartments = new ArrayList<Department>();
+			try {
+				deptSet.beforeFirst();
+				while (deptSet.next()) {
+					
+					AUSdepartments.add(new Department(deptSet.getString("COURSE_ID"), deptSet.getString("COURSE_NAME")));
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		
 	}
 	
+	//initialize AUS Courses
 	public void initializeAUSCourses(){
 	ResultSet courseSet = course_table.retreiveAUSCourses();
 	AUScourses = new ArrayList<Courses>();
@@ -116,17 +149,80 @@ public String getUser_ID() {
 	
 	}
 	
-public void initializeUsers(String usertype, String userID) {
+	//initialzes attributes for the user
+	//should this be moved to the respective classes ?
+public void initializeUsers(String usertype, String userEmail) throws SQLException {
 	
 	String ID;
 	String NAME;
 	String EMAIL;
 	String DEPARTMENT;
+	ResultSet rSet;
+	//check which user, get details and set the attributes
+	if(usertype.toLowerCase() == "student") {
+		
+		Student_Table student_Table = new Student_Table();
+		rSet = student_Table.getStudentDetails(userEmail);
+		rSet.beforeFirst();
+		while(rSet.next()) {
+			ID = rSet.getString("STUDENT_ID");
+			NAME = rSet.getString("STUDENT_NAME");
+			EMAIL =  rSet.getString("STUDENT_EMAIL");
+			DEPARTMENT = rSet.getString("STUDENT_MAJOR");
+		}
+	}
+	else if (usertype.toLowerCase() == "tutor") {
+		Student_Table tutor_Table = new Student_Table();
+		rSet = tutor_Table.getStudentDetails(userEmail);
+		rSet.beforeFirst();
+		while(rSet.next()) {
+			ID = rSet.getString("STUDENT_ID");
+			NAME = rSet.getString("STUDENT_NAME");
+			EMAIL =  rSet.getString("STUDENT_EMAIL");
+			DEPARTMENT = rSet.getString("STUDENT_MAJOR");
+		}
+	}
+    else if (usertype.toLowerCase() == "department") {
+    	Admins_Table dept_table = new Admins_Table();
+		rSet = dept_table.getAdminDetails(userEmail);
+		rSet.beforeFirst();
+		while(rSet.next()) {
+			ID = rSet.getString("ADMIN_ID");
+			NAME = rSet.getString("ADMIN_NAME");
+			EMAIL =  rSet.getString("ADMIN_EMAIL");
+			DEPARTMENT = rSet.getString("A_DEPARTMENT_ID");
+		}
+	}
+    else if (usertype.toLowerCase() == "system") {
+    	Admins_Table system_table = new Admins_Table();
+		rSet = system_table.getAdminDetails(userEmail);
+		rSet.beforeFirst();
+		while(rSet.next()) {
+			ID = rSet.getString("ADMIN_ID");
+			NAME = rSet.getString("ADMIN_NAME");
+			EMAIL =  rSet.getString("ADMIN_EMAIL");
+			DEPARTMENT = rSet.getString("A_DEPARTMENT_ID");
+		}
+}
+    else if (usertype.toLowerCase() == "faculty") {
+    	Faculty_Table faculty_Table = new Faculty_Table();
+		rSet = faculty_Table.getFacultyDetails(userEmail);
+		rSet.beforeFirst();
+		while(rSet.next()) {
+			ID = rSet.getString("STUDENT_ID");
+			NAME = rSet.getString("STUDENT_NAME");
+			EMAIL =  rSet.getString("STUDENT_EMAIL");
+			DEPARTMENT = rSet.getString("STUDENT_MAJOR");
+		}
+}
+    else {""}
 	
-		//check which user, get details and set the attributes
+	
+
 	}
 	
-   public String validateUser(String email, String password) {
+
+public String validateUser(String email, String password) {
 	 
 		String user_type;
 		try {
@@ -134,6 +230,7 @@ public void initializeUsers(String usertype, String userID) {
 
 			if(user_type!= null)
 			{
+				
 				//initialize user
 				//set everything 
 				return user_type;

@@ -44,7 +44,8 @@ public class Faculty_Table {
 	}
 	
 	
-	public boolean insertFaculty(String faculty) {
+	//Insert faculty 
+	public boolean insertFaculty(String f_Name, String f_Email, String f_password, String f_departmentID) {
 		
 		
 		

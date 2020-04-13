@@ -44,7 +44,7 @@ public class TutorServlet extends HttpServlet{
 		if (null != request.getParameter("create_button")) {
 			tutor.initializeAUSCourses();
 			
-			List<Courses> listCourse = tutor.getAUScourses();
+			ArrayList<Courses> listCourse = tutor.getAUScourses();
 			
 
 			for (int i = 0; i < listCourse.size(); i++) {

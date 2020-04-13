@@ -14,7 +14,7 @@ public class Notifications_Table {
 		dbCon = new DBConnection();
 	}
 	
-	public boolean insertNotification(String sender, String message, String receiver) {
+	public boolean insertNotification(String sender, String receiver, String message) {
 		
 		try {
 			

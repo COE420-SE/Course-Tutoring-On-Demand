@@ -119,8 +119,7 @@ body {
         --%>  
         <select name= "courses" required>
         
-        <%List<Courses> listCourse =  
-            (ArrayList<Courses>)request.getAttribute("course"); 
+        <%ArrayList<Courses> listCourse =  (ArrayList<Courses>)request.getAttribute("course"); 
         for(Courses s:listCourse){%> 
         <%-- Arranging data in tabular form 
         --%>  
