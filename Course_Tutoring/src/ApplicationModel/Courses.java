@@ -1,9 +1,9 @@
 package ApplicationModel;
 
 public class Courses {
-	String Course_ID;
-	String course_Name;
-	String DepartmentID;
+	public String Course_ID;
+	public String course_Name;
+	public String DepartmentID;
 	
 	public Courses(String course_ID, String course_Name, String departmentID) {
 		super();

@@ -3,6 +3,7 @@ package ApplicationModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.sun.crypto.provider.RSACipher;
 
@@ -16,11 +17,11 @@ import jdk.javadoc.internal.doclets.formats.html.AllClassesFrameWriter;
 
 public class User {
 	
-	public ArrayList<Courses> getAUScourses() {
+	public List<Courses> getAUScourses() {
 		return AUScourses;
 	}
 
-	public static void setAUScourses(ArrayList<Courses> aUScourses) {
+	public static void setAUScourses(List<Courses> aUScourses) {
 		AUScourses = aUScourses;
 	}
 
@@ -36,7 +37,7 @@ public class User {
 	static String user_name;
 	static String user_email;
 	static String user_department;
-	static ArrayList<Courses> AUScourses;
+	static List<Courses> AUScourses;
 	static ArrayList<Department> AUSdepartments; 
 	Users_Database users_table;
 	Courses_Table course_table;
@@ -102,7 +103,6 @@ public String getUser_ID() {
 	public void initializeAUSCourses(){
 	ResultSet courseSet = course_table.retreiveAUSCourses();
 	AUScourses = new ArrayList<Courses>();
-		
 		try {
 			courseSet.beforeFirst();
 			while (courseSet.next()) {

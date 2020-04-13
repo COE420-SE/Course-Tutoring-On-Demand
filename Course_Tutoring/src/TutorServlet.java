@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,16 +44,22 @@ public class TutorServlet extends HttpServlet{
 		if (null != request.getParameter("create_button")) {
 			tutor.initializeAUSCourses();
 			
-			ArrayList<Courses> course = tutor.getAUScourses();
-		
-			request.setAttribute("course", course);
-			RequestDispatcher rd =  request.getRequestDispatcher("Create a session.jsp"); 
+			List<Courses> listCourse = tutor.getAUScourses();
 			
-			for (int i = 0; i < course.size(); i++) {
-				System.out.println("hi");
+
+			for (int i = 0; i < listCourse.size(); i++) {
+				System.out.println(listCourse.get(i).course_Name);
 			}
 			
+			request.setAttribute("course", listCourse); 
+			
+			RequestDispatcher rd =  request.getRequestDispatcher("Create a session.jsp"); 
+			
+	
+			
 			rd.forward(request, response);
+			
+		//	response.sendRedirect("Create a session.jsp");
 		} 
 		else if (null != request.getParameter("scancel_button")) {
 			

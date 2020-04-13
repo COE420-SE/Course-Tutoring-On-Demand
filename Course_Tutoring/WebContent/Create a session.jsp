@@ -1,3 +1,8 @@
+<%@page import="ApplicationModel.Courses"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +15,8 @@
 * {
 	box-sizing: border-box;
 }
+
+
 
 input[type=text],input[type=date],input[type=time], select, textarea {
 	width: 100%;
@@ -87,10 +94,10 @@ body {
 </style>
 </head>
 <body>
-	
-	<div class="container">
+
+<div class="container">
 	<h2 class = "w3-center">Create a Session</h2>
-		<form action="TutorServlet" method ="Post">
+		<form action="CreateSessionServlet" method ="Post">
 			<div class="row">
 				<div class="col-25">
 					<label for="fname">Name: </label>
@@ -105,12 +112,22 @@ body {
 					<label for="course">Tutor Course: </label>
 				</div>
 				<div class="col-75">
-					<select name="course" required>
-					<c:forEach items="${course}" var="course">
-						<"option value="${course.Course_ID}">${course.course_Name}<"/option>
-						</c:forEach>
-					</select>
-				</div>
+			
+        <%-- Fetching the attributes of the request object 
+             which was previously set by the servlet  
+              "StudentServlet.java" 
+        --%>  
+        <select name= "courses" required>
+        
+        <%List<Courses> listCourse =  
+            (ArrayList<Courses>)request.getAttribute("course"); 
+        for(Courses s:listCourse){%> 
+        <%-- Arranging data in tabular form 
+        --%>  
+                <option value="<%=s.Course_ID%>"><%=s.course_Name%></option> 
+            <%}%> 
+        </select>  
+			</div>
 			</div>
 			<div class="row">
 				<div class="col-25">
@@ -119,9 +136,7 @@ body {
 				<div class="col-75">
 					<select name="classroom" required>
 						<c:forEach items="${listClassRoom}" var="classroom">
-							<option value="${classroom.id}"
-								<c:if test="${category.id eq selectedCatId}">selected="selected"</c:if>>
-								${classroom.name}</option>
+							<option value="${classroom.id}">classroom.name</option>
 						</c:forEach>
 					</select>
 				</div>

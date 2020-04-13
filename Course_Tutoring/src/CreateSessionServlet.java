@@ -1,6 +1,7 @@
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -46,6 +47,9 @@ public class CreateSessionServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	
+	
+	 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -53,7 +57,24 @@ public class CreateSessionServlet extends HttpServlet {
 		
 	//	if (null != request.getParameter("register_button")) {
 			// check if user exist in model
+		String course = request.getParameter("courses");
+		request.setAttribute("selectedCatId", course);
+		
+		tutor.initializeAUSCourses();
+		
+			List<Courses> listCourse = tutor.getAUScourses();
 			
+
+			request.setAttribute("course", listCourse); 
+			
+			RequestDispatcher rd =  request.getRequestDispatcher("Create a session.jsp"); 
+			
+	
+			
+			rd.forward(request, response);
+		
+				 
+
 	//}
 	}
 }
