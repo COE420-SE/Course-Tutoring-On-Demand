@@ -1,7 +1,7 @@
 <%@page import="ApplicationModel.Courses"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
-
+<%@page import="ApplicationModel.Classroom"%>
 
 <!DOCTYPE html>
 <html>
@@ -16,9 +16,7 @@
 	box-sizing: border-box;
 }
 
-
-
-input[type=text],input[type=date],input[type=time], select, textarea {
+input[type=text], input[type=date], input[type=time], select, textarea {
 	width: 100%;
 	padding: 12px;
 	border: 1px solid #ccc;
@@ -50,10 +48,9 @@ input[type=submit]:hover {
 }
 
 .container {
-
 	margin: 4% auto 15% auto;
 	border-radius: 5px;
-	background-color:  #fefefe;
+	background-color: #fefefe;
 	padding: 20px;
 }
 
@@ -85,9 +82,9 @@ input[type=submit]:hover {
 		margin-top: 0;
 	}
 }
+
 body {
-	background-image:
-		url(tutor.PNG);
+	background-image: url(tutor.PNG);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -95,9 +92,9 @@ body {
 </head>
 <body>
 
-<div class="container">
-	<h2 class = "w3-center">Create a Session</h2>
-		<form action="CreateSessionServlet" method ="Post">
+	<div class="container">
+		<h2 class="w3-center">Create a Session</h2>
+		<form action="CreateSessionServlet" method="Post">
 			<div class="row">
 				<div class="col-25">
 					<label for="fname">Name: </label>
@@ -112,32 +109,34 @@ body {
 					<label for="course">Tutor Course: </label>
 				</div>
 				<div class="col-75">
-			
-        <%-- Fetching the attributes of the request object 
-             which was previously set by the servlet  
-              "StudentServlet.java" 
-        --%>  
-        <select name= "courses" required>
-        
-        <%ArrayList<Courses> listCourse =  (ArrayList<Courses>)request.getAttribute("course"); 
-        for(Courses s:listCourse){%> 
-        <%-- Arranging data in tabular form 
-        --%>  
-                <option value="<%=s.Course_ID%>"><%=s.course_Name%></option> 
-            <%}%> 
-        </select>  
-			</div>
+					<select name="courses" required>
+
+						<%
+							List<Courses> listCourse = (ArrayList<Courses>) request.getAttribute("course");
+							for (Courses s : listCourse) {
+						%>
+						<option value="<%=s.Course_ID%>"><%=s.course_Name%></option>
+						<%
+							}
+						%>
+					</select>
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-25">
-					<label for="course">Classroom: </label>
+					<label for="classroom">Classroom: </label>
+					<div class="col-75">
+						<select name="classroom" required>
+
+						<%
+							List<Classroom> listClassroom = (ArrayList<Classroom>) request.getAttribute("class");
+							for (Classroom s : listClassroom) {
+						%>
+						<option value="<%=s.Classroom_ID%>"><%=s.Classroom_Name%></option>
+						<%
+							}
+						%>
 				</div>
-				<div class="col-75">
-					<select name="classroom" required>
-						<c:forEach items="${listClassRoom}" var="classroom">
-							<option value="${classroom.id}">classroom.name</option>
-						</c:forEach>
-					</select>
 				</div>
 			</div>
 			<div class="row">
@@ -165,7 +164,14 @@ body {
 					<input type="time" id="timemin" name="timemin" min="18:00" required>
 				</div>
 			</div>
-
+			<div class="row">
+				<div class="col-25">
+					<label for="fname">Max No of Seats: </label>
+				</div>
+				<div class="col-75">
+					<input type="number" id="seat" name="seats" required>
+				</div>
+			</div>
 			<div class="row">
 				<input type="submit" value="Submit">
 			</div>

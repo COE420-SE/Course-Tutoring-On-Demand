@@ -1,3 +1,6 @@
+<%@page import="ApplicationModel.Department"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en">
 <title>AUS Course Tutoring</title>
@@ -118,20 +121,33 @@ button {
 </style>
 <body>
 	<div class="modal">
-		<form class="modal-content" method="Post" action="AddDepartServlet">
+		<form class="modal-content" method="Post" action="AddFacultyServlet">
 			<div class="container center">
-				<h2>Adding Department Admin</h2>
-				<img src="https://www.w3schools.com/howto/img_avatar.png"
+				<h2>Adding Faculty</h2>
+				<img src="https://www.w3schools.com/w3images/avatar2.png"
 					class="center" style="width: 40%; border-radius: 50%;">
 					<div class="form-group">
 					<label for="psw">Name:</label> <input type="text"
 						name = "name" class="form-control"
-						placeholder="Enter Admin Name" required />
+						placeholder="Enter AUS Email" required />
+				</div>
+				<div class="form-group">
+					<label for="dept">Department: </label>
+						<select name="department" required>
+						<%
+							List<Department> listDepartment = (ArrayList<Department>) request.getAttribute("department");
+							for (Department : listDepartment) {
+						%>
+						<option value="<%=s.DepartmentID%>"><%=s.departmentNameString%></option>
+						<%
+							}
+						%>
+						</select>
 				</div>
 					<div class="form-group">
 					<label for="psw">Username:</label> <input type="text"
 						name = "username" class="form-control"
-						placeholder="Enter AUS EMAIL" required />
+						placeholder="Enter AUS Email" required />
 				</div>
 				<div class="form-group">
 					<label for="psw">Password:</label> <input type="password"
