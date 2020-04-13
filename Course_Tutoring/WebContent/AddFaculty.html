@@ -54,7 +54,7 @@ label {
 	margin: 4% auto 15% auto;
 	/* 5% from the top, 15% from the bottom and centered */
 	border: 1px solid #888;
-	width: 50%;
+	width: 40%;
 	height: auto /* Could be more or less, depending on screen size */
 }
 button {
@@ -121,15 +121,20 @@ button {
 		<form class="modal-content" method="Post" action="AddFacultyServlet">
 			<div class="container center">
 				<h2>Adding Faculty</h2>
-				<img src="https://www.w3schools.com/w3images/avatar6.png"
-					class="center" style="width: 50%; border-radius: 50%;">
+				<img src="https://www.w3schools.com/w3images/avatar2.png"
+					class="center" style="width: 40%; border-radius: 50%;">
 					<div class="form-group">
-					<label for="psw">Create Username:</label> <input type="text"
+					<label for="psw">Name:</label> <input type="text"
+						name = "name" class="form-control"
+						placeholder="Enter AUS Email" required />
+				</div>
+					<div class="form-group">
+					<label for="psw">Username:</label> <input type="text"
 						name = "username" class="form-control"
-						placeholder="Enter AUS EMAIL" required />
+						placeholder="Enter AUS Email" required />
 				</div>
 				<div class="form-group">
-					<label for="psw">Create Password:</label> <input type="password"
+					<label for="psw">Password:</label> <input type="password"
 						id="psw" name="psw" class="form-control" pattern="{6,}"
 						placeholder="Enter password"
 						title="Must contain atleast six characters" required />
@@ -147,7 +152,6 @@ button {
 				</div>
 				<div id="button">
 					<button type="submit" name="register_button" class="w3-green center">Submit</button>
-							&nbsp;&nbsp;
 				</div>
 			</div>
 			</form>

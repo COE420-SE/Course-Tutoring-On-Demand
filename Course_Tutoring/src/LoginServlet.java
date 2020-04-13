@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ApplicationModel.Student;
+import ApplicationModel.Tutor;
 import ApplicationModel.User;
 import JDBC.Faculty_Table;
 import jdk.internal.jline.console.UserInterruptException;
@@ -57,6 +58,7 @@ public class LoginServlet extends HttpServlet{
 		req.include(request, response);
 		}
 		else if(user_type.toLowerCase() == "tutor") {
+			Tutor tutor = new Tutor();
 			RequestDispatcher req = request.getRequestDispatcher("Tutor_Student.html");
 			req.include(request, response);
 		}
@@ -69,7 +71,7 @@ public class LoginServlet extends HttpServlet{
 			req.include(request, response);
 		}
 		else if(user_type.toLowerCase() == "faculty") {
-			RequestDispatcher req = request.getRequestDispatcher("faculty.html");
+			RequestDispatcher req = request.getRequestDispatcher("Faculty.html");
 			req.include(request, response);
 		}
 		else {

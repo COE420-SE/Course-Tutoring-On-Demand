@@ -11,7 +11,7 @@
 	box-sizing: border-box;
 }
 
-input[type=text],input[type=date],input[type=time], select, textarea {
+input[type=text], input[type=date], input[type=time], select, textarea {
 	width: 100%;
 	padding: 12px;
 	border: 1px solid #ccc;
@@ -43,19 +43,15 @@ input[type=submit]:hover {
 }
 
 .container {
-
-	margin: 4% auto 15% auto;
 	border-radius: 5px;
-	background-color:  #fefefe;
+	background-color: #f2f2f2;
 	padding: 20px;
 }
 
 .col-25 {
-	float: Right;
-	text-align: right;
-	width: 15%;
+	float: left;
+	width: 25%;
 	margin-top: 6px;
-	margin-left: 10px;
 }
 
 .col-75 {
@@ -74,26 +70,25 @@ input[type=submit]:hover {
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
 	.col-25, .col-75, input[type=submit] {
-		width: 80%;
+		width: 100%;
 		margin-top: 0;
 	}
 }
+
 body {
-	background-image:
-		url(tutor.PNG);
+	background-image: url(tutor.PNG);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
 </style>
 </head>
 <body>
-	
+	<h2 class="w3-center">Create a Session Form</h2>
 	<div class="container">
-	<h2 class = "w3-center">Create a Session</h2>
-		<form action="TutorServlet" method ="Post">
+		<form action="CreateServlet" method="Post">
 			<div class="row">
 				<div class="col-25">
-					<label for="fname">Name: </label>
+					<label for="fname">Name</label>
 				</div>
 				<div class="col-75">
 					<input type="text" id="fname" name="Name" placeholder="Your name.."
@@ -102,19 +97,21 @@ body {
 			</div>
 			<div class="row">
 				<div class="col-25">
-					<label for="course">Tutor Course: </label>
+					<label for="course">Tutor Course:</label>
 				</div>
 				<div class="col-75">
 					<select name="course" required>
-					<c:forEach items="${course}" var="course">
-						<"option value="${course.Course_ID}">${course.course_Name}<"/option>
+						<c:forEach items="${listTutorCourses}" var="course">
+							<option value="${course.id}"
+								<c:if test="${course.id eq selectedCatId}">selected="selected"</c:if>>
+								${category.name}</option>
 						</c:forEach>
 					</select>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-25">
-					<label for="course">Classroom: </label>
+					<label for="course">ClassRoom:</label>
 				</div>
 				<div class="col-75">
 					<select name="classroom" required>
@@ -128,7 +125,7 @@ body {
 			</div>
 			<div class="row">
 				<div class="col-25">
-					<label for="date">Session Date: </label>
+					<label for="date">Session Date:</label>
 				</div>
 				<div class="col-75">
 					<input type="date" id="datemin" name="datemin" min="2020-05-01"
@@ -137,7 +134,7 @@ body {
 			</div>
 			<div class="row">
 				<div class="col-25">
-					<label for="s_time">Start Time: </label>
+					<label for="s_time">Start Time:</label>
 				</div>
 				<div class="col-75">
 					<input type="time" id="timemin" name="timemin" min="17:00" required>
@@ -145,7 +142,7 @@ body {
 			</div>
 			<div class="row">
 				<div class="col-25">
-					<label for="e_time">End Time: </label>
+					<label for="e_time">End Time:</label>
 				</div>
 				<div class="col-75">
 					<input type="time" id="timemin" name="timemin" min="18:00" required>

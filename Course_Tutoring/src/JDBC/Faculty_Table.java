@@ -23,10 +23,32 @@ public class Faculty_Table {
 				else return false;
 	}
 	
-	//seperate the above function into 2 
-	//getFacultyDetails
 	
-//	public boolean insertFaculty()
+	
+	//getFacultyDetails
+	//return result set
+	public ResultSet getAdminDetails(String faculty_email) {
+		String facultyString = "SELECT * FROM FACULTY WHERE FACULTY_EMAIL = "+faculty_email;
+		
+		try {
+			rs = dbCon.executeStatement(facultyString);
+			if(rs.isBeforeFirst()) 
+				return rs;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		return null;
+	}
+	
+	
+	public boolean insertFaculty(String faculty) {
+		
+		
+		
+	}
 
 
 }

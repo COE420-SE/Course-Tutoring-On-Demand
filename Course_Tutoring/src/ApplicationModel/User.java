@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.sun.crypto.provider.RSACipher;
+
 import JDBC.Courses_Table;
 import JDBC.Department_Table;
 import JDBC.MockAUSDatabase;
@@ -14,6 +16,22 @@ import jdk.javadoc.internal.doclets.formats.html.AllClassesFrameWriter;
 
 public class User {
 	
+	public ArrayList<Courses> getAUScourses() {
+		return AUScourses;
+	}
+
+	public static void setAUScourses(ArrayList<Courses> aUScourses) {
+		AUScourses = aUScourses;
+	}
+
+	public static ArrayList<Department> getAUSdepartments() {
+		return AUSdepartments;
+	}
+
+	public static void setAUSdepartments(ArrayList<Department> aUSdepartments) {
+		AUSdepartments = aUSdepartments;
+	}
+
 	static String User_ID;
 	static String user_name;
 	static String user_email;
@@ -27,6 +45,9 @@ public class User {
 
 	public User(){
 		users_table = new Users_Database();
+		course_table = new Courses_Table();
+		depat_table = new Department_Table();
+		session_Table = new Session_Table();
 	}
 
 public String getUser_ID() {
@@ -80,15 +101,28 @@ public String getUser_ID() {
 	
 	public void initializeAUSCourses(){
 	ResultSet courseSet = course_table.retreiveAUSCourses();
+	AUScourses = new ArrayList<Courses>();
 		
-		courseSet.beforeFirst();
-		while (courseSet.next()) {
-			
-			AUScourses.add(new Courses("course_ID", "course_Name", "departmentID"));
+		try {
+			courseSet.beforeFirst();
+			while (courseSet.next()) {
+				
+				AUScourses.add(new Courses(courseSet.getString("COURSE_ID"), courseSet.getString("COURSE_NAME"), courseSet.getString("C_DEPARTMENT_ID")));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+	
 	}
 	
 public void initializeUsers(String usertype, String userID) {
+	
+	String ID;
+	String NAME;
+	String EMAIL;
+	String DEPARTMENT;
+	
 		//check which user, get details and set the attributes
 	}
 	
