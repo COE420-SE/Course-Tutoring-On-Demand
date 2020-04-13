@@ -1,3 +1,4 @@
+
 package JDBC;
 
 import java.sql.ResultSet;
@@ -14,6 +15,8 @@ public class Users_Database {
 		// TODO Auto-generated constructor stub
 		dbCon = new DBConnection();
 		student = new Student_Table();
+		admin = new Admins_Table();
+		faculty = new Faculty_Table();
 	}
 	
 	
