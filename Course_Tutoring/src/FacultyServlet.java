@@ -12,19 +12,21 @@ import ApplicationModel.Classroom;
 import ApplicationModel.Courses;
 import ApplicationModel.Department;
 import ApplicationModel.Department_Admin;
-import ApplicationModel.Tutor;
+import ApplicationModel.Faculty;
+import ApplicationModel.Session_Detail;
 import ApplicationModel.User;
+import JDBC.Faculty_Table;
 
 
-@WebServlet("/DepartServlet")
-public class DepartServlet extends HttpServlet{
+@WebServlet("/FacultyServlet")
+public class FacultyServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
-	Department_Admin deptAdmin = new Department_Admin();
+	Faculty faculty = new Faculty();
     
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DepartServlet() {
+    public FacultyServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,33 +46,18 @@ public class DepartServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		if (null != request.getParameter("process_button")) {
-			
-		} 
-		else if (null != request.getParameter("add_faculty_button")) {
-			
-			System.out.print(deptAdmin.getUser_name());
-			ArrayList<Department> listDept = User.getAUSdepartments();
+		 if (null != request.getParameter("display_session_button")) {
 			
 	
-			request.setAttribute("department", listDept); 
+			ArrayList<Session_Detail> listSessions = faculty.getAllSessions(true);
 			
-			RequestDispatcher rd =  request.getRequestDispatcher("AddFaculty.jsp"); 
+	
+			request.setAttribute("session", listSessions); 
+			
+			RequestDispatcher rd =  request.getRequestDispatcher("Display_Session.jsp"); 
 			rd.forward(request, response);
 			
-		} 
-		else if (null != request.getParameter("view_feedback_button")) {
-			
-		}
-		else if (null != request.getParameter("remove_tutor_button")) {
-			
-		}
-		else if (null != request.getParameter("display_session_button")) {
-			
-		}
-		else if (null != request.getParameter("notify_button")) {
-			
-		}
+		
 	}
 
-}
+}}

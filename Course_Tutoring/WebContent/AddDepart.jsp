@@ -141,10 +141,10 @@ button {
 					<label for="dept">Department: </label>
 						<select name="department" required>
 						<%
-							List<Department> listDepartment = (ArrayList<Department>) request.getAttribute("department");
+							ArrayList<Department> listDepartment = (ArrayList<Department>) request.getAttribute("department");
 							for (Department s : listDepartment) {
 						%>
-						<option value="<%=s.getDepartmentID()%>"><%=s.getDepartmentNameString()%></option>
+						<option value="<%=s.getDEPARTMENT_ID()%>"><%=s.getDEPARTMENT_NAME()%></option>
 						<%
 							}
 						%>

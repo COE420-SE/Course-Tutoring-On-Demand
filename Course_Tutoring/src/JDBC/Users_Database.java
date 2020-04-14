@@ -42,10 +42,14 @@ public class Users_Database {
 		if (admin_type!= null) {
 			//return system or department
 			System.out.println(admin_type);
-			if(admin_type == "S") {
-				return "system";}
+			if(admin_type.equals("S")) {
+				return "system";
+				
+			}
 			
-			else return "department";
+			else {
+				System.out.println("why ???");
+				return "department";}
 			}
 		
 		//check if user is a faculty user.

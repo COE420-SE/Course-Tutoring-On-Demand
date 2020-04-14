@@ -53,9 +53,7 @@ public class Session_Detail {
 	public void setTutor_Name(String tutor_Name) {
 		Tutor_Name = tutor_Name;
 	}
-	public static String getCourse_ID() {
-		return Course_Name;
-	}
+
 	public void setCourse_ID(String course_ID) {
 		Course_Name = course_ID;
 	}
@@ -88,6 +86,11 @@ public class Session_Detail {
 	}
 	public void setMax_Seats(String max_Seats) {
 		this.max_Seats = max_Seats;
+	}
+
+	public String getCourse_ID() {
+		// TODO Auto-generated method stub
+		return Course_Name;
 	}
 
 }

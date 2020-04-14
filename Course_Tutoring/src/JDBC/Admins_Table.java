@@ -46,28 +46,23 @@ public class Admins_Table {
 		return null;
 	}
 	
-	public boolean insertDeptAdmin(Department_Admin newAdmin) {
-		try {
-			//change new_admin.get for all 
-			String ADMIN_ID = rs.getString(1);
-			String ADMIN_NAME = rs.getString(2);
-			String ADMIN_EMAIL = rs.getString(3);
-			String ADMIN_PASSWORD = rs.getString(4);
-			String ADMIN_TYPE = "D";
-			String A_DEPARTMENT_ID = rs.getString(6);
-			
-			String sqlString = "INSERT INTO STUDENT VALUES( "+ADMIN_ID+
-					", "+ADMIN_NAME+
-					", "+ADMIN_EMAIL+
-					", "+ADMIN_PASSWORD+
-					", "+ADMIN_TYPE+
-					", "+A_DEPARTMENT_ID+" )";
-			int result = dbCon.executePrepared(sqlString);
-			
-			if(result>0) {return true;}
+	public boolean insertDeptAdmin(String d_Name, String d_Email, String d_password, String d_departmentID) {
 
+		String sqlString = "INSERT INTO admins VALUES((select max(ADMIN_ID)+1 from ADMINS) , '"
+		+d_Name+"', '"
+		+d_Email+"', '"
+		+d_password+"', 'D', '"
+		+d_departmentID+"')";
+		
+		int success;
+		try {
+			success = dbCon.executePrepared(sqlString);
+			if (success>0) {
+				return true;
+			}
 		} catch (SQLException e) {
-			System.out.print(e.getMessage());
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 			return false;
 		}
 		return false;

@@ -32,6 +32,7 @@ body {
   width: 100%;
   border: 1px solid #ddd;
   font-size: 16px;
+  background-color: white;
 }
 
 #myTable th, #myTable td {
@@ -75,14 +76,14 @@ body {
         <%-- Arranging data in tabular form 
         --%> 
             <tr> 
-                <td><%=s.Session_ID%></td> 
-                <td><%=s.Tutor_Name%></td> 
-                <td><%=s.Course_Name()%></td> 
-                <td><%=s.Classroom_ID%></td> 
-                <td><%=s.date_of_session%></td>
-                 <td><%=s.start_time%></td>
-                 <td><%=s.end_time%></td>
-                 <td><%=s.end_time%></td>
+                <td><%=s.getSession_ID()%></td> 
+                <td><%=s.getTutor_Name()%></td> 
+                <td><%=s.getCourse_ID()%></td> 
+                <td><%=s.getClassroom_ID()%></td> 
+                <td><%=s.getDate_of_session()%></td>
+                 <td><%=s.getStart_time()%></td>
+                 <td><%=s.getEnd_time()%></td>
+                 <td><%=s.getMax_Seats()%></td>
             </tr> 
             <%}%>
         </table>  
@@ -98,7 +99,7 @@ function myFunction() {
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
+    td = tr[i].getElementsByTagName("td")[2];
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {

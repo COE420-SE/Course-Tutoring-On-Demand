@@ -47,8 +47,24 @@ public class Faculty_Table {
 	//Insert faculty 
 	public boolean insertFaculty(String f_Name, String f_Email, String f_password, String f_departmentID) {
 		
+		String sqlString = "INSERT INTO faculty_user VALUES((select max(FACULTY_ID)+1 from FACULTY_USER) , '"
+		+f_Name+"', '"
+		+f_Email+"', '"
+		+f_password+"', '"
+		+f_departmentID+"')";
 		
-		
+		int success;
+		try {
+			success = dbCon.executePrepared(sqlString);
+			if (success>0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		return false;
 	}
 
 

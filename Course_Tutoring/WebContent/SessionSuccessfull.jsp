@@ -61,7 +61,6 @@ label {
 	<div class="modal">
 		<form class = "modal-content">
 			<div class="container center">
-			<h2>Login Portal</h2>
 				<img src="https://www.w3schools.com/howto/img_avatar2.png" class = "center"style= "width: 50%; border-radius:50%;">
 				<div class="w3-container w3-center" style = "padding: 20px 16px">
 				<label for="user">Success</label> 

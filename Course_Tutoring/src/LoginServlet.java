@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ApplicationModel.Department_Admin;
+import ApplicationModel.Faculty;
 import ApplicationModel.Student;
+import ApplicationModel.System_Admin;
 import ApplicationModel.Tutor;
 import ApplicationModel.User;
 import JDBC.Faculty_Table;
@@ -70,15 +72,17 @@ public class LoginServlet extends HttpServlet{
 			req.include(request, response);
 		}
 		else if(user_type.toLowerCase() == "department") {
-			//Department_Admin admin = new Department_Admin(user);
+			Department_Admin dadmin = new Department_Admin(user);
 			RequestDispatcher req = request.getRequestDispatcher("DepartmentAdmin.html");
 			req.include(request, response);
 		}
 		else if(user_type.toLowerCase() == "system") {
+			System_Admin sadmin = new System_Admin(user);
 			RequestDispatcher req = request.getRequestDispatcher("SystemAdmin.html");
 			req.include(request, response);
 		}
 		else if(user_type.toLowerCase() == "faculty") {
+			Faculty faculty = new Faculty(user);
 			RequestDispatcher req = request.getRequestDispatcher("Faculty.html");
 			req.include(request, response);
 		}

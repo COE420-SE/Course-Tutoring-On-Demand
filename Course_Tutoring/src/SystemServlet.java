@@ -8,23 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ApplicationModel.Classroom;
-import ApplicationModel.Courses;
 import ApplicationModel.Department;
 import ApplicationModel.Department_Admin;
-import ApplicationModel.Tutor;
+import ApplicationModel.System_Admin;
 import ApplicationModel.User;
 
-
-@WebServlet("/DepartServlet")
-public class DepartServlet extends HttpServlet{
+@WebServlet("/SystemServlet")
+public class SystemServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
-	Department_Admin deptAdmin = new Department_Admin();
+	System_Admin system_Admin = new System_Admin();
     
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DepartServlet() {
+    public SystemServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,33 +41,19 @@ public class DepartServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		if (null != request.getParameter("process_button")) {
+		if (null != request.getParameter("add_dept_button")) {
 			
-		} 
-		else if (null != request.getParameter("add_faculty_button")) {
-			
-			System.out.print(deptAdmin.getUser_name());
+			System.out.print(system_Admin.getUser_name());
 			ArrayList<Department> listDept = User.getAUSdepartments();
 			
 	
 			request.setAttribute("department", listDept); 
 			
-			RequestDispatcher rd =  request.getRequestDispatcher("AddFaculty.jsp"); 
+			RequestDispatcher rd =  request.getRequestDispatcher("AddDepart.jsp"); 
 			rd.forward(request, response);
 			
-		} 
-		else if (null != request.getParameter("view_feedback_button")) {
-			
-		}
-		else if (null != request.getParameter("remove_tutor_button")) {
-			
-		}
-		else if (null != request.getParameter("display_session_button")) {
-			
-		}
-		else if (null != request.getParameter("notify_button")) {
-			
-		}
+
 	}
+		}
 
 }

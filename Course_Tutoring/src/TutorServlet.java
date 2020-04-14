@@ -19,7 +19,7 @@ import oracle.net.aso.o;
 @WebServlet("/TutorServlet")
 public class TutorServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
-    Tutor tutor= new Tutor("g00074266@aus.edu");
+    Tutor tutor= new Tutor();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -45,7 +45,7 @@ public class TutorServlet extends HttpServlet{
 		// TODO Auto-generated method stub
 		if (null != request.getParameter("create_button")) {
 			
-			tutor.initializeAUSClassrooms();
+			
 			System.out.print(tutor.getUser_ID());
 			ArrayList<Courses> listCourse = tutor.getCoursesTaughtByTutor(tutor.getUser_ID());
 			for (int i = 0; i < listCourse.size(); i++) {

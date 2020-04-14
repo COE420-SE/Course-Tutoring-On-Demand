@@ -1,6 +1,4 @@
-
 import java.io.IOException;
-
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,21 +7,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ApplicationModel.Student;
+import ApplicationModel.Department_Admin;
+import ApplicationModel.System_Admin;
 
 /**
- * Servlet implementation class SimpleServlet
+ * Servlet implementation class CreateSessionServlet
  */
-@WebServlet("/SimpleServlet")
-public class SimpleServlet extends HttpServlet {
+@WebServlet("/AddFacultyServlet")
+public class AddFacultyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Student stud;
+	Department_Admin department_Admin = new Department_Admin();
 	
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public SimpleServlet() {
+	public AddFacultyServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -43,27 +42,49 @@ public class SimpleServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	
+	
+	 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		if (null != request.getParameter("register_button")) {
-			String student_email= request.getParameter("username");
-			System.out.println("username entered is " + student_email);
-			// check if user exist in model
-			stud = new Student();
-			
-			stud.setUser_email(student_email);
-			boolean reg = stud.canRegister(student_email);
+			String name = request.getParameter("name");
+			String email = request.getParameter("username");
+			String pass = request.getParameter("psw");
+			String dept = request.getParameter("department");
 			
 			
-			if (reg) {
-				response.sendRedirect("register.html");
+			System.out.println(name);
+			System.out.println(email);
+			System.out.println(dept);
+			System.out.println(pass);
+	
+		
+			//make a instance of session detail
+			
+			boolean success = department_Admin.addFacultyMember(name, email, pass, dept);
+			
+			if (success) {
+				
+			
+				
+			RequestDispatcher rd =  request.getRequestDispatcher("DepartmentAdmin.html"); 
+			rd.forward(request, response);
+			
 			}
-			else response.sendRedirect("doesnotexist.html");
-		} 
-		else if (null != request.getParameter("login_button")) {
-			response.sendRedirect("login.html");
-		} 
+			
+			else {
+				RequestDispatcher error =  request.getRequestDispatcher("error.html");
+				error.forward(request, response);
+			}
 	}
+				 
+
+	//}
+	}
+	
+	
 }

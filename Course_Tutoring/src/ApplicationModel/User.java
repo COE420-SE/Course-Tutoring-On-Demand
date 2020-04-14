@@ -46,6 +46,7 @@ public class User {
 		
 		initializeAUSCourses();
 		initializeAUSDepartments();
+		initializeAUSClassrooms();
 	}
 	
 	public ArrayList<Courses> getAUScourses() {
@@ -184,75 +185,7 @@ public String getUser_ID() {
 	
 	//initialzes attributes for the user
 	//should this be moved to the respective classes ?
-public void initializeUsers(String usertype, String userEmail) throws SQLException {
-	
-	String ID;
-	String NAME;
-	String EMAIL;
-	String DEPARTMENT;
-	ResultSet rSet;
-	//check which user, get details and set the attributes
-	if(usertype.toLowerCase() == "student") {
-		
-		Student_Table student_Table = new Student_Table();
-		rSet = student_Table.getStudentDetails(userEmail);
-		rSet.beforeFirst();
-		while(rSet.next()) {
-			ID = rSet.getString("STUDENT_ID");
-			NAME = rSet.getString("STUDENT_NAME");
-			EMAIL =  rSet.getString("STUDENT_EMAIL");
-			DEPARTMENT = rSet.getString("STUDENT_MAJOR");
-		}
-	}
-	else if (usertype.toLowerCase() == "tutor") {
-		Student_Table tutor_Table = new Student_Table();
-		rSet = tutor_Table.getStudentDetails(userEmail);
-		rSet.beforeFirst();
-		while(rSet.next()) {
-			ID = rSet.getString("STUDENT_ID");
-			NAME = rSet.getString("STUDENT_NAME");
-			EMAIL =  rSet.getString("STUDENT_EMAIL");
-			DEPARTMENT = rSet.getString("STUDENT_MAJOR");
-		}
-	}
-    else if (usertype.toLowerCase() == "department") {
-    	Admins_Table dept_table = new Admins_Table();
-		rSet = dept_table.getAdminDetails(userEmail);
-		rSet.beforeFirst();
-		while(rSet.next()) {
-			ID = rSet.getString("ADMIN_ID");
-			NAME = rSet.getString("ADMIN_NAME");
-			EMAIL =  rSet.getString("ADMIN_EMAIL");
-			DEPARTMENT = rSet.getString("A_DEPARTMENT_ID");
-		}
-	}
-    else if (usertype.toLowerCase() == "system") {
-    	Admins_Table system_table = new Admins_Table();
-		rSet = system_table.getAdminDetails(userEmail);
-		rSet.beforeFirst();
-		while(rSet.next()) {
-			ID = rSet.getString("ADMIN_ID");
-			NAME = rSet.getString("ADMIN_NAME");
-			EMAIL =  rSet.getString("ADMIN_EMAIL");
-			DEPARTMENT = rSet.getString("A_DEPARTMENT_ID");
-		}
-}
-    else if (usertype.toLowerCase() == "faculty") {
-    	Faculty_Table faculty_Table = new Faculty_Table();
-		rSet = faculty_Table.getFacultyDetails(userEmail);
-		rSet.beforeFirst();
-		while(rSet.next()) {
-			ID = rSet.getString("STUDENT_ID");
-			NAME = rSet.getString("STUDENT_NAME");
-			EMAIL =  rSet.getString("STUDENT_EMAIL");
-			DEPARTMENT = rSet.getString("STUDENT_MAJOR");
-		}
-}
-    else {""}
-	
-	
 
-	}
 	
 
 public String validateUser(String email, String password) {
@@ -282,10 +215,18 @@ public String validateUser(String email, String password) {
 		ResultSet sessionSet = session_Table.retreievAllSessions(upcomming);
 		
 		try {
-			if(!sessionSet.isBeforeFirst()) {return null;}
+			sessionSet.beforeFirst();
 			while(sessionSet.next()){
-			//	session.add(new Session_Detail(session_ID, tutor_Name, course_Name, classroom_ID, date_of_session, start_time, end_time, max_Seats))
-				}
+			session.add(new Session_Detail(sessionSet.getString("SESSION_ID"), 
+					sessionSet.getString("STUDENT_NAME"), 
+					sessionSet.getString("S_COURSE_ID"),
+					sessionSet.getString("S_CLASSROOM_ID"),
+					sessionSet.getString("DATE_OF_SESSION"),
+					sessionSet.getString("START_TIME"),
+					sessionSet.getString("END_TIME"),
+					sessionSet.getString("MAX_CAPACITY")));
+			
+					}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -47,7 +47,7 @@ public class RegisterServlet extends HttpServlet{
 			
 			
 			System.out.println("what is the emial"+stud.getUser_email());
-			boolean registartion = stud.Registration(student_psw);
+			boolean registartion = stud.Registration(stud.getUser_email(), student_psw);
 			if (registartion) {
 				response.sendRedirect("login.html");
 			}
