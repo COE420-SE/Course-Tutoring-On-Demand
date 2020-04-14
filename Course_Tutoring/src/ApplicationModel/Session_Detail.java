@@ -17,7 +17,7 @@ public class Session_Detail {
 	}
 	String Session_ID;
 	String Tutor_Name;
-	String Course_Name;
+	static String Course_Name;
 	String Classroom_ID;
 	Date date_of_session;
 	String start_time;
@@ -38,7 +38,7 @@ public class Session_Detail {
 	public void setTutor_Name(String tutor_Name) {
 		Tutor_Name = tutor_Name;
 	}
-	public String getCourse_ID() {
+	public static String getCourse_ID() {
 		return Course_Name;
 	}
 	public void setCourse_ID(String course_ID) {

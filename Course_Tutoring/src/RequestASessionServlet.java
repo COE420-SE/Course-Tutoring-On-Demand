@@ -14,23 +14,26 @@ import ApplicationModel.Courses;
 import ApplicationModel.Student;
 import ApplicationModel.Tutor;
 import ApplicationModel.User;
+import ApplicationModel.Session_Detail;
 
 /**
- * Servlet implementation class CreateSessionServlet
+ * Servlet implementation class SimpleServlet
  */
-@WebServlet("/CreateSessionServlet")
-public class CreateSessionServlet extends HttpServlet {
+@WebServlet("/RequestASessionServlet")
+public class RequestASessionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Tutor tutor;;
+	Student student;;
 	
+
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public CreateSessionServlet() {
+	public RequestASessionServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -48,33 +51,22 @@ public class CreateSessionServlet extends HttpServlet {
 	 *      response)
 	 */
 	
-	
-	 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-	//	if (null != request.getParameter("register_button")) {
-			// check if user exist in model
-		String course = request.getParameter("courses");
-		request.setAttribute("selectedCatId", course);
-		
-		tutor.initializeAUSCourses();
-		
-			List<Courses> listCourse = tutor.getAUScourses();
-			
 
-			request.setAttribute("course", listCourse); 
-			
-			RequestDispatcher rd =  request.getRequestDispatcher("Create a session.jsp"); 
-			
-	
-			
+		String session = request.getParameter("session");
+		
+		// check if the session not already exist 
+		if (session == Session_Detail.getCourse_ID()) {
+			response.sendRedirect("error.html");
+		}
+		
+		else {
+			RequestDispatcher rd =  request.getRequestDispatcher("Request a session.jsp"); 
 			rd.forward(request, response);
-		
-				 
+		}
 
-	//}
 	}
 }
