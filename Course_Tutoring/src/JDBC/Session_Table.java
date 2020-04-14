@@ -14,7 +14,29 @@ public class Session_Table {
 		dbCon = new DBConnection();
 	}
 	
-	public boolean insertNewSession(Session_Detail newSession){return true;}
+	//inserting new sessions record in the database
+	public boolean insertNewSession(Session_Detail newSession, String tutor_ID){
+		System.out.println("in insert session");
+	try {	
+		String sqlString = "INSERT INTO SESSIONS VALUES((select max(SESSION_ID)+1 from SESSIONS), '"
+		+tutor_ID+"', '"
+		+newSession.getCourse_ID()+"', '"
+		+newSession.getClassroom_ID()+"', '"
+		+newSession.getDate_of_session()+"', '"
+		+newSession.getStart_time()+"', '"
+		+newSession.getEnd_time()+"', "
+		+newSession.getMax_Seats()+", 0)";
+		
+		int success = dbCon.executePrepared(sqlString);
+		
+		if(success>0) {return true;}
+
+	} catch (SQLException e) {
+		System.out.print(e.getMessage());
+		return false;
+	}
+	return false;
+	}
 	
 	public ResultSet retreievAllSessions(boolean upcomming) {
 		int status;

@@ -1,19 +1,27 @@
 package ApplicationModel;
 
 public class Department {
-	String DepartmentID;
-	String departmentNameString;
 	
-	public Department(String departmentID, String departmentNameString) {
+	String DEPARTMENT_ID;
+	String DEPARTMENT_NAME;
+	
+	public Department(String dEPARTMENT_ID, String dEPARTMENT_NAME) {
 		super();
-		DepartmentID = departmentID;
-		this.departmentNameString = departmentNameString;
+		DEPARTMENT_ID = dEPARTMENT_ID;
+		DEPARTMENT_NAME = dEPARTMENT_NAME;
 	}
-
-	public String getDepartmentID() {
-		return DepartmentID;
+	public String getDEPARTMENT_ID() {
+		return DEPARTMENT_ID;
 	}
-	public String getDepartmentNameString() {
-		return departmentNameString;
+	public void setDEPARTMENT_ID(String dEPARTMENT_ID) {
+		DEPARTMENT_ID = dEPARTMENT_ID;
 	}
+	public String getDEPARTMENT_NAME() {
+		return DEPARTMENT_NAME;
+	}
+	public void setDEPARTMENT_NAME(String dEPARTMENT_NAME) {
+		DEPARTMENT_NAME = dEPARTMENT_NAME;
+	}
+	
+	
 }

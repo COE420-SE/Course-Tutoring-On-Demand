@@ -3,6 +3,8 @@ package JDBC;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.sun.tools.example.debug.tty.TTY;
+
 import ApplicationModel.Department_Admin;
 
 public class Admins_Table {
@@ -16,21 +18,20 @@ public class Admins_Table {
 	
 	public String checkAdminDetails(String email, String password) throws SQLException {
 	
-		String adminString = "SELECT * FROM ADMINS WHERE ADMIN_EMAIL = "+email+" AND ADMIN_PASSWORD = "+password;
+		String adminString = "SELECT * FROM ADMINS WHERE ADMIN_EMAIL = '"+email+"' AND ADMIN_PASSWORD = '"+password+"'";
 	   
 			rs = dbCon.executeStatement(adminString);
 			if(rs.isBeforeFirst()) {
-				
-				if(rs.getString(5) == "S") {
-					return "system";
-				}
-				else return "department";}
-			else  return null;
-
+				rs.next();
+				String t = rs.getString("ADMIN_TYPE");
+				System.out.println(t);
+				return t;
+			}
+				return null;
 	}
 	
 	public ResultSet getAdminDetails(String admmin_email) {
-		String adminString = "SELECT * FROM ADMINS WHERE ADMIN_EMAIL = "+admmin_email;
+		String adminString = "SELECT * FROM ADMINS WHERE ADMIN_EMAIL = '"+admmin_email+"'";
 		
 		try {
 			rs = dbCon.executeStatement(adminString);

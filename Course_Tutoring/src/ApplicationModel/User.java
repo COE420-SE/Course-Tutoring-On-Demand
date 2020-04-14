@@ -5,10 +5,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.IconifyAction;
+
 import com.sun.crypto.provider.RSACipher;
 import com.sun.nio.sctp.Notification;
 
 import JDBC.Admins_Table;
+import JDBC.Classroom_Table;
 import JDBC.Courses_Table;
 import JDBC.Department_Table;
 import JDBC.Faculty_Table;
@@ -27,16 +30,22 @@ public class User {
 	static String user_department;
 	static ArrayList<Courses> AUScourses;
 	static ArrayList<Department> AUSdepartments; 
+	static ArrayList<Classroom> AUSclassrooms; 
 	Users_Database users_table;
 	Courses_Table course_table;
 	Department_Table depat_table;
 	Session_Table session_Table;
+	Classroom_Table classroom_Table ;
 
 	public User(){
 		users_table = new Users_Database();
 		course_table = new Courses_Table();
 		depat_table = new Department_Table();
 		session_Table = new Session_Table();
+		classroom_Table = new Classroom_Table();
+		
+		initializeAUSCourses();
+		initializeAUSDepartments();
 	}
 	
 	public ArrayList<Courses> getAUScourses() {
@@ -53,6 +62,14 @@ public class User {
 
 	public static void setAUSdepartments(ArrayList<Department> aUSdepartments) {
 		AUSdepartments = aUSdepartments;
+	}
+	
+	public static ArrayList<Classroom> getAUSclassrooms() {
+		return AUSclassrooms;
+	}
+
+	public static void setAUSclassrooms(ArrayList<Classroom> aUSclassrooms) {
+		AUSclassrooms = aUSclassrooms;
 	}
 
 public String getUser_ID() {
@@ -123,7 +140,23 @@ public String getUser_ID() {
 				deptSet.beforeFirst();
 				while (deptSet.next()) {
 					
-					AUSdepartments.add(new Department(deptSet.getString("COURSE_ID"), deptSet.getString("COURSE_NAME")));
+					AUSdepartments.add(new Department(deptSet.getString("DEPARTMENT_ID"), deptSet.getString("DEPARTMENT_NAME")));
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+	}
+	
+	public void initializeAUSClassrooms() {
+		ResultSet classSet = classroom_Table.retreiveAUSClassrooms();
+		AUSclassrooms= new ArrayList<Classroom>();
+			try {
+				classSet.beforeFirst();
+				while (classSet.next()) {
+					
+					AUSclassrooms.add(new Classroom(classSet.getString("CLASSROOM_ID"), classSet.getString("BUILDING"), classSet.getString("TOTAL_SEATS")));
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -233,6 +266,7 @@ public String validateUser(String email, String password) {
 				
 				//initialize user
 				//set everything 
+				System.out.print(user_type);
 				return user_type;
 			}
 		} catch (SQLException e) {

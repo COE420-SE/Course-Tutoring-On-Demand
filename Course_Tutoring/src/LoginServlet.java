@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ApplicationModel.Department_Admin;
 import ApplicationModel.Student;
 import ApplicationModel.Tutor;
 import ApplicationModel.User;
@@ -51,18 +52,25 @@ public class LoginServlet extends HttpServlet{
 		//student, tutpr, Faculty_Table, System, department
 		login_user = new User();
 	    String user_type = login_user.validateUser(user, pswd);
+	    
+	    System.out.println(user_type);
 		//redirect to student view
-		if(user_type.toLowerCase() == "student") {
+	    if(user_type == null) {
+	    	RequestDispatcher req = request.getRequestDispatcher("error.html");
+			req.include(request, response);
+	    }
+	    else if(user_type.toLowerCase() == "student") {
 			Student student = new Student();
 		RequestDispatcher req = request.getRequestDispatcher("Student.html");
 		req.include(request, response);
 		}
 		else if(user_type.toLowerCase() == "tutor") {
-			Tutor tutor = new Tutor();
+			Tutor tutor = new Tutor(user);
 			RequestDispatcher req = request.getRequestDispatcher("Tutor_Student.html");
 			req.include(request, response);
 		}
 		else if(user_type.toLowerCase() == "department") {
+			//Department_Admin admin = new Department_Admin(user);
 			RequestDispatcher req = request.getRequestDispatcher("DepartmentAdmin.html");
 			req.include(request, response);
 		}

@@ -14,6 +14,8 @@ public class Users_Database {
 		// TODO Auto-generated constructor stub
 		dbCon = new DBConnection();
 		student = new Student_Table();
+		admin = new Admins_Table();
+		faculty = new Faculty_Table();
 	}
 	
 	
@@ -34,11 +36,17 @@ public class Users_Database {
 		}
 		
 		//check if user is an admin
+		System.out.println("checking in dept");
 		String admin_type = admin.checkAdminDetails(email, password);
+		
 		if (admin_type!= null) {
 			//return system or department
-			return admin_type;
-		}
+			System.out.println(admin_type);
+			if(admin_type == "S") {
+				return "system";}
+			
+			else return "department";
+			}
 		
 		//check if user is a faculty user.
 		if(faculty.checkFacultyDetails(email, password))

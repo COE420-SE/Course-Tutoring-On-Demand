@@ -14,7 +14,7 @@ public class Faculty_Table {
 	
 	public boolean checkFacultyDetails(String email, String password) throws SQLException {
 	
-		String facultyString = "SELECT * FROM FACULTY WHERE FACULTY_EMAIL = "+email+" AND FACULTY_PASSWORD = "+password;
+		String facultyString = "SELECT * FROM FACULTY_USER WHERE FACULTY_EMAIL = '"+email+"' AND FACULTY_PASSWORD = '"+password+"'";
 	   
 			rs = dbCon.executeStatement(facultyString);
 			if(rs.isBeforeFirst()) {
@@ -27,8 +27,8 @@ public class Faculty_Table {
 	
 	//getFacultyDetails
 	//return result set
-	public ResultSet getAdminDetails(String faculty_email) {
-		String facultyString = "SELECT * FROM FACULTY WHERE FACULTY_EMAIL = "+faculty_email;
+	public ResultSet getFacultyDetails(String faculty_email) {
+		String facultyString = "SELECT * FROM FACULTY_USER WHERE FACULTY_EMAIL = '"+faculty_email+"'";
 		
 		try {
 			rs = dbCon.executeStatement(facultyString);

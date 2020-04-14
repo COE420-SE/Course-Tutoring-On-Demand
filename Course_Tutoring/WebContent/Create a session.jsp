@@ -16,7 +16,7 @@
 	box-sizing: border-box;
 }
 
-input[type=text], input[type=date], input[type=time], select, textarea {
+input[type=text], input[type=date], input[type=time],input[type=number], select, textarea {
 	width: 100%;
 	padding: 12px;
 	border: 1px solid #ccc;
@@ -112,10 +112,10 @@ body {
 					<select name="courses" required>
 
 						<%
-							List<Courses> listCourse = (ArrayList<Courses>) request.getAttribute("course");
+							ArrayList<Courses> listCourse = (ArrayList<Courses>) request.getAttribute("course");
 							for (Courses s : listCourse) {
 						%>
-						<option value="<%=s.Course_ID%>"><%=s.course_Name%></option>
+						<option value="<%=s.getCOURSE_ID()%>"><%=s.getCOURSE_NAME()%></option>
 						<%
 							}
 						%>
@@ -125,18 +125,19 @@ body {
 			<div class="row">
 				<div class="col-25">
 					<label for="classroom">Classroom: </label>
+				</div>
 					<div class="col-75">
 						<select name="classroom" required>
 
 						<%
-							List<Classroom> listClassroom = (ArrayList<Classroom>) request.getAttribute("class");
+							ArrayList<Classroom> listClassroom = (ArrayList<Classroom>) request.getAttribute("classroom");
 							for (Classroom s : listClassroom) {
 						%>
-						<option value="<%=s.Classroom_ID%>"><%=s.Classroom_Name%></option>
+						<option value="<%=s.getCLASSROOM_ID()%>"><%=s.getCLASSROOM_ID()%></option>
 						<%
 							}
 						%>
-				</div>
+						</select>
 				</div>
 			</div>
 			<div class="row">
@@ -144,7 +145,7 @@ body {
 					<label for="date">Session Date: </label>
 				</div>
 				<div class="col-75">
-					<input type="date" id="datemin" name="datemin" min="2020-05-01"
+					<input type="date" id="datemin" name="date" min="2020-05-01"
 						required>
 				</div>
 			</div>
@@ -153,7 +154,7 @@ body {
 					<label for="s_time">Start Time: </label>
 				</div>
 				<div class="col-75">
-					<input type="time" id="timemin" name="timemin" min="17:00" required>
+					<input type="time" id="timemin" name="start_time" min="17:00" required>
 				</div>
 			</div>
 			<div class="row">
@@ -161,7 +162,7 @@ body {
 					<label for="e_time">End Time: </label>
 				</div>
 				<div class="col-75">
-					<input type="time" id="timemin" name="timemin" min="18:00" required>
+					<input type="time" id="timemin" name="end_time" min="18:00" required>
 				</div>
 			</div>
 			<div class="row">
@@ -173,7 +174,7 @@ body {
 				</div>
 			</div>
 			<div class="row">
-				<input type="submit" value="Submit">
+				<input type="submit" value="Submit" name="submit_button">
 			</div>
 		</form>
 	</div>

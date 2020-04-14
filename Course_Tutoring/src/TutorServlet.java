@@ -9,15 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ApplicationModel.Classroom;
 import ApplicationModel.Courses;
 import ApplicationModel.Tutor;
+import ApplicationModel.User;
 import oracle.net.aso.o;
 
 
 @WebServlet("/TutorServlet")
 public class TutorServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
-    Tutor tutor= new Tutor();
+    Tutor tutor= new Tutor("g00074266@aus.edu");
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -42,20 +44,21 @@ public class TutorServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		if (null != request.getParameter("create_button")) {
-			tutor.initializeAUSCourses();
 			
-			ArrayList<Courses> listCourse = tutor.getAUScourses();
-			
-
+			tutor.initializeAUSClassrooms();
+			System.out.print(tutor.getUser_ID());
+			ArrayList<Courses> listCourse = tutor.getCoursesTaughtByTutor(tutor.getUser_ID());
 			for (int i = 0; i < listCourse.size(); i++) {
-				System.out.println(listCourse.get(i).course_Name);
+				System.out.println(listCourse.get(i).getCOURSE_NAME());
 			}
 			
+			ArrayList<Classroom> listclassrooms = Tutor.getAUSclassrooms();
+			
+			
 			request.setAttribute("course", listCourse); 
+			request.setAttribute("classroom", listclassrooms);
 			
 			RequestDispatcher rd =  request.getRequestDispatcher("Create a session.jsp"); 
-			
-	
 			
 			rd.forward(request, response);
 			
@@ -64,11 +67,25 @@ public class TutorServlet extends HttpServlet{
 		else if (null != request.getParameter("scancel_button")) {
 			
 		} 
-		else if (null != request.getParameter("vfeedback_button")) {
+		else if (null != request.getParameter("feedback_button")) {
 			
 		}
 		else if (null != request.getParameter("notify_button")) {
 			
 		}
+	}
+	
+	public ArrayList<String> timining() {
+		ArrayList<String> time = new ArrayList<String>();
+
+		for (int i = 7; i < 11; i++) {
+			time.add("0"+i+":00 am");
+		}
+		time.add("12:00 pm");
+		for (int i = 1; i < 11; i++) {
+			time.add("0"+i+":00 pm");
+		}
+		
+		return time;
 	}
 }

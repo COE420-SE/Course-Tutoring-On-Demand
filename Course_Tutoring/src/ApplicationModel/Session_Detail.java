@@ -3,26 +3,41 @@ package ApplicationModel;
 import java.sql.Date;
 
 public class Session_Detail {
-	public Session_Detail(String session_ID, String tutor_Name, String course_Name, String classroom_ID,
-			Date date_of_session, String start_time, String end_time, int max_Seats) {
+	
+	String Session_ID;
+	String Tutor_Name;
+	String Course_Name;
+	String Classroom_ID;
+	String date_of_session;
+	String start_time;
+	String end_time;
+	String max_Seats;
+	
+	public Session_Detail(String session_ID, String tutor_Name, String course, String classroom_ID,
+			String date_of_session, String start_time, String end_time, String max_Seats) {
 		super();
 		Session_ID = session_ID;
 		Tutor_Name = tutor_Name;
-		Course_Name = course_Name;
+		Course_Name = course;
 		Classroom_ID = classroom_ID;
 		this.date_of_session = date_of_session;
 		this.start_time = start_time;
 		this.end_time = end_time;
 		this.max_Seats = max_Seats;
 	}
-	String Session_ID;
-	String Tutor_Name;
-	String Course_Name;
-	String Classroom_ID;
-	Date date_of_session;
-	String start_time;
-	String end_time;
-	int max_Seats;
+	
+	//constructor for inserting session
+	public Session_Detail(String course_ID, String classroom_ID, String date_of_session, String start_time, String end_time, String max_Seats) {
+		super();
+		Session_ID = " ";
+		this.Course_Name = course_ID;
+		this.Classroom_ID = classroom_ID;
+		this.date_of_session = date_of_session;
+		this.start_time = start_time;
+		this.end_time = end_time;
+		this.max_Seats = max_Seats;
+	}
+	
 	
 	
 	public String getSession_ID() {
@@ -50,10 +65,10 @@ public class Session_Detail {
 	public void setClassroom_ID(String classroom_ID) {
 		Classroom_ID = classroom_ID;
 	}
-	public Date getDate_of_session() {
+	public String getDate_of_session() {
 		return date_of_session;
 	}
-	public void setDate_of_session(Date date_of_session) {
+	public void setDate_of_session(String date_of_session) {
 		this.date_of_session = date_of_session;
 	}
 	public String getStart_time() {
@@ -68,10 +83,10 @@ public class Session_Detail {
 	public void setEnd_time(String end_time) {
 		this.end_time = end_time;
 	}
-	public int getMax_Seats() {
+	public String getMax_Seats() {
 		return max_Seats;
 	}
-	public void setMax_Seats(int max_Seats) {
+	public void setMax_Seats(String max_Seats) {
 		this.max_Seats = max_Seats;
 	}
 
