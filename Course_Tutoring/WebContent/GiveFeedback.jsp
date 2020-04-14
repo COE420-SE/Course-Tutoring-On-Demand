@@ -123,12 +123,15 @@ button {
 }
 </style>
 <body>
-	<div class="row">
+	<div class="container">
+		<h2 class="w3-center">Give A Feedback on A Tutor</h2>
+		<form action="GiveFeedbackServlet" method="Post">
+			<div class="row">
 				<div class="col-25">
-					<label for="department">Department: </label>
+					<label for="session">Session: </label>
 				</div>
 				<div class="col-75">
-					<select name="department" required>
+					<select name="session" required>
 						<%
 							List<Session_Detail> listSession_Detail = (ArrayList<Session_Detail>) request.getAttribute("course");
 							for (Session_Detail s : listSession_Detail) {
