@@ -1,6 +1,7 @@
 <%@page import="ApplicationModel.Department"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <title>AUS Course Tutoring</title>
@@ -141,9 +142,9 @@ button {
 						<select name="department" required>
 						<%
 							List<Department> listDepartment = (ArrayList<Department>) request.getAttribute("department");
-							for (Department : listDepartment) {
+							for (Department s : listDepartment) {
 						%>
-						<option value="<%=s.DepartmentID%>"><%=s.departmentNameString%></option>
+						<option value="<%=s.getDepartmentID()%>"><%=s.getDepartmentNameString()%></option>
 						<%
 							}
 						%>

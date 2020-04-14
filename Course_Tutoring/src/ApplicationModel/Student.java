@@ -1,5 +1,6 @@
 package ApplicationModel;
 
+import ApplicationModel.Session_Detail;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

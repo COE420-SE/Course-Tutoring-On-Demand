@@ -53,7 +53,7 @@ public class Session_Detail {
 	public void setTutor_Name(String tutor_Name) {
 		Tutor_Name = tutor_Name;
 	}
-	public String getCourse_ID() {
+	public static String getCourse_ID() {
 		return Course_Name;
 	}
 	public void setCourse_ID(String course_ID) {

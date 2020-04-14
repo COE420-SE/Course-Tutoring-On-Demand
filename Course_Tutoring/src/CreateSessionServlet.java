@@ -27,7 +27,7 @@ import ApplicationModel.User;
 import sun.tools.jconsole.MaximizableInternalFrame;
 
 /**
- * Servlet implementation class SimpleServlet
+ * Servlet implementation class CreateSessionServlet
  */
 @WebServlet("/CreateSessionServlet")
 public class CreateSessionServlet extends HttpServlet {
