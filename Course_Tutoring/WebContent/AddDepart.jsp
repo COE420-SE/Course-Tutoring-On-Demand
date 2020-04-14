@@ -144,7 +144,7 @@ button {
 							List<Department> listDepartment = (ArrayList<Department>) request.getAttribute("department");
 							for (Department s : listDepartment) {
 						%>
-						<option value="<%=s.DepartmentID%>"><%=s.departmentNameString%></option>
+						<option value="<%=s.getDepartmentID()%>"><%=s.getDepartmentNameString()%></option>
 						<%
 							}
 						%>

@@ -132,7 +132,7 @@ body {
 							List<Classroom> listClassroom = (ArrayList<Classroom>) request.getAttribute("class");
 							for (Classroom s : listClassroom) {
 						%>
-						<option value="<%=s.Classroom_ID%>"><%=s.Classroom_Name%></option>
+						<option value="<%=s.getClassroomID()%>"><%=s.getClassroomName()%></option>
 						<%
 							}
 						%>
