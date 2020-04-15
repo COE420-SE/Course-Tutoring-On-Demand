@@ -105,7 +105,7 @@ button {
 .valid:before {
 	position: relative;
 	left: -35px;
-	content: "✔";
+	content: "yes";
 }
 
 /* Add a red text color and an "x" when the requirements are wrong */
@@ -116,7 +116,7 @@ button {
 .invalid:before {
 	position: relative;
 	left: -35px;
-	content: "✖";
+	content: "no";
 }
 </style>
 <body>

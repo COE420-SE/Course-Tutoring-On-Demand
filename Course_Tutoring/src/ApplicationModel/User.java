@@ -1,6 +1,8 @@
 package ApplicationModel;
 
 import java.sql.ResultSet;
+
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +22,7 @@ import JDBC.Notifications_Table;
 import JDBC.Session_Table;
 import JDBC.Student_Table;
 import JDBC.Users_Database;
-import jdk.javadoc.internal.doclets.formats.html.AllClassesFrameWriter;
+
 
 public class User {
 	

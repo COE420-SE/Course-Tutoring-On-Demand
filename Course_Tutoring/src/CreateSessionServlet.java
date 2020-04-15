@@ -17,14 +17,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.stream.events.EndDocument;
 
-import com.sun.tools.javadoc.main.Start;
+
 
 import ApplicationModel.Courses;
 import ApplicationModel.Session_Detail;
 import ApplicationModel.Student;
 import ApplicationModel.Tutor;
 import ApplicationModel.User;
-import sun.tools.jconsole.MaximizableInternalFrame;
 
 /**
  * Servlet implementation class CreateSessionServlet

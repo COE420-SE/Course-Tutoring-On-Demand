@@ -1,4 +1,5 @@
 import java.io.IOException;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -73,14 +74,14 @@ public class AddDepartServlet extends HttpServlet {
 			//make a instance of session detail
 			
 			boolean success = system_Admin.addDepartmentAdmin(name, email, pass, dept);
-			
+
 			if (success) {
 				
 			
 				
-			RequestDispatcher rd =  request.getRequestDispatcher("SystemAdmin.html"); 
-			rd.forward(request, response);
-			
+				RequestDispatcher rd =  request.getRequestDispatcher("SystemAdmin.html"); 
+				rd.forward(request, response);
+				
 			}
 			
 			else {

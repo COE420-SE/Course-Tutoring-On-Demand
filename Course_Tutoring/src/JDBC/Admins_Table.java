@@ -1,9 +1,9 @@
 package JDBC;
 
 import java.sql.ResultSet;
+
 import java.sql.SQLException;
 
-import com.sun.tools.example.debug.tty.TTY;
 
 import ApplicationModel.Department_Admin;
 
