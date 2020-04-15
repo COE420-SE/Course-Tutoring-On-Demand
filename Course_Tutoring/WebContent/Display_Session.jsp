@@ -5,15 +5,21 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+	<link rel="stylesheet"
+	href="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
+		<link rel="stylesheet"
+	href="https://code.jquery.com/jquery-3.3.1.js">
+	<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js">
+	<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style>
-* {
-  box-sizing: border-box;
-}
-.center {
-	display: block;
-	margin-left: 40%;
-	margin-right: auto;
-	max-width: 60%;
+body {
+	background-image: url(AUS-campus.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 #myInput {
   width: 100%;
@@ -22,59 +28,37 @@
   border: 1px solid #ddd;
   margin-bottom: 10px;
 }
-body {
-	background-image: url(tutor.PNG);
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-#myTable {
-  border-collapse: collapse;
-  width: 100%;
-  border: 1px solid #ddd;
-  font-size: 16px;
-  background-color: white;
-}
-
-#myTable th, #myTable td {
-  text-align: left;
-  padding: 12px;
-}
-
-#myTable tr {
-  border-bottom: 1px solid #ddd;
-}
-
-#myTable tr.header, #myTable tr:hover {
-  background-color: #f1f1f1;
+.center {
+	display: block;
+	margin-left: 40%;
+	margin-right: auto;
+	max-width: 60%;
 }
 </style>
 </head>
 <body>
 
-<h2 class = "center"><b>Session List</b></h2>
-
+<h2 class = "center"><b>Display a Session</b></h2>
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for course.." title="Type in a course">
-
-<table id="myTable" border ="1" width="500" align="center">
-         <tr bgcolor="00FF7F"> 
-          <th><b>Session ID</b></th> 
-          <th><b>Tutor Name</b></th> 
-          <th><b>Course Name</b></th> 
-           <th><b>Classroom</b></th> 
-            <th><b>Session Date</b></th> 
-             <th><b>StartTime</b></th> 
-              <th><b>EndTime</b></th> 
-               <th><b>No of Seats</b></th> 
-         </tr> 
-         <%-- Fetching the attributes of the request object 
-             which was previously set by the servlet  
-              "StudentServlet.java" 
-        --%>  
+<table id="myTable" class="table table-white table-bordered compact" style = "width:100%; background-color:white " data-page-length="25" data-order="[[ 1, &quot;asc&quot; ]]">
+    <thead>
+        <tr style= "background-color:green">
+          <th>Session ID</th> 
+          <th>Tutor Name</th> 
+          <th>Course Name</th> 
+           <th>Classroom</th> 
+            <th>Session Date</th> 
+             <th>StartTime</th> 
+              <th>EndTime</th> 
+               <th>No of Seats</th> 
+        </tr>
+    </thead>
+    <tbody> 
         <%ArrayList<Session_Detail> listSession =  
             (ArrayList<Session_Detail>)request.getAttribute("session"); 
         for(Session_Detail s:listSession){%> 
         <%-- Arranging data in tabular form 
-        --%> 
+        --%>
             <tr> 
                 <td><%=s.getSession_ID()%></td> 
                 <td><%=s.getTutor_Name()%></td> 
@@ -85,12 +69,13 @@ body {
                  <td><%=s.getEnd_time()%></td>
                  <td><%=s.getMax_Seats()%></td>
             </tr> 
+                
             <%}%>
-        </table>  
+            </tbody>
+</table>
         <div class = "container">
          <button onclick="goBack()">Go Back</button>
          </div>
-
 <script>
 function myFunction() {
   var input, filter, table, tr, td, i, txtValue;
@@ -110,6 +95,12 @@ function myFunction() {
     }       
   }
 }
+function goBack() {
+	  window.history.back();
+	}
+$(document).ready(function() {
+    $('#myTable').DataTable();
+} );
 </script>
 
 </body>
