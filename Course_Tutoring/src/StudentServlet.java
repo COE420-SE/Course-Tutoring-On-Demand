@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ApplicationModel.Classroom;
 import ApplicationModel.Courses;
 import ApplicationModel.Session_Detail;
 import ApplicationModel.Student;
@@ -74,6 +75,15 @@ public class StudentServlet extends HttpServlet {
 			ArrayList<String> message;
 		}
 		else if (null != request.getParameter("tutor_button")) {
+			ArrayList<Courses> listCourse = studentModel.getAUScourses();
+			
+			
+			
+			request.setAttribute("course", listCourse); 
+			
+			RequestDispatcher rd =  request.getRequestDispatcher("Apply_Tutor.jsp"); 
+			
+			rd.forward(request, response);
 			
 		}		
 }
