@@ -18,7 +18,12 @@ public Student() {
 	student_table = new Student_Table();
 	// TODO Auto-generated constructor stub
 }
-
+public boolean getApply_for_tutor() {
+	return Apply_for_tutor;
+}
+public void setApply_for_tutor(boolean applied) {
+	Apply_for_tutor = applied;
+}
 public Student(String mail) {
 	mock = new MockAUSDatabase();
 	student_table = new Student_Table();

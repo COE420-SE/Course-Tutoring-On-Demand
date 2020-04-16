@@ -1,3 +1,4 @@
+
 <%@page import="ApplicationModel.Courses"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
@@ -94,6 +95,7 @@ body {
 
 	<div class="container">
 		<h2 class="w3-center">Be a Tutor</h2>
+			<p>To tutor a course, you need to have a grade of B+ or above in it</p>
 		<form action="BeTutorServlet" method="Post">
 			<div class="row">
 				<div class="col-25">

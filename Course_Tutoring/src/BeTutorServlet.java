@@ -29,7 +29,7 @@ import ApplicationModel.User;
 @WebServlet("/BeTutorServlet")
 public class BeTutorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	// Tutor tutor = new Tutor();
+	Student studentModel = new Student();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -80,7 +80,8 @@ public class BeTutorServlet extends HttpServlet {
 			}
 			String AcademicStanding = request.getParameter("standing");
 			//add the grades and acadamic standing 
-			response.sendRedirect("Student.html");
+			studentModel.setApply_for_tutor(true);
+			response.sendRedirect("TutorRequestSuccessful.jsp");
 		}
 	}
 }

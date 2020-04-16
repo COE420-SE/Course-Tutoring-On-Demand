@@ -76,9 +76,10 @@ public class StudentServlet extends HttpServlet {
 		}
 		else if (null != request.getParameter("tutor_button")) {
 			ArrayList<Courses> listCourse = studentModel.getAUScourses();
-			
-			
-			
+			if (studentModel.getApply_for_tutor()) {
+				response.sendRedirect("Already_applied.html");
+			}
+			else {
 			request.setAttribute("course", listCourse); 
 			
 			RequestDispatcher rd =  request.getRequestDispatcher("Apply_Tutor.jsp"); 
@@ -86,6 +87,7 @@ public class StudentServlet extends HttpServlet {
 			rd.forward(request, response);
 			
 		}		
+}
 }
 }
 
