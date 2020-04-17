@@ -96,7 +96,7 @@ public class CreateSessionServlet extends HttpServlet {
 			rd.forward(request, response);
 			}
 			
-			else response.sendRedirect("error.html");
+			else response.sendRedirect("error_action.html");
 	}
 				 
 
