@@ -21,7 +21,7 @@ public class TutorFilter implements Filter {
     private HttpServletRequest httpRequest;
  
     private static final String[] loginRequiredURLs = {
-            "/Tutor_Student.html", "/Create a session.jsp", "/Cancel_Session.jsp"
+            "/Tutor_Student.html", "/Create a session.jsp"
     };
  
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
