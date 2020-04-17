@@ -1,5 +1,3 @@
-
-
 import java.io.IOException;
 
 import javax.servlet.Filter;
@@ -17,11 +15,11 @@ import javax.servlet.http.HttpSession;
  * Servlet Filter implementation class StudentFilter
  */
 @WebFilter("/*")
-public class TutorFilter implements Filter {
+public class NotiDisplayFilter implements Filter {
     private HttpServletRequest httpRequest;
  
     private static final String[] loginRequiredURLs = {
-            "/Tutor_Student.html", "/Create a session.jsp"
+            "/notification.jsp", "/Display_Session.jsp"
             //add cancel a session when done
     };
  
@@ -32,7 +30,7 @@ public class TutorFilter implements Filter {
  
         HttpSession session = httpRequest.getSession(false);
  
-        boolean isLoggedIn = (session != null && (session.getAttribute("type") == "tutor"));
+        boolean isLoggedIn = (session != null && (session.getAttribute("type") != null));
  
         if (isLoggedIn) {
         	 chain.doFilter(request, response);
@@ -59,7 +57,7 @@ public class TutorFilter implements Filter {
         return false;
     }
  
-    public TutorFilter() {
+    public NotiDisplayFilter() {
     }
  
     public void destroy() {

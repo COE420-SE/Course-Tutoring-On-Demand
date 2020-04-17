@@ -12,6 +12,7 @@ import ApplicationModel.Classroom;
 import ApplicationModel.Courses;
 import ApplicationModel.Department;
 import ApplicationModel.Department_Admin;
+import ApplicationModel.Session_Detail;
 import ApplicationModel.Tutor;
 import ApplicationModel.User;
 
@@ -66,6 +67,13 @@ public class DepartServlet extends HttpServlet{
 			
 		}
 		else if (null != request.getParameter("display_session_button")) {
+			ArrayList<Session_Detail> listSessions = deptAdmin.getAllSessions(true);
+			
+			
+			request.setAttribute("session", listSessions); 
+			
+			RequestDispatcher rd =  request.getRequestDispatcher("Display_Session.jsp"); 
+			rd.forward(request, response);
 			
 		}
 		else if (null != request.getParameter("notify_button")) {
