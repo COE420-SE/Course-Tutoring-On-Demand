@@ -129,7 +129,7 @@ button {
 					<div class="form-group">
 					<label for="psw">Name:</label> <input type="text"
 						name = "name" class="form-control"
-						placeholder="Enter AUS Email" required />
+						placeholder="Enter Name" required />
 				</div>
 				<div class="form-group">
 					<label for="dept">Department: </label>
