@@ -238,6 +238,30 @@ public String validateUser(String email, String password) {
 		return session;
 	}
 	
-	
+	public ArrayList<Session_Detail>getSessionsByTutor(String tutor_id, boolean upcomming) {
+		ArrayList<Session_Detail> session = new ArrayList<Session_Detail>();
+		ResultSet sessionSet = session_Table.retreievSessionsByTutor(tutor_id, upcomming);
+		
+		try {
+			sessionSet.beforeFirst();
+			while(sessionSet.next()){
+			session.add(new Session_Detail(sessionSet.getString("SESSION_ID"), 
+					sessionSet.getString("STUDENT_NAME"), 
+					sessionSet.getString("S_COURSE_ID"),
+					sessionSet.getString("S_CLASSROOM_ID"),
+					sessionSet.getString("DATE_OF_SESSION"),
+					sessionSet.getString("START_TIME"),
+					sessionSet.getString("END_TIME"),
+					sessionSet.getString("MAX_CAPACITY")));
+			
+					}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
+		return session;
+	}
 	
 	}

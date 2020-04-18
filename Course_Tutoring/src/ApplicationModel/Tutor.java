@@ -63,16 +63,6 @@ public class Tutor extends User{
 
 	}
 	
-	public ArrayList<Session_Detail> getSessionsByTutor(String tutor_id) {
-		boolean upcoming = true; //safe to assume??
-		ResultSet sessionSet = session_Table.retreievSessionsByTutor(tutor_id, upcoming);
-		ArrayList<Session_Detail> tutor_sessions = new ArrayList<Session_Detail>();
-		
-		//insert try-catch block here
-		
-		//return tutor_sessions;
-	}
-	
 	public boolean createSession(Session_Detail newSession) {
 		
 		//check if there is not time and date conflict

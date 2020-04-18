@@ -67,7 +67,10 @@ label {
 					<label for="user">Success</label>
 					<%
 						String Session_ID = request.getParameter("session");
-					out.println("Session " + Session_ID + " successfully cancelled");
+					String date = request.getParameter("date");
+					String Course_ID = request.getParameter("course");
+
+					out.println("Session " + Session_ID + " on " + date + " for " + Course_ID + " successfully cancelled");
 					%>
 				</div>
 				<div class="form-group">
