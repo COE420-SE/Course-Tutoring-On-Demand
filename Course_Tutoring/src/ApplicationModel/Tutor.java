@@ -47,20 +47,31 @@ public class Tutor extends User{
 
 		ResultSet courseSet = course_table.retreiveCoursesofTutor(tutor_id);
 		ArrayList<Courses> tutor_courses = new ArrayList<Courses>();
-			try {
-				courseSet.beforeFirst();
-				while (courseSet.next()) {
-					
-					tutor_courses.add(new Courses(courseSet.getString("COURSE_ID"), courseSet.getString("COURSE_NAME"), courseSet.getString("C_DEPARTMENT_ID")));
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		try {
+			courseSet.beforeFirst();
+			while (courseSet.next()) {
+
+				tutor_courses.add(new Courses(courseSet.getString("COURSE_ID"), courseSet.getString("COURSE_NAME"),
+						courseSet.getString("C_DEPARTMENT_ID")));
 			}
-			
-			return tutor_courses;
-		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
+		return tutor_courses;
+
+	}
+	
+	public ArrayList<Session_Detail> getSessionsByTutor(String tutor_id) {
+		boolean upcoming = true; //safe to assume??
+		ResultSet sessionSet = session_Table.retreievSessionsByTutor(tutor_id, upcoming);
+		ArrayList<Session_Detail> tutor_sessions = new ArrayList<Session_Detail>();
+		
+		//insert try-catch block here
+		
+		//return tutor_sessions;
+	}
 	
 	public boolean createSession(Session_Detail newSession) {
 		

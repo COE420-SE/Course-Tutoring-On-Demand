@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ApplicationModel.Classroom;
 import ApplicationModel.Courses;
+import ApplicationModel.Session_Detail;
 import ApplicationModel.Tutor;
 import ApplicationModel.User;
 import oracle.net.aso.o;
@@ -45,7 +46,6 @@ public class TutorServlet extends HttpServlet{
 		// TODO Auto-generated method stub
 		if (null != request.getParameter("create_button")) {
 			
-			
 			System.out.print(tutor.getUser_ID());
 			ArrayList<Courses> listCourse = tutor.getCoursesTaughtByTutor(tutor.getUser_ID());
 			for (int i = 0; i < listCourse.size(); i++) {
@@ -65,7 +65,19 @@ public class TutorServlet extends HttpServlet{
 		//	response.sendRedirect("Create a session.jsp");
 		} 
 		else if (null != request.getParameter("scancel_button")) {
+
+			System.out.print(tutor.getUser_ID());
+			ArrayList<Session_Detail> listSession = tutor.getSessionsByTutor(tutor.getUser_ID());
+			for (int i = 0; i < listSession.size(); i++) {
+				System.out.println(listSession.get(i).getSession_ID());
+			}
 			
+			request.setAttribute("session", listSession);
+			RequestDispatcher rd = request.getRequestDispatcher("Cancel_Session.jsp");
+			rd.forward(request, response);
+
+
+		// response.sendRedirect("Cancel a session.jsp");
 		} 
 		else if (null != request.getParameter("feedback_button")) {
 			
