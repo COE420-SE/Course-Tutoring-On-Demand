@@ -114,7 +114,7 @@ body {
 							ArrayList<Session_Detail> listSession = (ArrayList<Session_Detail>) request.getAttribute("session");
 							for (Session_Detail s : listSession) {
 						%>
-						<option value="<%=s.getSession_ID()%>"><%=s.getSession_ID()%></option>
+						<option value="<%=s.getSession_ID()%>"><%=s.getSession_ID()%> - <%=s.getCourse_ID()%> on <%=s.getDate_of_session()%></option>
 						<%
 							}
 						%>

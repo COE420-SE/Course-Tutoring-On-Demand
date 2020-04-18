@@ -65,9 +65,10 @@ public class TutorServlet extends HttpServlet{
 		//	response.sendRedirect("Create a session.jsp");
 		} 
 		else if (null != request.getParameter("scancel_button")) {
-
+			Boolean upcoming = true; //as only an upcoming session will be available to cancel
+			
 			System.out.print(tutor.getUser_ID());
-			ArrayList<Session_Detail> listSession = tutor.getSessionsByTutor(tutor.getUser_ID());
+			ArrayList<Session_Detail> listSession = tutor.getSessionsByTutor(tutor.getUser_ID(), upcoming);
 			for (int i = 0; i < listSession.size(); i++) {
 				System.out.println(listSession.get(i).getSession_ID());
 			}
