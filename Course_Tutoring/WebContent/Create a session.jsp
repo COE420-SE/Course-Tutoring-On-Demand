@@ -167,7 +167,7 @@ body {
 			</div>
 			<div class="row">
 				<div class="col-25">
-					<label for="n_seats">Max No of Seats: </label>
+					<label for="fname">Max No of Seats: </label>
 				</div>
 				<div class="col-75">
 					<input type="number" id="seat" name="seats" required>

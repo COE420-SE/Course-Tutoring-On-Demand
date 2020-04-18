@@ -67,20 +67,12 @@ public class Tutor extends User{
 		//check if there is not time and date conflict
 		System.out.println("in create session");
 		
-		if(session_Table.insertNewSession(newSession, getUser_ID()))
+		if(session_Table.insertNewSession(newSession, getUser_ID())) {
+			
 			return true;
-		else
-			return false;
-	}
-	
-	public boolean cancelSession(String sessionID) {
-
-		System.out.println("in cancel session"); // ????
-
-		if (session_Table.deleteSession(sessionID))
-			return true;
-		else
-			return false;
+			
+		}
+		else return false;
 	}
 	
 //	public List<String> getCourseName(){
