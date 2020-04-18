@@ -17,7 +17,7 @@ import ApplicationModel.User;
 import ApplicationModel.Session_Detail;
 
 /**
- * Servlet implementation class SimpleServlet
+ * Servlet implementation class CreateSessionServlet
  */
 @WebServlet("/RequestASessionServlet")
 public class RequestASessionServlet extends HttpServlet {
@@ -54,17 +54,15 @@ public class RequestASessionServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		String session = request.getParameter("session");
+		String session_id = request.getParameter("session");
+		System.out.println(session_id);
+		response.sendRedirect("Student.html");
 		
-		// check if the session not already exist 
-		if (session == Session_Detail.getCourse_ID()) {
-			response.sendRedirect("error.html");
+		if (session_id == null) {
+			
+			
 		}
 		
-		else {
-			RequestDispatcher rd =  request.getRequestDispatcher("Request a session.jsp"); 
-			rd.forward(request, response);
-		}
 
 	}
 }

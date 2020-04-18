@@ -1,4 +1,5 @@
 <%@page import="ApplicationModel.Department"%>
+<%@page import="ApplicationModel.Session_Detail"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="ApplicationModel.Courses"%>
@@ -12,11 +13,17 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min
 .css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 <style>
 * {
 	box-sizing: border-box;
 }
 
+select{
+	height: 25px;
+	width: 250px;
+	
+}
 input[type=text], input[type=date], input[type=time], select, textarea {
 	width: 100%;
 	padding: 12px;
@@ -92,16 +99,15 @@ body {
 </style>
 </head>
 <body>
-
 	<div class="container">
 		<h2 class="w3-center">Request A Session</h2>
 		<form action="RequestASessionServlet" method="Post">
 			<div class="row">
 				<div class="col-25">
-					<label for="session_ID">Session ID: </label>
+					<label for="fname">Name: </label>
 				</div>
 				<div class="col-75">
-					<input type="text" id="session_ID" name="session_ID" placeholder="e.g. COE420"
+					<input type="text" id="fname" name="Name" placeholder="Your name.."
 						required>
 				</div>
 			</div>
@@ -110,32 +116,18 @@ body {
 					<label for="department">Department: </label>
 				</div>
 				<div class="col-75">
-					<select name="department" required>
-						<%
-							List<Department> listDepartment = (ArrayList<Department>) request.getAttribute("department");
-							for (Department s : listDepartment) {
-						%>
-						<option value="<%=s.getDepartmentID()%>"><%=s.getDepartmentNameString()%></option>
-						<%
-							}
-						%>
+					<select name="department" id ="department" required>
+						<option value = ""> Select department</option>
 					</select>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-25">
-					<label for="course">Course: </label>
+					<label for="course">Course:</label>
 				</div>
 				<div class="col-75">
-					<select name="courses" required>
-						<%
-							List<Courses> listCourse = (ArrayList<Courses>) request.getAttribute("course");
-							for (Courses s : listCourse) {
-						%>
-						<option value="<%=s.Course_ID%>"><%=s.course_Name%></option>
-						<%
-							}
-						%>
+					<select name="course" id ="course" required>
+						<option value = ""> Select course</option>
 					</select>
 				</div>
 			</div>
@@ -148,6 +140,7 @@ body {
 						required>
 				</div>
 			</div>
+			
 			<div class="row">
 				<div class="col-25">
 					<label for="s_time">Start Time: </label>
@@ -164,7 +157,20 @@ body {
 					<input type="time" id="timemin" name="timemin" min="18:00" required>
 				</div>
 			</div>
-			
+			<div class="row">
+				<div class="col-25">
+					<label for="session type">Session Type: </label>
+				</div>
+				<div class="col-75">
+				
+					<input type = "radio" name = "Session Type" value = "Group Session" required/>
+					<label for="Group Session">Group Session</label><br>
+					<input type = "radio" name = "Session Type" value = "Semi-Private Session" required/>
+					<label for="Semi-Private Session">Semi-Private Session</label><br>
+					<input type = "radio" name = "Session Type" value = "Private Session" required/>
+					<label for="Private Session">Private Session</label><br>
+				</div>
+			</div>
 			<div class="row">
 				<input type="submit" value="Submit">
 			</div>
