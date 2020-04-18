@@ -23,7 +23,7 @@ import ApplicationModel.Tutor;
 /**
  * Servlet implementation class CreateSessionServlet
  */
-@WebServlet("/AddDepartServlet")
+@WebServlet("/ProcessRequestServlet")
 public class ProcessRequestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	Department_Admin dept_Admin = new Department_Admin();
