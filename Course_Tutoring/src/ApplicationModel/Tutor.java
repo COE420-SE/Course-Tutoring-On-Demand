@@ -74,9 +74,6 @@ public class Tutor extends User{
 	}
 	
 	public boolean cancelSession(String sessionID) {
-
-		System.out.println("in cancel session"); // ????
-
 		if (session_Table.deleteSession(sessionID))
 			return true;
 		else
