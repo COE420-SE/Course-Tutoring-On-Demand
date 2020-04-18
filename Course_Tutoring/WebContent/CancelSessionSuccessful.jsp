@@ -1,7 +1,10 @@
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min
+<meta http-equiv="refresh" content="5; url = Tutor_Student.html" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min
 .css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
@@ -37,8 +40,7 @@
 }
 
 body {
-	background-image:
-		url(AUS-campus.jpg);
+	background-image: url(AUS-campus.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -57,24 +59,26 @@ label {
 </style>
 <body>
 	<div class="modal">
-		<form class = "modal-content">
+		<form class="modal-content">
 			<div class="container center">
-			<h2>Error Portal</h2>
-				<img src="https://www.w3schools.com/howto/img_avatar2.png" class = "center"style= "width: 50%; border-radius:50%;">
-			<div class="form-group">
-				<label for="user">Error: Action was unsuccessful</label> 
-				<button onclick="goBack()">Go Back</button>
+				<img src="https://www.w3schools.com/howto/img_avatar2.png"
+					class="center" style="width: 50%; border-radius: 50%;">
+				<div class="w3-container w3-center" style="padding: 20px 16px">
+					<label for="user">Success</label>
+					<%
+						String Session_ID = request.getParameter("session");
+					out.println("Session " + Session_ID + " successfully cancelled");
+					%>
+				</div>
+				<div class="form-group">
+
+					<p>
+						You will be redirected to homepage in 3 seconds, if not please
+						click <a class="w3-blue" href="Tutor_Student.html">here</a>
+					</p>
+				</div>
 			</div>
-		</div>
 		</form>
 	</div>
-	<script>
-	function goBack() {
-		  window.history.back();
-		}
-	$(document).ready(function() {
-	    $('#myTable').DataTable();
-	} );
-	</script>
 </body>
 </html>
