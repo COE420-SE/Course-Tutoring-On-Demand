@@ -47,14 +47,18 @@ public class DepartServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		if (null != request.getParameter("process_button")) {
+			ArrayList<Tutor_Application> listapp = deptAdmin.getalltutorrequests();
+			
+			request.setAttribute("applications", listapp); 
+			
+			RequestDispatcher rd =  request.getRequestDispatcher("Choose_Application.jsp"); 
+			rd.forward(request, response);
 			
 		} 
 		else if (null != request.getParameter("add_faculty_button")) {
 			
 			System.out.print(deptAdmin.getUser_name());
 			ArrayList<Department> listDept = User.getAUSdepartments();
-			
-	
 			request.setAttribute("department", listDept); 
 			
 			RequestDispatcher rd =  request.getRequestDispatcher("AddFaculty.jsp"); 
