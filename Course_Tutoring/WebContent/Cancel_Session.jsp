@@ -1,7 +1,6 @@
-<%@page import="ApplicationModel.Courses"%>
-<%@page import="java.util.List"%>
+<%@page import="ApplicationModel.Session_Detail"%>
+<%@page import="java.util.List"%>			<!-- do we need to include this?? -->
 <%@page import="java.util.ArrayList"%>
-<%@page import="ApplicationModel.Classroom"%>
 
 <!DOCTYPE html>
 <html>
@@ -93,84 +92,33 @@ body {
 <body>
 
 	<div class="container">
-		<h2 class="w3-center">Create a Session</h2>
-		<form action="CreateSessionServlet" method="Post">
+		<h2 class="w3-center">Cancel a Session</h2>
+		<form action="CancelSessionServlet" method="Post">
 			<div class="row">
 				<div class="col-25">
-					<label for="fname">Name: </label>
+					<label for="name">Name: </label>
 				</div>
 				<div class="col-75">
-					<input type="text" id="fname" name="Name" placeholder="Your name.."
+					<input type="text" id="name" name="Name" placeholder="Your name.."
 						required>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-25">
-					<label for="course">Tutor Course: </label>
-				</div>
-				<div class="col-75">
-					<select name="courses" required>
-
-						<%
-							ArrayList<Courses> listCourse = (ArrayList<Courses>) request.getAttribute("course");
-							for (Courses s : listCourse) {
-						%>
-						<option value="<%=s.getCOURSE_ID()%>"><%=s.getCOURSE_NAME()%></option>
-						<%
-							}
-						%>
-					</select>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="classroom">Classroom: </label>
+					<label for="session">Session: </label>
 				</div>
 					<div class="col-75">
-						<select name="classroom" required>
+						<select name="session" required>
 
 						<%
-							ArrayList<Classroom> listClassroom = (ArrayList<Classroom>) request.getAttribute("classroom");
-							for (Classroom s : listClassroom) {
+							ArrayList<Session_Detail> listSession = (ArrayList<Session_Detail>) request.getAttribute("session");
+							for (Session_Detail s : listSession) {
 						%>
-						<option value="<%=s.getCLASSROOM_ID()%>"><%=s.getCLASSROOM_ID()%></option>
+						<option value="<%=s.getSession_ID()%>"><%=s.getSession_ID()%></option>
 						<%
 							}
 						%>
 						</select>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="date">Session Date: </label>
-				</div>
-				<div class="col-75">
-					<input type="date" id="datemin" name="date" min="2020-05-01"
-						required>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="s_time">Start Time: </label>
-				</div>
-				<div class="col-75">
-					<input type="time" id="timemin" name="start_time" min="17:00" required>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="e_time">End Time: </label>
-				</div>
-				<div class="col-75">
-					<input type="time" id="timemin" name="end_time" min="18:00" required>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="n_seats">Max No of Seats: </label>
-				</div>
-				<div class="col-75">
-					<input type="number" id="seat" name="seats" required>
 				</div>
 			</div>
 			<div class="row">
