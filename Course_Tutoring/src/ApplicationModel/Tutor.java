@@ -47,18 +47,22 @@ public class Tutor extends User{
 
 		ResultSet courseSet = course_table.retreiveCoursesofTutor(tutor_id);
 		ArrayList<Courses> tutor_courses = new ArrayList<Courses>();
-			try {
-				courseSet.beforeFirst();
-				while (courseSet.next()) {
-					
-					tutor_courses.add(new Courses(courseSet.getString("COURSE_ID"), courseSet.getString("COURSE_NAME"), courseSet.getString("C_DEPARTMENT_ID")));
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		try {
+			courseSet.beforeFirst();
+			while (courseSet.next()) {
+
+				tutor_courses.add(new Courses(courseSet.getString("COURSE_ID"), courseSet.getString("COURSE_NAME"),
+						courseSet.getString("C_DEPARTMENT_ID")));
 			}
-			return tutor_courses;
 		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return tutor_courses;
+
+	}
 	
 	//createSession()
 	public boolean createSession(Session_Detail newSession) {
@@ -66,12 +70,17 @@ public class Tutor extends User{
 		//check if there is not time and date conflict
 		System.out.println("in create session");
 		
-		if(session_Table.insertNewSession(newSession, getUser_ID())) {
-			
+		if(session_Table.insertNewSession(newSession, getUser_ID()))
 			return true;
-			
-		}
-		else return false;
+		else
+			return false;
+	}
+	
+	public boolean cancelSession(String sessionID) {
+		if (session_Table.deleteSession(sessionID))
+			return true;
+		else
+			return false;
 	}
 	
 	//get session requests

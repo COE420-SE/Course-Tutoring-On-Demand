@@ -1,30 +1,21 @@
-<%@page import="ApplicationModel.Department"%>
 <%@page import="ApplicationModel.Session_Detail"%>
-<%@page import="java.util.List"%>
+<%@page import="java.util.List"%>			<!-- do we need to include this?? -->
 <%@page import="java.util.ArrayList"%>
-<%@page import="ApplicationModel.Courses"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-<title>Give Feedback</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min
 .css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
 <style>
 * {
 	box-sizing: border-box;
 }
 
-select{
-	height: 25px;
-	width: 250px;
-	
-}
-input[type=text], input[type=date], input[type=time], select, textarea {
+input[type=text], input[type=date], input[type=time],input[type=number], select, textarea {
 	width: 100%;
 	padding: 12px;
 	border: 1px solid #ccc;
@@ -92,28 +83,46 @@ input[type=submit]:hover {
 }
 
 body {
-	background-image: url(Feedback.jpg);
+	background-image: url(tutor.PNG);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
 </style>
 </head>
 <body>
+
 	<div class="container">
-		<h2 class="w3-center">Give Feedback</h2>
-		<form action="RequestASessionServlet" method="Post">
+		<h2 class="w3-center">Cancel a Session</h2>
+		<form action="CancelSessionServlet" method="Post">
 			<div class="row">
 				<div class="col-25">
-					<label for="fname">Name: </label>
+					<label for="name">Name: </label>
 				</div>
 				<div class="col-75">
-					<input type="text" id="fname" name="Name" placeholder="Your name.."
+					<input type="text" id="name" name="Name" placeholder="Your name.."
 						required>
 				</div>
 			</div>
-			
 			<div class="row">
-				<input type="submit" value="Submit">
+				<div class="col-25">
+					<label for="session">Session: </label>
+				</div>
+					<div class="col-75">
+						<select name="session" required>
+
+						<%
+							ArrayList<Session_Detail> listSession = (ArrayList<Session_Detail>) request.getAttribute("session");
+							for (Session_Detail s : listSession) {
+						%>
+						<option value="<%=s.getSession_ID()%>"><%=s.getSession_ID()%> - <%=s.getCourse_ID()%> on <%=s.getDate_of_session()%></option>
+						<%
+							}
+						%>
+						</select>
+				</div>
+			</div>
+			<div class="row">
+				<input type="submit" value="Submit" name="submit_button">
 			</div>
 		</form>
 	</div>

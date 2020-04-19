@@ -1,7 +1,7 @@
-<%@page import="ApplicationModel.Department"%>
+<%@page import="ApplicationModel.Courses"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="ApplicationModel.Courses"%>
+<%@page import="ApplicationModel.Classroom"%>
 
 <!DOCTYPE html>
 <html>
@@ -17,7 +17,7 @@
 	box-sizing: border-box;
 }
 
-input[type=text], input[type=date], input[type=time], select, textarea {
+input[type=text], input[type=date], input[type=time],input[type=number], select, textarea {
 	width: 100%;
 	padding: 12px;
 	border: 1px solid #ccc;
@@ -92,52 +92,33 @@ body {
 </style>
 </head>
 <body>
-
 	<div class="container">
 		<h2 class="w3-center">Request A Session</h2>
 		<form action="RequestASessionServlet" method="Post">
 			<div class="row">
 				<div class="col-25">
-					<label for="session_ID">Session ID: </label>
+					<label for="fname">Name: </label>
 				</div>
 				<div class="col-75">
-					<input type="text" id="session_ID" name="session_ID" placeholder="e.g. COE420"
+					<input type="text" id="fname" name="Name" placeholder="Your name.."
 						required>
 				</div>
 			</div>
-			<div class="row">
+					<div class="row">
 				<div class="col-25">
-					<label for="department">Department: </label>
+					<label for="course">Course:</label>
 				</div>
 				<div class="col-75">
-					<select name="department" required>
-						<%
-							List<Department> listDepartment = (ArrayList<Department>) request.getAttribute("department");
-							for (Department s : listDepartment) {
-						%>
-						<option value="<%=s.getDepartmentID()%>"><%=s.getDepartmentNameString()%></option>
-						<%
-							}
-						%>
-					</select>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="course">Course: </label>
-				</div>
-				<div class="col-75">
-					<select name="courses" required>
-						<%
-							List<Courses> listCourse = (ArrayList<Courses>) request.getAttribute("course");
+					<select name="course" id ="course" required>
+							<%
+							ArrayList<Courses> listCourse = (ArrayList<Courses>) request.getAttribute("course_list");
 							for (Courses s : listCourse) {
 						%>
-						<option value="<%=s.Course_ID%>"><%=s.course_Name%></option>
+						<option value="<%=s.getCOURSE_ID()%>"><%=s.getCOURSE_NAME()%></option>
 						<%
 							}
+							
 						%>
-					</select>
-				</div>
 			</div>
 			<div class="row">
 				<div class="col-25">
@@ -150,24 +131,20 @@ body {
 			</div>
 			<div class="row">
 				<div class="col-25">
-					<label for="s_time">Start Time: </label>
+					<label for="session type">Session Type: </label>
 				</div>
 				<div class="col-75">
-					<input type="time" id="timemin" name="timemin" min="17:00" required>
+				 <select name = "session_type">
+					<option>Group Session</option>
+					<option>Semi-Private Session</option>
+					<option>Private Session</option>
+					</select>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="e_time">End Time: </label>
-				</div>
-				<div class="col-75">
-					<input type="time" id="timemin" name="timemin" min="18:00" required>
-				</div>
-			</div>
-			
 			<div class="row">
 				<input type="submit" value="Submit">
 			</div>
+			&nbsp;&nbsp;
 		</form>
 	</div>
 
