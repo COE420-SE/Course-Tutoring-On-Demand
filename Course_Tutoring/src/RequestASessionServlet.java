@@ -22,7 +22,9 @@ import ApplicationModel.Session_Detail;
 @WebServlet("/RequestASessionServlet")
 public class RequestASessionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Student student = new Student();
+
+	Student studentModel = new Student();
+
 	
 
 
@@ -56,7 +58,5 @@ public class RequestASessionServlet extends HttpServlet {
 			String course = request.getParameter("course");
 			RequestDispatcher rd =  request.getRequestDispatcher("Student.html"); 
 			rd.forward(request, response);
-		// TODO Auto-generated method stub
-
-	}
+}
 }

@@ -1,8 +1,7 @@
-<%@page import="ApplicationModel.Department"%>
-<%@page import="ApplicationModel.Session_Detail"%>
+<%@page import="ApplicationModel.Courses"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="ApplicationModel.Courses"%>
+<%@page import="ApplicationModel.Classroom"%>
 
 <!DOCTYPE html>
 <html>
@@ -18,7 +17,7 @@
 	box-sizing: border-box;
 }
 
-input[type=text], input[type=date], input[type=time], select, textarea {
+input[type=text], input[type=date], input[type=time],input[type=number], select, textarea {
 	width: 100%;
 	padding: 12px;
 	border: 1px solid #ccc;
@@ -120,8 +119,6 @@ body {
 							}
 							
 						%>
-						</select>
-				</div>
 			</div>
 			<div class="row">
 				<div class="col-25">
