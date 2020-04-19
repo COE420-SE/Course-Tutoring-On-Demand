@@ -144,8 +144,6 @@ body {
 			<div class="row">
 				<input type="submit" value="Submit">
 			</div>
-				</div>
-			</div>
 			&nbsp;&nbsp;
 		</form>
 	</div>
