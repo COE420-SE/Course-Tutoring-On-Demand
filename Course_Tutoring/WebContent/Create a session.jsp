@@ -115,7 +115,7 @@ body {
 							ArrayList<Courses> listCourse = (ArrayList<Courses>) request.getAttribute("course");
 							for (Courses s : listCourse) {
 						%>
-						<option value="<%=s.getCOURSE_ID()%>"><%=s.getCOURSE_NAME()%></option>
+						<option value="<%=s.getCOURSE_ID()%>"><%=s.getCOURSE_ID()%> -  <%=s.getCOURSE_NAME()%></option>
 						<%
 							}
 						%>

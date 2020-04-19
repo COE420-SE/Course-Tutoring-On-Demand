@@ -44,5 +44,7 @@ public class Notifications_Table {
 		}
 		return rs;
 	}
+	
+	//delete notification still must find an efficient way to do it
 
 }

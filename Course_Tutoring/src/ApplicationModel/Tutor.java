@@ -40,9 +40,9 @@ public class Tutor extends User{
 		}
 	
 	}
-	//createSession()
-	//pass the tutor_id ad course_id also session detail, 
 	
+	
+	// get courses 
 	public ArrayList<Courses> getCoursesTaughtByTutor(String tutor_id) {
 
 		ResultSet courseSet = course_table.retreiveCoursesofTutor(tutor_id);
@@ -57,11 +57,10 @@ public class Tutor extends User{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 			return tutor_courses;
-		
 		}
 	
+	//createSession()
 	public boolean createSession(Session_Detail newSession) {
 		
 		//check if there is not time and date conflict
@@ -75,6 +74,10 @@ public class Tutor extends User{
 		else return false;
 	}
 	
-//	public List<String> getCourseName(){
+	//get session requests
+	
+	//get student feedback
+	
+	//get tutor sessions for drop
 
 }

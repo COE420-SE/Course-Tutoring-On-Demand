@@ -140,6 +140,11 @@ public class Session_Table {
 		return rs;
 	}
 	
+	//updateSessionStatus by system date
+	
+	
+	//getSessionStatusById
+	
 	
 	
 }

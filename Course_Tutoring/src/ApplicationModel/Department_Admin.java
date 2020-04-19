@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import JDBC.Admins_Table;
 import JDBC.Faculty_Table;
+import JDBC.Tutor_Application_Table;
 
 public class Department_Admin extends User{
 	
@@ -12,7 +13,7 @@ public class Department_Admin extends User{
 	Admins_Table dept_table;
 	Faculty_Table faculty_Table;
 	
-	
+	//constructor
 	public Department_Admin(String email) {
 		dept_table = new Admins_Table();
 		faculty_Table = new Faculty_Table();
@@ -32,12 +33,14 @@ public class Department_Admin extends User{
 	
 	}
 	
+	//default constructor
 	public Department_Admin() {
 		// TODO Auto-generated constructor stub
 		dept_table = new Admins_Table();
 		faculty_Table = new Faculty_Table();
 	}
 
+	//insert faculty memeber
 	public boolean addFacultyMember(String f_Name, String f_Email, String f_password, String f_departmentID) {
 		
 		//add check to make sure email is unique
@@ -50,6 +53,17 @@ public class Department_Admin extends User{
 		
 		return false;
 	}
+	
+	//approve tutor request
+	public boolean approveTutor(Tutor_Application application) {}
+	
+	//reject tutor
+	
+	//getTutorApplications
+	
+	//get Student feedback
+	
+	//remove tutor
 
 	
 	

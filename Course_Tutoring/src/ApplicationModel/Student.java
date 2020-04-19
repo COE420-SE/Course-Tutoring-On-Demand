@@ -8,7 +8,7 @@ import JDBC.MockAUSDatabase;
 import JDBC.Student_Table;
 
 public class Student extends User {
-	boolean Apply_for_tutor;
+	
 	MockAUSDatabase mock;
 	Student_Table student_table;
 	ResultSet rSet;
@@ -18,12 +18,8 @@ public Student() {
 	student_table = new Student_Table();
 	// TODO Auto-generated constructor stub
 }
-public boolean getApply_for_tutor() {
-	return Apply_for_tutor;
-}
-public void setApply_for_tutor(boolean applied) {
-	Apply_for_tutor = applied;
-}
+
+
 public Student(String mail) {
 	mock = new MockAUSDatabase();
 	student_table = new Student_Table();
@@ -45,7 +41,7 @@ public Student(String mail) {
 }
 
 
-
+//check if student 
 public boolean isAUSStudent(String student_mail) {
 	//add check to see if its not in the student table
 	try {
@@ -63,6 +59,19 @@ public boolean isAUSStudent(String student_mail) {
 	return false;
 }
 
+//check if student exists in the course tutpring databse
+	//returns tru if exists false otherwise
+	public boolean StudentExists(ResultSet student_details) throws SQLException {
+		
+		if(student_details.isBeforeFirst()) {
+			System.out.print("student exists in the course tutoring database");
+			return true;
+		}
+		else {
+			System.out.println("Student doesnt exist");
+			return false;}
+		}
+
 //check if the student can register in the system
 public boolean canRegister(String email) {
 	
@@ -70,7 +79,7 @@ public boolean canRegister(String email) {
 	ResultSet temp = student_table.getStudentDetails(email);
 	
 	try {
-		if(!student_table.StudentExists(temp)) {
+		if(!StudentExists(temp)) {
 			//if not check if user exists in the mock database 
 			if (isAUSStudent(email)) {
 				return true;
@@ -95,10 +104,21 @@ public boolean Registration(String email, String password) {
 	if(student_table.insertStudent(mock_result, password)) {
 		return true;
 	}
-	
 	System.out.println("problem in inserting");
 	return false;
 }
+
+//book a session
+
+//cancel a booking
+
+//request a session
+
+//apply to become a tutor
+
+
+//get booked sessions
+
 
 }
 
