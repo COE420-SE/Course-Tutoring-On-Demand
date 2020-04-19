@@ -73,7 +73,7 @@ public class StudentServlet extends HttpServlet {
 		else if (null != request.getParameter("request_button")) {
 			ArrayList<Courses> listCourse = student.getAUScourses();
 			request.setAttribute("course_list", listCourse);
-			RequestDispatcher rd =  request.getRequestDispatcher("Request a session.jsp"); 
+			RequestDispatcher rd =  request.getRequestDispatcher("RequestASession.jsp"); 
 			rd.forward(request, response);
 
 		}
