@@ -13,18 +13,13 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min
 .css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
 <style>
 * {
 	box-sizing: border-box;
 }
 
-select{
-	height: 25px;
-	width: 250px;
-	
-}
-input[type=text], input[type=date], input[type=time], select, textarea {
+input[type=text], input[type=date], input[type=time], input[type=number],
+	select, textarea {
 	width: 100%;
 	padding: 12px;
 	border: 1px solid #ccc;
@@ -100,37 +95,26 @@ body {
 </head>
 <body>
 	<div class="container">
-		<h2 class="w3-center">Give Feedback</h2>
+		<h2 class="w3-center">Feedback Form</h2>
 		<form action="RequestASessionServlet" method="Post">
 			<div class="row">
 				<div class="col-25">
-					<label for="fname">Name: </label>
-				</div>
-				<div class="col-75">
-					<input type="text" id="fname" name="Name" placeholder="Your name.."
-						required>
+					<label for="session">Session: </label>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-25">
-					<label for="course">Choose Course: </label>
+					<label for="fname">Comment: </label>
 				</div>
 				<div class="col-75">
-					<select name="course" id ="course" required>
-						<%
-							ArrayList<Courses> listCourse = (ArrayList<Courses>) request.getAttribute("course");
-							for (Courses s : listCourse) {
-						%>
-						<option value="<%=s.getCOURSE_ID()%>"><%=s.getCOURSE_NAME()%></option>
-						<%
-							}
-							
-						%>
-					</select>
+					<textarea rows="4" cols="30" name="comment" form="usrform"> Enter text here...</textarea>
+
 			</div>
 			</div>
+			<br>
 			<div class="row">
-				<input type="submit" name = "next" value="Next" />
+				<input type="submit" value="Submit" name="submit_button">
+
 			</div>
 		</form>
 	</div>

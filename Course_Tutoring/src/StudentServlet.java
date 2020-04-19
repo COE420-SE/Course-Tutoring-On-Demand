@@ -68,6 +68,10 @@ public class StudentServlet extends HttpServlet {
 			
 		} 
 		else if (null != request.getParameter("feedback_button")) {
+			ArrayList<Courses> listCourse = student.getAUScourses();
+			request.setAttribute("course", listCourse);
+			RequestDispatcher rd =  request.getRequestDispatcher("GiveFeedback.jsp"); 
+			rd.forward(request, response);
 			
 		}
 		else if (null != request.getParameter("request_button")) {
