@@ -75,14 +75,6 @@ public class StudentServlet extends HttpServlet {
 			request.setAttribute("course_list", listCourse);
 			RequestDispatcher rd =  request.getRequestDispatcher("Request a session.jsp"); 
 			rd.forward(request, response);
-			
-			ArrayList<Courses> listCourse = studentModel.getAUScourses();
-
-			request.setAttribute("course", listCourse); 
-			
-			RequestDispatcher rd =  request.getRequestDispatcher("RequestASession.jsp"); 
-			
-			rd.forward(request, response);
 
 		}
 		
