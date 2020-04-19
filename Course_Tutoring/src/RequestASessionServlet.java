@@ -22,7 +22,7 @@ import ApplicationModel.Session_Detail;
 @WebServlet("/RequestASessionServlet")
 public class RequestASessionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Student student;
+	Student student = new Student();
 	
 
 
@@ -53,16 +53,10 @@ public class RequestASessionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-		String session_id = request.getParameter("session");
-		System.out.println(session_id);
-		response.sendRedirect("Student.html");
-		
-		if (session_id == null) {
-			
-			
-		}
-		
+			String course = request.getParameter("course");
+			RequestDispatcher rd =  request.getRequestDispatcher("Student.html"); 
+			rd.forward(request, response);
+		// TODO Auto-generated method stub
 
 	}
 }

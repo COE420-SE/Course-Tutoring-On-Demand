@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import ApplicationModel.Classroom;
 import ApplicationModel.Courses;
+import ApplicationModel.Department;
 import ApplicationModel.Session_Detail;
 import ApplicationModel.Student;
 import ApplicationModel.Tutor;
+import ApplicationModel.User;
 
 /**
  * Servlet implementation class SimpleServlet
@@ -69,6 +71,10 @@ public class StudentServlet extends HttpServlet {
 			
 		}
 		else if (null != request.getParameter("request_button")) {
+			ArrayList<Courses> listCourse = student.getAUScourses();
+			request.setAttribute("course_list", listCourse);
+			RequestDispatcher rd =  request.getRequestDispatcher("Request a session.jsp"); 
+			rd.forward(request, response);
 			
 		}
 		else if (null != request.getParameter("notify_button")) {

@@ -144,6 +144,7 @@ button {
 						%>
 						</select>
 				</div>
+				<input type="submit" name = "next" value="Next" />
 					<div class="form-group">
 					<label for="psw">Username:</label> <input type="text"
 						name = "username" class="form-control"

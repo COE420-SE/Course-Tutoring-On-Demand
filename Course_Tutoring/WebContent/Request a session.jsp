@@ -13,17 +13,11 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min
 .css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
 <style>
 * {
 	box-sizing: border-box;
 }
 
-select{
-	height: 25px;
-	width: 250px;
-	
-}
 input[type=text], input[type=date], input[type=time], select, textarea {
 	width: 100%;
 	padding: 12px;
@@ -111,24 +105,22 @@ body {
 						required>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="department">Department: </label>
-				</div>
-				<div class="col-75">
-					<select name="department" id ="department" required>
-						<option value = ""> Select department</option>
-					</select>
-				</div>
-			</div>
-			<div class="row">
+					<div class="row">
 				<div class="col-25">
 					<label for="course">Course:</label>
 				</div>
 				<div class="col-75">
 					<select name="course" id ="course" required>
-						<option value = ""> Select course</option>
-					</select>
+							<%
+							ArrayList<Courses> listCourse = (ArrayList<Courses>) request.getAttribute("course_list");
+							for (Courses s : listCourse) {
+						%>
+						<option value="<%=s.getCOURSE_ID()%>"><%=s.getCOURSE_NAME()%></option>
+						<%
+							}
+							
+						%>
+						</select>
 				</div>
 			</div>
 			<div class="row">
@@ -140,40 +132,24 @@ body {
 						required>
 				</div>
 			</div>
-			
-			<div class="row">
-				<div class="col-25">
-					<label for="s_time">Start Time: </label>
-				</div>
-				<div class="col-75">
-					<input type="time" id="timemin" name="timemin" min="17:00" required>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="e_time">End Time: </label>
-				</div>
-				<div class="col-75">
-					<input type="time" id="timemin" name="timemin" min="18:00" required>
-				</div>
-			</div>
 			<div class="row">
 				<div class="col-25">
 					<label for="session type">Session Type: </label>
 				</div>
 				<div class="col-75">
-				
-					<input type = "radio" name = "Session Type" value = "Group Session" required/>
-					<label for="Group Session">Group Session</label><br>
-					<input type = "radio" name = "Session Type" value = "Semi-Private Session" required/>
-					<label for="Semi-Private Session">Semi-Private Session</label><br>
-					<input type = "radio" name = "Session Type" value = "Private Session" required/>
-					<label for="Private Session">Private Session</label><br>
+				 <select name = "session_type">
+					<option>Group Session</option>
+					<option>Semi-Private Session</option>
+					<option>Private Session</option>
+					</select>
 				</div>
 			</div>
 			<div class="row">
 				<input type="submit" value="Submit">
 			</div>
+				</div>
+			</div>
+			&nbsp;&nbsp;
 		</form>
 	</div>
 
