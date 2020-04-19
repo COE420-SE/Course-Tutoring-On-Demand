@@ -1,8 +1,7 @@
-<%@page import="ApplicationModel.Department"%>
-<%@page import="ApplicationModel.Session_Detail"%>
+<%@page import="ApplicationModel.Courses"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="ApplicationModel.Courses"%>
+<%@page import="ApplicationModel.Classroom"%>
 
 <!DOCTYPE html>
 <html>
@@ -24,7 +23,7 @@ select{
 	width: 250px;
 	
 }
-input[type=text], input[type=date], input[type=time], select, textarea {
+input[type=text], input[type=date], input[type=time],input[type=number], select, textarea {
 	width: 100%;
 	padding: 12px;
 	border: 1px solid #ccc;
@@ -128,6 +127,15 @@ body {
 				<div class="col-75">
 					<select name="course" id ="course" required>
 						<option value = ""> Select course</option>
+						<%
+							ArrayList<Courses> listCourse = (ArrayList<Courses>) request.getAttribute("course");
+							for (Courses s : listCourse) {
+						%>
+						<option value="<%=s.getCOURSE_ID()%>"><%=s.getCOURSE_NAME()%></option>
+						<%
+							}
+							
+						%>
 					</select>
 				</div>
 			</div>

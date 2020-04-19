@@ -22,7 +22,7 @@ import ApplicationModel.Session_Detail;
 @WebServlet("/RequestASessionServlet")
 public class RequestASessionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Student student;
+	Student studentModel = new Student();
 	
 
 
@@ -54,14 +54,6 @@ public class RequestASessionServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		String session_id = request.getParameter("session");
-		System.out.println(session_id);
-		response.sendRedirect("Student.html");
-		
-		if (session_id == null) {
-			
-			
-		}
 		
 
 	}

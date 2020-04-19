@@ -70,7 +70,16 @@ public class StudentServlet extends HttpServlet {
 		}
 		else if (null != request.getParameter("request_button")) {
 			
+			ArrayList<Courses> listCourse = studentModel.getAUScourses();
+
+			request.setAttribute("course", listCourse); 
+			
+			RequestDispatcher rd =  request.getRequestDispatcher("RequestASession.jsp"); 
+			
+			rd.forward(request, response);
+
 		}
+		
 		else if (null != request.getParameter("notify_button")) {
 			ArrayList<String> message;
 		}
