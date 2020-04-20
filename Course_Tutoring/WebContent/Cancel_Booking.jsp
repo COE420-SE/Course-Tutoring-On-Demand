@@ -105,7 +105,7 @@ body {
 			</div>
 			<div class="row">
 				<div class="col-25">
-					<label for="session">Booking: </label>
+					<label for="session">Choose Booking to Cancel: </label>
 				</div>
 					<div class="col-75">
 						<select name="session" required>
@@ -122,7 +122,7 @@ body {
 				</div>
 			</div>
 			<div class="row">
-				<input type="submit" value="Submit" name="submit_button">
+				<input type="submit" value="Cancel" name="submit_button">
 			</div>
 		</form>
 	</div>

@@ -66,8 +66,7 @@ label {
 				<div class="w3-container w3-center" style="padding: 20px 16px">
 					<label for="user">Success</label>
 					<%
-						String Session_ID = request.getParameter("session");
-					out.println("Session " + Session_ID + "successfully cancelled");
+					out.println("Booking successfully cancelled");
 					%>
 				</div>
 				<div class="form-group">
