@@ -264,4 +264,13 @@ public String validateUser(String email, String password) {
 		return session;
 	}
 	
+	public ArrayList<Session_Detail>getSessionsByStudent(String student_id, boolean upcomming) {
+		ArrayList<Session_Detail> session = new ArrayList<Session_Detail>();
+		ResultSet sessionSet = session_Table.retreievSessionsOfStudent(student_id, upcomming);
+		
+		//insert try-catch block here
+		
+		//return session;
+	}
+	
 	}

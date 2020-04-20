@@ -100,5 +100,12 @@ public boolean Registration(String email, String password) {
 	return false;
 }
 
+public boolean cancelBooking(String sessionID) {
+	if (session_Table.deleteBooking(sessionID))
+		return true;
+	else
+		return false;
+}
+
 }
 
