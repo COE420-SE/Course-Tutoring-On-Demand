@@ -61,18 +61,6 @@ public class Student_Table {
 		return null;
 	}
 	
-	//check if the student is also a tutor
-	//return strue of it is false otherwise
-	public boolean isStudentTutor(String studentID) throws SQLException {
-		
-		String sqlString = "SELECT * FROM TUTOR WHERE TUTOR_ID = "+ studentID;
-		rs = dbCon.executeStatement(sqlString);
-		if(rs.isBeforeFirst()) {
-			System.out.println("Student "+studentID+": is also a tutor");
-			return true;}
-		else {return false;}
-		
-	}
 	
 	//insert new student in the STUDENT table
 	//return true if insertion is succesfull false otherwise
@@ -109,5 +97,23 @@ public class Student_Table {
 	}
 	return false;		
 	}
+	
+	//update apply for tutor
+	public boolean applyForTutorApplication(String student_id) {
+		String sqlString = "update student set apply_for_tutor = 1 where student_id = "+student_id;
+		try {
+			
+			int result = dbCon.executePrepared(sqlString);
+	
+			if(result>0) {return true;}
+	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	return false;	
+	}
+
 }
 

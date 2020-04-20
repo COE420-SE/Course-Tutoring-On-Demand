@@ -94,7 +94,7 @@ body {
 <body>
 
 	<div class="container">
-		<h2 class="w3-center">Be a Tutor</h2>
+		<h2 class="w3-center">Tutor Application Form</h2>
 			<p>To tutor a course, you need to have a grade of B+ or above in it</p>
 		<form action="BeTutorServlet" method="Post">
 			<div class="row">

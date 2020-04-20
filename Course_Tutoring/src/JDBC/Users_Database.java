@@ -3,12 +3,15 @@ package JDBC;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import ApplicationModel.Tutor;
+
 public class Users_Database {
 	DBConnection dbCon;
 	ResultSet rs;
 	Student_Table student;
 	Admins_Table admin;
 	Faculty_Table faculty;
+	Tutor_Table tutor;
 	
 	public Users_Database() {
 		// TODO Auto-generated constructor stub
@@ -16,6 +19,7 @@ public class Users_Database {
 		student = new Student_Table();
 		admin = new Admins_Table();
 		faculty = new Faculty_Table();
+		tutor = new Tutor_Table();
 	}
 	
 	
@@ -29,7 +33,7 @@ public class Users_Database {
 
 		if(stud_id!= null) {
 			//check if student is a tutor
-			if (student.isStudentTutor(stud_id)) {
+			if (tutor.retreiveTutorTable(stud_id).isBeforeFirst()) {
 				return "tutor";
 			}
 			else return "student";

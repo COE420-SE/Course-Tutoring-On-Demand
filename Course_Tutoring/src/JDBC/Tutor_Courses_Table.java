@@ -15,25 +15,23 @@ public class Tutor_Courses_Table {
 	}
 	
 	//insert tutor course
-	public boolean insertTutorCourse(String tutor_id, ArrayList<String> courses, ArrayList<String>grades) {
+	public boolean insertTutorCourse(String tutor_id, String courses, String grades) {
 		
 		
-		for (int i = 0; i < courses.size(); i++) {
-			String sqlString = "INSERT INTO tutor_courses VALUES("+tutor_id+", '"+courses.get(i)+"', '"+grades.get(i)+"')";
+			String sqlString = "INSERT INTO tutor_courses VALUES("+tutor_id+", '"+courses+"', '"+grades+"')";
 
 			try {
 				
 				int result = dbCon.executePrepared(sqlString);
 		
-				if(result<=0) {return false;}
+				if(result>0) {return true;}
 		
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
 		
-		return true;	
+		return false;	
 	}
 	
 	//delete tutor course
@@ -55,10 +53,10 @@ public class Tutor_Courses_Table {
 	}
 	
 	
-	//retreive grades of tutor
-	public ResultSet retreiveGradesOfTutor(String tutor_id) {
+	//retreive tutor course details
+	public ResultSet retreiveTutorCourseTable(String tutor_id) {
 		// TODO Auto-generated method stub
-		String sqlString = "select * from tutor_courses where tc_tutor_id = "+74266;
+		String sqlString = "select * from tutor_courses where tc_tutor_id = "+tutor_id;
 		
 		try {
 			rs = dbCon.executeStatement(sqlString);
