@@ -47,8 +47,16 @@ public class GiveFeedbackServlet extends HttpServlet{
 			throws ServletException, IOException{
 		
 		if (null != request.getParameter("next")) {
-			String session_id = request.getParameter("session");
-			String SessionChosen = session_id;
+			String[] session_id = request.getParameterValues("session");
+			ArrayList<String> SessionChosen = new ArrayList<String>();
+			
+			for (int i = 0; i < session_id.length; i++) {
+				SessionChosen.add((String) session_id[i]);
+			}
+			for (int i = 0; i < SessionChosen.size(); i++) {
+				System.out.println(SessionChosen.get(i));
+			}
+			
 			System.out.println(SessionChosen);
 			
 			// add the sessions to the studentsession table (dhriti)
