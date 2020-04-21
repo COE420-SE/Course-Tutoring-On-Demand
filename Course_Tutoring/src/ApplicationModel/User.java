@@ -9,7 +9,6 @@ import java.util.List;
 
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane.IconifyAction;
 
-import com.sun.crypto.provider.RSACipher;
 import com.sun.nio.sctp.Notification;
 
 import JDBC.Admins_Table;
@@ -26,10 +25,12 @@ import JDBC.Users_Database;
 
 public class User {
 	
+
 	static String User_ID;
 	static String user_name;
 	static String user_email;
 	static String user_department;
+	static String user_type;
 	static ArrayList<Courses> AUScourses;
 	static ArrayList<Department> AUSdepartments; 
 	static ArrayList<Classroom> AUSclassrooms; 
@@ -106,6 +107,13 @@ public String getUser_ID() {
 	 
 	public static void setUser_department(String user_department) {
 			User.user_department = user_department;
+	}
+	public static String getUser_type() {
+		return user_type;
+	}
+
+	public static void setUser_type(String user_type) {
+		User.user_type = user_type;
 	}
 	//getter and setter finish
 		
@@ -185,8 +193,6 @@ public String getUser_ID() {
 	
 	}
 	
-	//initialzes attributes for the user
-	//should this be moved to the respective classes ?
 
 	
 
@@ -199,8 +205,7 @@ public String validateUser(String email, String password) {
 			if(user_type!= null)
 			{
 				
-				//initialize user
-				//set everything 
+				setUser_type(user_type);
 				System.out.print(user_type);
 				return user_type;
 			}
@@ -264,13 +269,31 @@ public String validateUser(String email, String password) {
 		return session;
 	}
 	
-	public ArrayList<Session_Detail>getSessionsByStudent(String student_id, boolean upcomming) {
+	public ArrayList<Session_Detail>getSessionsByStudnet(String student_id, boolean upcomming) {
 		ArrayList<Session_Detail> session = new ArrayList<Session_Detail>();
 		ResultSet sessionSet = session_Table.retreievSessionsOfStudent(student_id, upcomming);
 		
-		//insert try-catch block here
+		try {
+			sessionSet.beforeFirst();
+			while(sessionSet.next()){
+			session.add(new Session_Detail(sessionSet.getString("SESSION_ID"), 
+					sessionSet.getString("STUDENT_NAME"), 
+					sessionSet.getString("S_COURSE_ID"),
+					sessionSet.getString("S_CLASSROOM_ID"),
+					sessionSet.getString("DATE_OF_SESSION"),
+					sessionSet.getString("START_TIME"),
+					sessionSet.getString("END_TIME"),
+					sessionSet.getString("MAX_CAPACITY")));
+			
+					}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 		
-		//return session;
+		return session;
 	}
+	
 	
 	}

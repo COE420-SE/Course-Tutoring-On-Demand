@@ -141,10 +141,64 @@ public class Session_Table {
 	}
 	
 	//updateSessionStatus by system date
+	public void updateSessionStatus() {
+//		 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MMM-yy HH:mm");
+//		   LocalDateTime now = LocalDateTime.now();
+//		   System.out.println(dtf.format(now));
+		   
+//		select * from sessions;
+//		UPDATE sessions SET status = 1
+//		where date_of_session<sysdate;
+		   
+	}
+
 	
 	
-	//getSessionStatusById
 	
+//	Select * from sessions
+//	INNER JOIN student stud ON ses.S_TUTOR_ID = stud.STUDENT_ID 
+//	WHERE ses.status = 0 AND ses.session_id not in (SELECT t.ss_session_id from STUDENT_SESSION t WHERE t.ss_student_id = 30938;
+//		
+//	select * from sessions
+//	where max_capacity > (select COUNT(*)+1 from student_session where ss_student_id = 30984);
+//	
+	public ResultSet retreieveBookableSessionOfStudent(String student_id, boolean upcomming) {
+		int status;
+		if(upcomming) {
+			status = 0; //upcomming
+		}
+		else status = 1; //completed
+		String sqString = "Select ses.session_id, stud.student_name, ses.s_course_id, ses.s_classroom_id, ses.date_of_session, ses.start_time, ses.end_time, ses.max_capacity " + 
+				"From sessions ses " + 
+				"INNER JOIN student stud ON ses.S_TUTOR_ID = stud.STUDENT_ID " + 
+				"WHERE ses.status = "+status+" AND ses.session_id not in (SELECT t.ss_session_id from STUDENT_SESSION t WHERE t.ss_student_id = " +student_id+")";
+		try {
+			rs = dbCon.executeStatement(sqString);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+		//	e.printStackTrace();
+			return null;
+		}
+		return rs;
+	}
+	
+	//delete session
+	   public boolean deleteSession(String session_id) {
+			
+			String sqlString = "DELETE FROM sessions WHERE session_id = "+session_id;
+			try {
+				
+				int result = dbCon.executePrepared(sqlString);
+		
+				if(result>0) {return true;}
+		
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		return false;	
+	}
 	
 	
 }

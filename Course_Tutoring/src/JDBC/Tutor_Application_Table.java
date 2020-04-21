@@ -20,14 +20,14 @@ public class Tutor_Application_Table {
 				
 				int result = dbCon.executePrepared(sqlString);
 		
-				if(result<=0) {return false;}
+				if(result>0) {return true;}
 		
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		
-		return true;	
+		return false;	
 	}
    
 	//delete application
@@ -38,14 +38,14 @@ public class Tutor_Application_Table {
 			
 			int result = dbCon.executePrepared(sqlString);
 	
-			if(result<=0) {return false;}
+			if(result>0) {return true;}
 	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	
-	return true;	
+	return false;	
 }
    //retreieve details from tutor table 
    public ResultSet retreiveTutorApplicationTable(String tutor_id) {
@@ -69,13 +69,13 @@ public class Tutor_Application_Table {
 			
 			int result = dbCon.executePrepared(sqlString);
 	
-			if(result<=0) {return false;}
+			if(result>0) {return true;}
 	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	
-	return true;	
+	return false;
 }
 }

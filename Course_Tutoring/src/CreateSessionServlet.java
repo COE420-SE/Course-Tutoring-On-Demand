@@ -85,6 +85,8 @@ public class CreateSessionServlet extends HttpServlet {
 			//make a instance of session detail
 			Session_Detail newSession_Detail = new Session_Detail(course_name, classroom_id, date, Start, End, Max_seats);
 			
+			//get session from database if exist then error
+			
 			Boolean success = tutor.createSession(newSession_Detail);
 			
 			if (success) {

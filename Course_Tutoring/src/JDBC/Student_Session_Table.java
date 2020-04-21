@@ -40,14 +40,14 @@ public class Student_Session_Table {
 				
 				int result = dbCon.executePrepared(sqlString);
 		
-				if(result<=0) {return false;}
+				if(result>0) {return true;}
 		
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		
-		return true;	
+		return false;	
 	}
 	
 	

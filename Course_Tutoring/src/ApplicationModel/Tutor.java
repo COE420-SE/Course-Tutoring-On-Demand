@@ -67,7 +67,6 @@ public class Tutor extends User{
 	//createSession()
 	public boolean createSession(Session_Detail newSession) {
 		
-		//check if there is not time and date conflict
 		System.out.println("in create session");
 		
 		if(session_Table.insertNewSession(newSession, getUser_ID()))
@@ -76,14 +75,26 @@ public class Tutor extends User{
 			return false;
 	}
 	
+	public boolean checkIfSessionExists(Session_Detail session) {
+		return true;
+	}
+	
+	//cancel a session
 	public boolean cancelSession(String sessionID) {
-		if (session_Table.deleteSession(sessionID))
+		
+		if(session_Table.deleteSession(sessionID)) {
+			
 			return true;
-		else
-			return false;
+		}
+		return false;
 	}
 	
 	//get session requests
+	public ArrayList<Session_Requests> retreiveSessionRequestsforTutor(String tutor_id){
+		
+		
+		
+	}
 	
 	//get student feedback
 	

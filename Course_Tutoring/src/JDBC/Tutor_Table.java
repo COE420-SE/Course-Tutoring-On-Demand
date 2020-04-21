@@ -62,5 +62,19 @@ public class Tutor_Table {
 		return rs;
 	}
    
+   //retreieve tutor by department
+   public ResultSet retreiveTutorsbyDept(String dept_id) {
+		// TODO Auto-generated method stub
+		String sqlString = "select * from student where student_major = '"+dept_id+"' "
+				+ "and student_id in (select tutor_id from tutor)";
+		
+		try {
+			rs = dbCon.executeStatement(sqlString);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rs;
+	}
 
 }
