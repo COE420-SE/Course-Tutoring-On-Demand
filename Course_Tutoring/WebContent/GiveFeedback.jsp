@@ -128,7 +128,18 @@ body {
 			</div>
 			</div>
 			<div class="row">
-				<input type="submit" name = "next" value="Next" />
+				<div class="col-25">
+					<label for="comment">Comment: </label>
+				</div>
+				<div class="col-75">
+					<textarea rows="4" cols="30" name="comment"> Enter text here...</textarea>
+
+			</div>
+			</div>
+			<br>
+			<div class="row">
+				<input type="submit" value="Submit" name="submit_button">
+
 			</div>
 			&nbsp;&nbsp;
 		</form>

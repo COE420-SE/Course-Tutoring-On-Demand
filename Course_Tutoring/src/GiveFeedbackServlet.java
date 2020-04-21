@@ -46,7 +46,6 @@ public class GiveFeedbackServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException{
 		
-		if (null != request.getParameter("next")) {
 			String[] session_id = request.getParameterValues("session");
 			ArrayList<String> SessionChosen = new ArrayList<String>();
 			
@@ -59,17 +58,10 @@ public class GiveFeedbackServlet extends HttpServlet{
 			
 			System.out.println(SessionChosen);
 			
-			// add the sessions to the studentsession table (dhriti)
-			request.setAttribute("session_list", SessionChosen);
-			RequestDispatcher rd =  request.getRequestDispatcher("FeedbackForm.jsp"); 
-			rd.forward(request, response);
-		}
-		else {
 			String comment = request.getParameter("comment");
 			System.out.println(comment);
 			//add the comment
 			response.sendRedirect("FeedbackSentSuccessfully.jsp");
-		}
 
 	}
 	
