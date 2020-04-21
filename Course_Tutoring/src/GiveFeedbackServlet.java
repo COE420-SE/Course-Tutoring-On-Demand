@@ -1,5 +1,7 @@
+
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,13 +10,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ApplicationModel.Courses;
 import ApplicationModel.Student;
+import ApplicationModel.Tutor;
+import ApplicationModel.User;
+import ApplicationModel.Session_Detail;
 
 
 @WebServlet("/GiveFeedbackServlet")
 public class GiveFeedbackServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
-	Student stud;
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -37,27 +43,23 @@ public class GiveFeedbackServlet extends HttpServlet{
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException{
 		
 		if (null != request.getParameter("next")) {
-			String[] sessions = request.getParameterValues("session");
-			ArrayList<String> SessionChosen = new ArrayList<String>();
-			for (int i = 0; i < sessions.length; i++) {
-				SessionChosen.add((String) sessions[i]);
-			}
-			for (int i = 0; i < SessionChosen.size(); i++) {
-				System.out.println(SessionChosen.get(i));
-			}
-
+			String session_id = request.getParameter("session");
+			String SessionChosen; 
+			SessionChosen = session_id;
+			System.out.println(SessionChosen);
+			
+			// add the sessions to the studentsession table (dhriti)
 			request.setAttribute("session_list", SessionChosen);
 			RequestDispatcher rd =  request.getRequestDispatcher("FeedbackForm.jsp"); 
 			rd.forward(request, response);
 		}
 		else {
-			String[] comment = request.getParameterValues("comment");
-			for (int i = 0; i < comment.length; i++) {
-				System.out.println(comment[i]);
-			}
+			String comment = request.getParameter("comment");
+			System.out.println(comment);
 			//add the comment
 			response.sendRedirect("FeedbackSentSuccessfully.jsp");
 		}
