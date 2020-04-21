@@ -1,8 +1,6 @@
-<%@page import="ApplicationModel.Department"%>
 <%@page import="ApplicationModel.Session_Detail"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="ApplicationModel.Courses"%>
 
 <!DOCTYPE html>
 <html>
@@ -95,19 +93,28 @@ body {
 </head>
 <body>
 	<div class="container">
-		<h2 class="w3-center">Feedback Form</h2>
-		<form action="RequestASessionServlet" method="Post">
+		<form action="GiveFeedbackServlet" method="Post">
+		<label for="Grades">Feedback Form: </label>
 			<div class="row">
 				<div class="col-25">
-					<label for="session">Session: </label>
+				</div>
+				<div class="col-75">
+				<%
+						ArrayList<String> listChosen = (ArrayList<String>) request.getAttribute("session_list");
+						for (String Session_Chosen : listChosen) {
+					%>
+					<label><%=Session_Chosen%></label>
+					<%
+						}
+					%>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-25">
-					<label for="fname">Comment: </label>
+					<label for="comment">Comment: </label>
 				</div>
 				<div class="col-75">
-					<textarea rows="4" cols="30" name="comment" form="usrform"> Enter text here...</textarea>
+					<textarea rows="4" cols="30" name="comment"> Enter text here...</textarea>
 
 			</div>
 			</div>

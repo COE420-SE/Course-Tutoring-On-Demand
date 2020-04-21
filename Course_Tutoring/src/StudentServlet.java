@@ -78,8 +78,15 @@ public class StudentServlet extends HttpServlet {
 			rd.forward(request, response);
 		} 
 		else if (null != request.getParameter("feedback_button")) {
-			ArrayList<Courses> listCourse = student.getAUScourses();
-			request.setAttribute("course", listCourse);
+			Boolean upcoming = false;
+			
+			System.out.print(studentModel.getUser_ID());
+			ArrayList<Session_Detail> listSession = studentModel.getSessionsByStudent(studentModel.getUser_ID(), upcoming);
+			for (int i = 0; i < listSession.size(); i++) {
+				System.out.println(listSession.get(i).getSession_ID());
+			}
+			
+			request.setAttribute("session", listSession);
 			RequestDispatcher rd =  request.getRequestDispatcher("GiveFeedback.jsp"); 
 			rd.forward(request, response);
 			

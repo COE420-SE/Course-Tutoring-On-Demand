@@ -1,8 +1,6 @@
-<%@page import="ApplicationModel.Department"%>
 <%@page import="ApplicationModel.Session_Detail"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="ApplicationModel.Courses"%>
 
 <!DOCTYPE html>
 <html>
@@ -101,7 +99,7 @@ body {
 <body>
 	<div class="container">
 		<h2 class="w3-center">Give Feedback</h2>
-		<form action="RequestASessionServlet" method="Post">
+		<form action="GiveFeedbackServlet" method="Post">
 			<div class="row">
 				<div class="col-25">
 					<label for="fname">Name: </label>
@@ -113,15 +111,15 @@ body {
 			</div>
 			<div class="row">
 				<div class="col-25">
-					<label for="course">Choose Course: </label>
+					<label for="session">Choose Session: </label>
 				</div>
 				<div class="col-75">
-					<select name="course" id ="course" required>
+					<select name="session" id ="session" required>
 						<%
-							ArrayList<Courses> listCourse = (ArrayList<Courses>) request.getAttribute("course");
-							for (Courses s : listCourse) {
+						 ArrayList<Session_Detail> listSession =  (ArrayList<Session_Detail>)request.getAttribute("session");
+							for (Session_Detail s : listSession) {
 						%>
-						<option value="<%=s.getCOURSE_ID()%>"><%=s.getCOURSE_NAME()%></option>
+						<option value="<%=s.getSession_ID()%>"><%=s.getTutor_Name()%></option>
 						<%
 							}
 							
@@ -132,6 +130,7 @@ body {
 			<div class="row">
 				<input type="submit" name = "next" value="Next" />
 			</div>
+			&nbsp;&nbsp;
 		</form>
 	</div>
 
