@@ -48,8 +48,7 @@ public class GiveFeedbackServlet extends HttpServlet{
 		
 		if (null != request.getParameter("next")) {
 			String session_id = request.getParameter("session");
-			String SessionChosen; 
-			SessionChosen = session_id;
+			String SessionChosen = session_id;
 			System.out.println(SessionChosen);
 			
 			// add the sessions to the studentsession table (dhriti)
