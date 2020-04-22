@@ -1,12 +1,15 @@
 import java.io.IOException;
 
 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import ApplicationModel.Department_Admin;
 import ApplicationModel.Faculty;
@@ -22,7 +25,6 @@ import JDBC.Faculty_Table;
 public class LoginServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	User login_user;
-    
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -54,7 +56,7 @@ public class LoginServlet extends HttpServlet{
 		//student, tutpr, Faculty_Table, System, department
 		login_user = new User();
 	    String user_type = login_user.validateUser(user, pswd);
-	    
+	    HttpSession session = request.getSession();
 	    System.out.println(user_type);
 		//redirect to student view
 	    if(user_type == null) {
@@ -64,26 +66,31 @@ public class LoginServlet extends HttpServlet{
 	    else if(user_type.toLowerCase() == "student") {
 			Student student = new Student(user);
 		RequestDispatcher req = request.getRequestDispatcher("Student.html");
-		req.include(request, response);
+		  session.setAttribute("type", user_type);
+		  req.include(request, response);
 		}
 		else if(user_type.toLowerCase() == "tutor") {
 			Tutor tutor = new Tutor(user);
 			RequestDispatcher req = request.getRequestDispatcher("Tutor_Student.html");
+			session.setAttribute("type", user_type);
 			req.include(request, response);
 		}
 		else if(user_type.toLowerCase() == "department") {
 			Department_Admin dadmin = new Department_Admin(user);
 			RequestDispatcher req = request.getRequestDispatcher("DepartmentAdmin.html");
+			session.setAttribute("type", user_type);
 			req.include(request, response);
 		}
 		else if(user_type.toLowerCase() == "system") {
 			System_Admin sadmin = new System_Admin(user);
 			RequestDispatcher req = request.getRequestDispatcher("SystemAdmin.html");
+			session.setAttribute("type", user_type);
 			req.include(request, response);
 		}
 		else if(user_type.toLowerCase() == "faculty") {
 			Faculty faculty = new Faculty(user);
 			RequestDispatcher req = request.getRequestDispatcher("Faculty.html");
+			session.setAttribute("type", user_type);
 			req.include(request, response);
 		}
 		else {
