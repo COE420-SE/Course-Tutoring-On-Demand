@@ -91,7 +91,7 @@ input[type=submit]:hover {
 }
 
 body {
-	background-image: url(Feedback.jpg);
+	background-image: url(tutor.png);
 	background-repeat: no-repeat;
 	background-size: cover;
 }

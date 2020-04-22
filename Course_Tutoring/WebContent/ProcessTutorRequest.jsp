@@ -85,7 +85,7 @@ input[type=submit]:hover {
 }
 
 body {
-	background-image: url(tutor.PNG);
+	background-image: url(aus_campus.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -113,19 +113,19 @@ body {
 					%>
 				</div>
 			</div>
+			&nbsp;&nbsp;
 			<div class="row">
 				<div class="col-25">
-					<label for="Academic">Academic Standing: </label>
+					<label for="Academic">Standing:</label>
 				</div>
 				<div class="col-75">
 					<input type="text"
-						name = "academic" class="form-control"
-						value="<%=apply.getACADEMIC_STANDING()%>"readonly><br>
+						name = "academic" value="<%=apply.getACADEMIC_STANDING()%>"readonly><br>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row w3-center">
 				<input type="submit" value="Approve" name="accept">
-				<input type="submit" value="Reject" name="reject">
+				<input type="submit" style = "background-color: red" value="Reject" name="reject">
 			</div>
 		</form>
 	</div>

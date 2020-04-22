@@ -18,7 +18,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style>
 body {
-	background-image: url(aus_campus.PNG);
+	background-image: url(AUS-campus.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -68,7 +68,7 @@ tfoot input {
             <%}%>
             </tbody>
 </table>
-        <div class = "container">
+        <div class = "container center">
         <input type="submit" name="next" style="background-color:green; color:white; font-size: 16px" value="Submit">
          <button onclick="goBack()">Go Back</button>
          </div>
