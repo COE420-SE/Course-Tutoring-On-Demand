@@ -2,8 +2,6 @@ package ApplicationModel;
 
 public class Courses {
 
-	
-
 	String COURSE_ID;
 	String COURSE_NAME;
 	String DEPARTMENT_ID;

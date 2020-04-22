@@ -15,6 +15,7 @@ import ApplicationModel.Department;
 import ApplicationModel.Department_Admin;
 import ApplicationModel.Session_Detail;
 import ApplicationModel.Tutor;
+import ApplicationModel.Tutor_Application;
 import ApplicationModel.User;
 
 
@@ -47,9 +48,13 @@ public class DepartServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		if (null != request.getParameter("process_button")) {
-			ArrayList<Tutor_Application> listapp = deptAdmin.getalltutorrequests();
+			ArrayList<Tutor_Application> listapp = deptAdmin.getTutorApplications();
 			
-			request.setAttribute("applications", listapp); 
+			request.setAttribute("applications", listapp);
+			for (int i = 0; i < listapp.size(); i++) {
+				
+				System.out.println(listapp.get(i).getSTUDENT_NAME());
+			}
 			
 			RequestDispatcher rd =  request.getRequestDispatcher("Choose_Application.jsp"); 
 			rd.forward(request, response);

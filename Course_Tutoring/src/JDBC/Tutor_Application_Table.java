@@ -13,13 +13,14 @@ public class Tutor_Application_Table {
 	}
 	
 	//insert
-   public boolean insertTutorApplication(String student_id, String academic_standing, String status_of_application) {
+   public boolean insertTutorApplication(String student_id, String academic_standing) {
 		
-			String sqlString = "insert into tutor_applications values("+student_id+", '"+academic_standing+"', '"+status_of_application+"')";
+	   System.out.print("insert into tutor_applications");
+			String sqlString = "insert into tutor_applications values("+student_id+", '"+academic_standing+"', 'Applied')";
 			try {
 				
 				int result = dbCon.executePrepared(sqlString);
-		
+				System.out.print("insert into tutor_applications: success");
 				if(result>0) {return true;}
 		
 			} catch (SQLException e) {
@@ -50,7 +51,9 @@ public class Tutor_Application_Table {
    //retreieve details from tutor table 
    public ResultSet retreiveTutorApplicationTable(String tutor_id) {
 		// TODO Auto-generated method stub
-		String sqlString = "select * from tutor where ta_student_id = "+tutor_id;
+		String sqlString = "select TA_STUDENT_ID, STUDENT_NAME,ACADEMIC_STANDING, Status " + 
+				"from tutor_applications, student " + 
+				"where student.student_id=tutor_applications.ta_student_id and ta_student_id ="+tutor_id;
 		
 		try {
 			rs = dbCon.executeStatement(sqlString);

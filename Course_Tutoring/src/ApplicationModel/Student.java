@@ -3,27 +3,43 @@ package ApplicationModel;
 import ApplicationModel.Session_Detail;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import JDBC.Feedback_Table;
 import JDBC.MockAUSDatabase;
+import JDBC.Session_Requests_Table;
+import JDBC.Student_Session_Table;
 import JDBC.Student_Table;
+import JDBC.Tutor_Application_Table;
+import JDBC.Tutor_Courses_Table;
+import oracle.net.aso.f;
 
 public class Student extends User {
 	
 	MockAUSDatabase mock;
 	Student_Table student_table;
+	Student_Session_Table student_Session_Table;
+	Session_Requests_Table session_Requests_Table;
+	Tutor_Application_Table tutor_Application_Table;
+	Tutor_Courses_Table tutor_Courses_Table;
+	Feedback_Table feedback_Table;
+	
 	ResultSet rSet;
 
 public Student() {
 	mock = new MockAUSDatabase();
 	student_table = new Student_Table();
+	student_Session_Table = new Student_Session_Table();
+	session_Requests_Table = new Session_Requests_Table();
+	tutor_Courses_Table = new Tutor_Courses_Table();
+	tutor_Application_Table = new Tutor_Application_Table();
+	feedback_Table = new Feedback_Table();
 	// TODO Auto-generated constructor stub
 }
 
 
 public Student(String mail) {
 	mock = new MockAUSDatabase();
-	student_table = new Student_Table();
-	
 	student_table = new Student_Table();
 	rSet = student_table.getStudentDetails(mail);
 	try {
@@ -109,16 +125,86 @@ public boolean Registration(String email, String password) {
 }
 
 //book a session
+public boolean BookASession(String session_id) {
+	
+	if (student_Session_Table.insertStudentSession(getUser_ID(), session_id)) {
+		
+		return true;
+	}
+	else return false;
+}
+
+//get unbooked and non full sessions
+
 
 //cancel a booking
+public boolean CancelABooking(String session_id) {
+	
+	if (student_Session_Table.deleteStudentSession(getUser_ID(), session_id)){
+		
+		return true;
+	}
+	else return false;
+}
+
 
 //request a session
+public boolean RequestASession(Session_Requests newRequest) {
+	
+	if (session_Requests_Table.insertSessionRequests(newRequest)) {
+		
+		return true;
+	}
+	else return false;
+}
+
 
 //apply to become a tutor
+public boolean ApplyToBeTutor(Tutor_Application newApplication) {
+	
+	//insert in tutor apploctaion
+	if(tutor_Application_Table.insertTutorApplication(getUser_ID(),newApplication.getACADEMIC_STANDING())) {
+	
+	ArrayList<String> courses = newApplication.getCOURSES();
+	ArrayList<String> grades = newApplication.getGRADES();
+	//insert in tutor_courses
+	for (int i = 0; i < courses.size(); i++) {
+		
+		if (!tutor_Courses_Table.insertTutorCourse(getUser_ID(), courses.get(i), grades.get(i))) {
+			return false;
+		}
+	}
+	//update apply_to_be)tutor in student
+	if (student_table.updateApplyForTutor(getUser_ID())) {
+		return true;
+	}	
+}
+	return false;}
 
+  public boolean givefeedback(Feedback feedback) {
+	  
+	  if(feedback_Table.insertFeedback(feedback)) {
+		  return true;
+	  }
+	  return false;
+}
 
-//get booked sessions
+ //get tutor names and id
 
+public boolean alreadyApplied() {
+	
+	ResultSet  rSet = tutor_Application_Table.retreiveTutorApplicationTable(getUser_ID());
+		
+	try {
+		if (rSet.isBeforeFirst()) {
+			return true;
+		}
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return false;
+}
 
 }
 

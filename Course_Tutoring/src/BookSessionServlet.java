@@ -31,7 +31,7 @@ import ApplicationModel.User;
 @WebServlet("/BookSessionServlet")
 public class BookSessionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	//Tutor tutor = new Tutor();
+	Student student = new Student();
 	
 
 	/**
@@ -66,8 +66,30 @@ public class BookSessionServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 	
 			String session_id = request.getParameter("session");
-			System.out.println(session_id);
-			response.sendRedirect("Student.html");
+			
+			if(student.BookASession(session_id)) {
+				String message = "Success: "+student.getUser_name()+" succesfully booked session "+session_id;
+				request.setAttribute("message", message);
+				RequestDispatcher rd;
+				if(User.getUser_type().equals("student"))
+				rd =  request.getRequestDispatcher("StudentMessage.jsp"); 
+				else {
+				 rd =  request.getRequestDispatcher("TutorMessage.jsp"); 
+				}
+				rd.forward(request, response);
+			}
+			else {
+				String message = "Error: An error occured while booking, Try again later";
+				request.setAttribute("message", message);
+				RequestDispatcher rd;
+				if(User.getUser_type().equals("student"))
+					rd =  request.getRequestDispatcher("StudentMessage.jsp"); 
+					else {
+					 rd =  request.getRequestDispatcher("TutorMessage.jsp"); 
+					}
+					rd.forward(request, response);
+			}
+			
 	}
 }
 

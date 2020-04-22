@@ -1,28 +1,23 @@
-<%@page import="ApplicationModel.Session_Detail"%>
+<%@page import="ApplicationModel.Tutor_Application"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="ApplicationModel.Classroom"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-<title>Give Feedback</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min
 .css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
 <style>
 * {
 	box-sizing: border-box;
 }
 
-select{
-	height: 25px;
-	width: 250px;
-	
-}
-input[type=text], input[type=date], input[type=time], select, textarea {
+input[type=text], input[type=date], input[type=time], input[type=number],
+	select, textarea {
 	width: 100%;
 	padding: 12px;
 	border: 1px solid #ccc;
@@ -90,7 +85,7 @@ input[type=submit]:hover {
 }
 
 body {
-	background-image: url(Feedback.jpg);
+	background-image: url(tutor.PNG);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -98,52 +93,40 @@ body {
 </head>
 <body>
 	<div class="container">
-		<h2 class="w3-center">Give Feedback</h2>
-		<form action="GiveFeedbackServlet" method="Post">
+		<form action='ProcessRequestServlet' method="Post">
+		 <%Tutor_Application apply =  (Tutor_Application)request.getAttribute("application"); %> 
+		<label for="Grades">Tutor Application: <%=apply.getSTUDENT_NAME()%></label>
 			<div class="row">
 				<div class="col-25">
-					<label for="session">Choose Tutor: </label>
 				</div>
 				<div class="col-75">
-					<select name="session" id ="session" required>
-						<%
-						 ArrayList<String> listID =  (ArrayList<String>)request.getAttribute("tutor_id");
-						 ArrayList<String> listName =  (ArrayList<String>)request.getAttribute("tutor_name");
-	
-						for (int i =0; i<listID.size(); i++) {
-						%>
-						<option value="<%=listID.get(i)%>"><%=listName.get(i)%></option>
-						<%
-							}
-							
-						%>
-					</select>
-			</div>
+				<%
+				 ArrayList<String> courses =  apply.getCOURSES();
+		         ArrayList<String> grades = apply.getGRADES();
+		        
+		        for (int i = 0; i < courses.size(); i++){
+					%>
+					<label><%=courses.get(i)%></label>
+					<input type="text"  name="grades"  value="<%=grades.get(i)%>" readonly><br>
+					<%
+						}
+					%>
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-25">
-					<label for="session">Send To Tutor: </label>
+					<label for="Academic">Academic Standing: </label>
 				</div>
 				<div class="col-75">
-						<input type="radio" name="yes_no" >Yes/>
-						<input type="radio" name="yes_no" checked>No/>
-			</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="comment">Comment: </label>
+					<input type="text"
+						name = "academic" class="form-control"
+						value="<%=apply.getACADEMIC_STANDING()%>"readonly><br>
 				</div>
-				<div class="col-75">
-					<textarea rows="4" cols="30" name="comment"> Enter comment here...</textarea>
-
 			</div>
-			</div>
-			<br>
 			<div class="row">
-				<input type="submit" value="Submit" name="submit_button">
-
+				<input type="submit" value="Approve" name="accept">
+				<input type="submit" value="Reject" name="reject">
 			</div>
-			&nbsp;&nbsp;
 		</form>
 	</div>
 

@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import JDBC.Feedback_Table;
+import JDBC.Session_Requests_Table;
 import JDBC.Session_Table;
 import JDBC.Student_Table;
 import JDBC.Tutor_Table;
@@ -13,12 +15,16 @@ public class Tutor extends User{
 	
 	Tutor_Table tutor_table;
 	Session_Table session_Table;
+	Session_Requests_Table requests_table;
+	Feedback_Table feedback_Table;
 	ResultSet rsResultSet;
 	
 	public Tutor() {
 		
 		tutor_table = new Tutor_Table();
 		session_Table = new Session_Table();
+		requests_table = new Session_Requests_Table();
+		feedback_Table = new Feedback_Table();
 		
 	}
 	
@@ -42,7 +48,7 @@ public class Tutor extends User{
 	}
 	
 	
-	// get courses 
+	// get courses of tutor
 	public ArrayList<Courses> getCoursesTaughtByTutor(String tutor_id) {
 
 		ResultSet courseSet = course_table.retreiveCoursesofTutor(tutor_id);
@@ -92,12 +98,75 @@ public class Tutor extends User{
 	//get session requests
 	public ArrayList<Session_Requests> retreiveSessionRequestsforTutor(String tutor_id){
 		
+		ArrayList<Session_Requests> requests = new ArrayList<Session_Requests>();
+		ResultSet requestSet = requests_table.retreiveSessionRequestsforTutor(tutor_id);
 		
-		
+		try {
+			requestSet.beforeFirst();
+			while(requestSet.next()){
+			requests.add(new Session_Requests(requestSet.getString("SR_STUDENT_ID"),
+					requestSet.getString("SR_COURSE_ID"), 
+					requestSet.getString("REQUEST_DATE"),
+					requestSet.getString("TYPE_OF_SESSION"),
+					requestSet.getString("COMMENT")));
+					}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			}
+			return requests;
 	}
 	
-	//get student feedback
+	//get student feedback for tutors
+		public ArrayList<Feedback> retreiveFeedbacksforTutor(String tutor_id){
+			
+			ArrayList<Feedback> feedbacks = new ArrayList<Feedback>();
+			ResultSet feedbackSet = feedback_Table.retreiveFeedbackforTutor(tutor_id);
+			
+			try {
+				feedbackSet.beforeFirst();
+				while(feedbackSet.next()){
+				feedbacks.add(new Feedback(feedbackSet.getString("SF_STUDENT_ID"), 
+						feedbackSet.getString("STUDENT_NAME"), 
+						feedbackSet.getString("SF_TUTOR_ID"), 
+						feedbackSet.getString("TUTOR_NAME"), 
+						feedbackSet.getString("COMMENTS"), 
+						feedbackSet.getString("TUTOR_ALSO")));
+						}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();}
+			
+				return feedbacks;
+		}
+		
 	
-	//get tutor sessions for drop
+	//get tutor sessions of tutor
+		//this is for cancel a session
+		public ArrayList<Session_Detail>getSessionsofTutor(String tutor_id, boolean upcomming) {
+			ArrayList<Session_Detail> session = new ArrayList<Session_Detail>();
+			ResultSet sessionSet = session_Table.retreievSessionsByTutor(tutor_id, upcomming);
+			
+			try {
+				sessionSet.beforeFirst();
+				while(sessionSet.next()){
+				session.add(new Session_Detail(sessionSet.getString("SESSION_ID"), 
+						sessionSet.getString("STUDENT_NAME"), 
+						sessionSet.getString("S_COURSE_ID"),
+						sessionSet.getString("S_CLASSROOM_ID"),
+						sessionSet.getString("DATE_OF_SESSION"),
+						sessionSet.getString("START_TIME"),
+						sessionSet.getString("END_TIME"),
+						sessionSet.getString("MAX_CAPACITY")));
+				
+						}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return null;
+			}
+			
+			return session;
+		}
 
 }

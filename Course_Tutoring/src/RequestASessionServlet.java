@@ -15,6 +15,7 @@ import ApplicationModel.Student;
 import ApplicationModel.Tutor;
 import ApplicationModel.User;
 import ApplicationModel.Session_Detail;
+import ApplicationModel.Session_Requests;
 
 /**
  * Servlet implementation class CreateSessionServlet
@@ -56,7 +57,24 @@ public class RequestASessionServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 			String course = request.getParameter("course");
-			RequestDispatcher rd =  request.getRequestDispatcher("Student.html"); 
-			rd.forward(request, response);
-}
-}
+			String date = request.getParameter("datemin");
+			String tYPE = request.getParameter("session type");
+			String comment = request.getParameter("comment");
+			
+			Session_Requests req =new Session_Requests(studentModel.getUser_ID(),course, date, tYPE, comment);
+			
+			if(studentModel.RequestASession(req)) {
+				String message = "Success: Session request for "+course+" is successfull";
+				request.setAttribute("message", message);
+				RequestDispatcher rd =  request.getRequestDispatcher("StudentMessage.jsp"); 
+				rd.forward(request, response);
+			}
+			else {
+				String message = "Error: Session request is unsuccesfull, Try again later";
+				request.setAttribute("message", message);
+				RequestDispatcher rd =  request.getRequestDispatcher("DepartmentMessage.jsp"); 
+				rd.forward(request, response);
+			}
+
+	
+}}

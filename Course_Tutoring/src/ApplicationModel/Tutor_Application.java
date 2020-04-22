@@ -3,23 +3,36 @@ package ApplicationModel;
 import java.util.ArrayList;
 
 public class Tutor_Application {
-	
+
 	String STUDENT_ID;
+	String STUDENT_NAME;
 	ArrayList<String>COURSES;
 	ArrayList<String>GRADES;
 	String ACADEMIC_STANDING;
-	String STATUS_OF_APPLICATION;
 	
-	public Tutor_Application(String sTUDENT_ID, ArrayList<String> cOURSES, ArrayList<String> gRADES,
-			String aCADEMIC_STANDING, String sTATUS_OF_APPLICATION) {
+	public Tutor_Application(String sTUDENT_ID, String sTUDENT_NAME, String aCADEMIC_STANDING) {
 		super();
 		STUDENT_ID = sTUDENT_ID;
+		STUDENT_NAME = sTUDENT_NAME;
+		ACADEMIC_STANDING = aCADEMIC_STANDING;
+	}
+
+
+	public Tutor_Application(String sTUDENT_ID, String sTUDENT_NAME, ArrayList<String> cOURSES,
+			ArrayList<String> gRADES, String aCADEMIC_STANDING) {
+		STUDENT_ID = sTUDENT_ID;
+		STUDENT_NAME = sTUDENT_NAME;
 		COURSES = cOURSES;
 		GRADES = gRADES;
 		ACADEMIC_STANDING = aCADEMIC_STANDING;
-		STATUS_OF_APPLICATION = sTATUS_OF_APPLICATION;
+	}
+	public String getSTUDENT_NAME() {
+		return STUDENT_NAME;
 	}
 
+	public void setSTUDENT_NAME(String sTUDENT_NAME) {
+		STUDENT_NAME = sTUDENT_NAME;
+	}
 	
 	public String getSTUDENT_ID() {
 		return STUDENT_ID;
@@ -45,11 +58,6 @@ public class Tutor_Application {
 	public void setACADEMIC_STANDING(String aCADEMIC_STANDING) {
 		ACADEMIC_STANDING = aCADEMIC_STANDING;
 	}
-	public String getSTATUS_OF_APPLICATION() {
-		return STATUS_OF_APPLICATION;
-	}
-	public void setSTATUS_OF_APPLICATION(String sTATUS_OF_APPLICATION) {
-		STATUS_OF_APPLICATION = sTATUS_OF_APPLICATION;
-	}
+
 
 }

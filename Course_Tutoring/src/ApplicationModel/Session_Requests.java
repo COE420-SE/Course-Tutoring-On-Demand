@@ -5,7 +5,6 @@ public class Session_Requests {
 	String STUDENT_ID;
 	String COURSE_ID;
 	String DATE;
-	//G for group S for single
 	String TYPE;
 	String COMMENT;
 	

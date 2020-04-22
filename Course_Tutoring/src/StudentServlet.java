@@ -23,9 +23,7 @@ import ApplicationModel.User;
 @WebServlet("/StudentServlet")
 public class StudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	 Student student= new Student();
-
-	Student studentModel = new Student();
+	 Student studentModel= new Student();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -68,7 +66,7 @@ public class StudentServlet extends HttpServlet {
 			Boolean upcoming = true; //as only an upcoming bookings will be available to cancel
 			
 			System.out.print(studentModel.getUser_ID());
-			ArrayList<Session_Detail> listSession = studentModel.getSessionsByStudent(studentModel.getUser_ID(), upcoming);
+			ArrayList<Session_Detail> listSession = studentModel.getSessionsByStudnet(studentModel.getUser_ID(), upcoming);
 			for (int i = 0; i < listSession.size(); i++) {
 				System.out.println(listSession.get(i).getSession_ID());
 			}
@@ -78,22 +76,18 @@ public class StudentServlet extends HttpServlet {
 			rd.forward(request, response);
 		} 
 		else if (null != request.getParameter("feedback_button")) {
-			Boolean upcoming = true;
 			
-			System.out.print(studentModel.getUser_ID());
-			ArrayList<Session_Detail> listSession = studentModel.getSessionsByStudent(studentModel.getUser_ID(), false);
-			for (int i = 0; i < listSession.size(); i++) {
-				System.out.println(listSession.get(i).getSession_ID());
-			}
+			//get tutor
 			
-			request.setAttribute("session", listSession);
+			//request.setAttribute("tutor", listSession);
 			RequestDispatcher rd =  request.getRequestDispatcher("GiveFeedback.jsp"); 
 			rd.forward(request, response);
 			
 		}
 		else if (null != request.getParameter("request_button")) {
-			ArrayList<Courses> listCourse = student.getAUScourses();
+			ArrayList<Courses> listCourse = studentModel.getAUScourses();
 			request.setAttribute("course_list", listCourse);
+			
 			RequestDispatcher rd =  request.getRequestDispatcher("RequestASession.jsp"); 
 			rd.forward(request, response);
 
@@ -104,10 +98,14 @@ public class StudentServlet extends HttpServlet {
 		}
 		else if (null != request.getParameter("tutor_button")) {
 			ArrayList<Courses> listCourse = studentModel.getAUScourses();
-			if (studentModel.getApply_for_tutor()) {
-				response.sendRedirect("Already_applied.html");
+//		
+			if (studentModel.alreadyApplied()) {
+				String message = "You have already applied. Your application is being processed";
+				request.setAttribute("message", message);
+				RequestDispatcher rd =  request.getRequestDispatcher("StudentMessage.jsp"); 
+				rd.forward(request, response);
 			}
-			else {
+			
 			request.setAttribute("course", listCourse); 
 			
 			RequestDispatcher rd =  request.getRequestDispatcher("Apply_Tutor.jsp"); 
@@ -115,7 +113,6 @@ public class StudentServlet extends HttpServlet {
 			rd.forward(request, response);
 			
 		}		
-}
 }
 }
 

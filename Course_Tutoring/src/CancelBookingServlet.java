@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ApplicationModel.Student;
+import ApplicationModel.User;
 
 /**
  * Servlet implementation class CancelBookingServlet
@@ -47,13 +48,31 @@ public class CancelBookingServlet extends HttpServlet {
 			String session_id = request.getParameter("session");
 			System.out.println(session_id);
     	
-			Boolean success = student.cancelBooking(session_id);
+			Boolean success = student.CancelABooking(session_id);
 			if (success) {
-				RequestDispatcher rd = request.getRequestDispatcher("CancelBookingSuccessful.jsp");
-				rd.forward(request, response);
+				
+				String message = "Success: "+student.getUser_name()+" is succesfully dropped from session #"+session_id;
+				request.setAttribute("message", message);
+				RequestDispatcher rd;
+				if(User.getUser_type().equals("student"))
+					rd =  request.getRequestDispatcher("StudentMessage.jsp"); 
+					else {
+					 rd =  request.getRequestDispatcher("TutorMessage.jsp"); 
+					}
+					rd.forward(request, response);
+				}
+				else {
+					String message = "Error: An error occured while cancelling booking, Try again later";
+					request.setAttribute("message", message);
+					RequestDispatcher rd;
+					if(User.getUser_type().equals("student"))
+						rd =  request.getRequestDispatcher("StudentMessage.jsp"); 
+						else {
+						 rd =  request.getRequestDispatcher("TutorMessage.jsp"); 
+						}
+						rd.forward(request, response);
+					rd.forward(request, response);
+				}
 			}
-			else
-				response.sendRedirect("error_action.html");
-		}
+    	}
 	}
-}

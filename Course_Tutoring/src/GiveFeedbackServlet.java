@@ -11,16 +11,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ApplicationModel.Courses;
+import ApplicationModel.Feedback;
 import ApplicationModel.Student;
 import ApplicationModel.Tutor;
 import ApplicationModel.User;
+import JDBC.Feedback_Table;
 import ApplicationModel.Session_Detail;
 
 
 @WebServlet("/GiveFeedbackServlet")
 public class GiveFeedbackServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
-	
+	Student student = new Student();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -46,17 +48,11 @@ public class GiveFeedbackServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException{
 		
-			String[] session_id = request.getParameterValues("session");
-			ArrayList<String> SessionChosen = new ArrayList<String>();
+			String tutor = request.getParameter("tutor");
+			String comments = request.getParameter("tutor");
+			String send_tutor = request.getParameter("tutor");
 			
-			for (int i = 0; i < session_id.length; i++) {
-				SessionChosen.add((String) session_id[i]);
-			}
-			for (int i = 0; i < SessionChosen.size(); i++) {
-				System.out.println(SessionChosen.get(i));
-			}
-			
-			System.out.println(SessionChosen);
+			Feedback feed = new Feedback(student.getUser_ID(), tutor, comments, send_tutor);
 			
 			String comment = request.getParameter("comment");
 			System.out.println(comment);

@@ -99,7 +99,7 @@ public class Student_Table {
 	}
 	
 	//update apply for tutor
-	public boolean applyForTutorApplication(String student_id) {
+	public boolean updateApplyForTutor(String student_id) {
 		String sqlString = "update student set apply_for_tutor = 1 where student_id = "+student_id;
 		try {
 			
@@ -113,6 +113,19 @@ public class Student_Table {
 		}
 	
 	return false;	
+	}
+	
+	public ResultSet retreiveStudentsbyDept(String dept_id) {
+		// TODO Auto-generated method stub
+		String sqlString = "select * from student where student_major = '"+dept_id+"'";
+		
+		try {
+			rs = dbCon.executeStatement(sqlString);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rs;
 	}
 
 }

@@ -1,5 +1,5 @@
 
-<%@page import="ApplicationModel.Session_Detail"%>
+<%@page import="ApplicationModel.Tutor_Application"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
@@ -50,24 +50,26 @@ tfoot input {
     <thead>
         <tr style= "background-color:green">
           <th>Choose</th> 
-          <th>Tutor Name</th> 
+          <th>Tutor Name</th>
+           <th>Academic Standing</th>
         </tr>
     </thead>
     <tbody> 
-        <%ArrayList<Tutor_Application> listApplication =  
-            (ArrayList<Tutor_Applicatiom>)request.getAttribute("application"); 
+        <%ArrayList<Tutor_Application> listApplication =  (ArrayList<Tutor_Application>)request.getAttribute("applications"); 
         for(Tutor_Application s:listApplication){%> 
         <%-- Arranging data in tabular form 
         --%>
             <tr> 
-                <td><input type="radio" name="tutor_id" value=<%=s.getTutor_ID()%> required></td> 
-                <td><%=s.getTutor_Name()%></td> 
+                <td><input type="radio" name="tutor_id" value=<%=s.getSTUDENT_ID()%> required></td> 
+              
+                <td><%=s.getSTUDENT_NAME()%></td> 
+                <td><%=s.getACADEMIC_STANDING()%></td> 
             </tr> 
             <%}%>
             </tbody>
 </table>
         <div class = "container">
-        <input type="submit" style="background-color:green; color:white; font-size: 16px" value="Submit">
+        <input type="submit" name="next" style="background-color:green; color:white; font-size: 16px" value="Submit">
          <button onclick="goBack()">Go Back</button>
          </div>
 </form>

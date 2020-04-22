@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ApplicationModel.Classroom;
 import ApplicationModel.Courses;
+import ApplicationModel.Feedback;
 import ApplicationModel.Session_Detail;
 import ApplicationModel.Tutor;
 import ApplicationModel.User;
@@ -68,7 +69,7 @@ public class TutorServlet extends HttpServlet{
 			Boolean upcoming = true; //as only an upcoming session will be available to cancel
 			
 			System.out.print(tutor.getUser_ID());
-			ArrayList<Session_Detail> listSession = tutor.getSessionsByTutor(tutor.getUser_ID(), upcoming);
+			ArrayList<Session_Detail> listSession = tutor.getSessionsofTutor(tutor.getUser_ID(), upcoming);
 			for (int i = 0; i < listSession.size(); i++) {
 				System.out.println(listSession.get(i).getSession_ID());
 			}
@@ -82,6 +83,10 @@ public class TutorServlet extends HttpServlet{
 		} 
 		else if (null != request.getParameter("feedback_button")) {
 			
+			ArrayList<Feedback> feedbacks = tutor.retreiveFeedbacksforTutor(tutor.getUser_ID());
+			request.setAttribute("feedback", feedbacks);
+			RequestDispatcher rd = request.getRequestDispatcher("View_Feedback.jsp");
+			rd.forward(request, response);
 		}
 		else if (null != request.getParameter("notify_button")) {
 			

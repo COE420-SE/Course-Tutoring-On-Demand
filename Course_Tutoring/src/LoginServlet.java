@@ -62,7 +62,7 @@ public class LoginServlet extends HttpServlet{
 			req.include(request, response);
 	    }
 	    else if(user_type.toLowerCase() == "student") {
-			Student student = new Student();
+			Student student = new Student(user);
 		RequestDispatcher req = request.getRequestDispatcher("Student.html");
 		req.include(request, response);
 		}

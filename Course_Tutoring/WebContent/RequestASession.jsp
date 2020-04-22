@@ -25,6 +25,8 @@ input[type=text], input[type=date], input[type=time],input[type=number], select,
 	resize: vertical;
 }
 
+
+
 label {
 	padding: 12px 12px 12px 0;
 	display: inline-block;
@@ -95,15 +97,6 @@ body {
 	<div class="container">
 		<h2 class="w3-center">Request A Session</h2>
 		<form action="RequestASessionServlet" method="Post">
-			<div class="row">
-				<div class="col-25">
-					<label for="fname">Name: </label>
-				</div>
-				<div class="col-75">
-					<input type="text" id="fname" name="Name" placeholder="Your name.."
-						required>
-				</div>
-			</div>
 					<div class="row">
 				<div class="col-25">
 					<label for="course">Course:</label>
@@ -114,7 +107,7 @@ body {
 							ArrayList<Courses> listCourse = (ArrayList<Courses>) request.getAttribute("course_list");
 							for (Courses s : listCourse) {
 						%>
-						<option value="<%=s.getCOURSE_ID()%>"><%=s.getCOURSE_NAME()%></option>
+						<option value="<%=s.getCOURSE_ID()%>"><%=s.getCOURSE_ID()%>- <%=s.getCOURSE_NAME()%></option>
 						<%
 							}
 							
@@ -142,6 +135,14 @@ body {
 					<option>Private Session</option>
 					</select>
 				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="comment">Comment: </label>
+				</div>
+				<div class="col-75">
+					<textarea rows="4" cols="30" name="comment"> Enter comment here...</textarea>
+			</div>
 			</div>
 			<div class="row">
 				<input type="submit" value="Submit">

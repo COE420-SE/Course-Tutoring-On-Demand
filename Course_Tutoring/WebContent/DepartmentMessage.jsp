@@ -62,10 +62,13 @@ label {
 		<form class = "modal-content">
 			<div class="container center">
 				<div class="w3-container w3-center" style = "padding: 20px 16px">
-				<label for="user">You have successfully sent a feedback on a tutor. Your feedback will be taking into consideration!</label> 
+				<%
+						String message = (String)request.getAttribute("message");
+					%>
+					<label for="user"><%=message%></label>
 	</div>
 			<div class="form-group">
-				<p>You will be redirected to HomePage in 5 seconds, if not please click <a class = "w3-blue" href="Student.html">here</a></p>
+				<p>You will be redirected to HomePage in 5 seconds, if not please click <a class = "w3-blue" href="DepartmentAdmin.html">here</a></p>
 			</div>
 		</div>
 		</form>

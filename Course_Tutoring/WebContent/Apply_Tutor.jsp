@@ -99,15 +99,6 @@ body {
 		<form action="BeTutorServlet" method="Post">
 			<div class="row">
 				<div class="col-25">
-					<label for="fname">Name: </label>
-				</div>
-				<div class="col-75">
-					<input type="text" id="fname" name="Name" placeholder="Your name.."
-						required>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
 					<label for="course">Choose Course: </label>
 				</div>
 				<div class="col-75">
@@ -117,7 +108,7 @@ body {
 							ArrayList<Courses> listCourse = (ArrayList<Courses>) request.getAttribute("course");
 							for (Courses s : listCourse) {
 						%>
-						<option value="<%=s.getCOURSE_ID()%>"><%=s.getCOURSE_NAME()%></option>
+						<option value="<%=s.getCOURSE_ID()%>">s.getCOURSE_ID()- ra<%=s.getCOURSE_ID()%>- <%=s.getCOURSE_NAME()%></option>
 						<%
 							}
 							

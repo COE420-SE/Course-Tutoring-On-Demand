@@ -21,6 +21,7 @@ import ApplicationModel.Courses;
 import ApplicationModel.Session_Detail;
 import ApplicationModel.Student;
 import ApplicationModel.Tutor;
+import ApplicationModel.Tutor_Application;
 import ApplicationModel.User;
 
 /**
@@ -30,7 +31,7 @@ import ApplicationModel.User;
 public class BeTutorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	Student studentModel = new Student();
-
+	ArrayList<String> CourseChosen;
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -60,7 +61,7 @@ public class BeTutorServlet extends HttpServlet {
 			throws ServletException, IOException {
 		if (null != request.getParameter("next")) {
 			String[] course = request.getParameterValues("courses");
-			ArrayList<String> CourseChosen = new ArrayList<String>();
+			CourseChosen = new ArrayList<String>();
 			for (int i = 0; i < course.length; i++) {
 				CourseChosen.add((String) course[i]);
 			}
@@ -75,13 +76,30 @@ public class BeTutorServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		else {
 			String[] grades = request.getParameterValues("grades");
+			ArrayList<String> grade = new ArrayList<String>();
 			for (int i = 0; i < grades.length; i++) {
-				System.out.println(grades[i]);
+				grade.add((String) grades[i]);
+			}
+			for (int i = 0; i < grade.size(); i++) {
+				System.out.println(grade.get(i));
 			}
 			String AcademicStanding = request.getParameter("standing");
+			
+			Tutor_Application newApplication = new Tutor_Application(studentModel.getUser_ID(), studentModel.getUser_name(),CourseChosen,grade, AcademicStanding);
+			
+			
 			//add the grades and acadamic standing 
-			studentModel.setApply_for_tutor(true);
-			response.sendRedirect("TutorRequestSuccessful.jsp");
+			if(studentModel.ApplyToBeTutor(newApplication)) {
+				String message = studentModel.getUser_name()+ "successfully completed tutor applications";
+				request.setAttribute("message", message);
+				RequestDispatcher rd =  request.getRequestDispatcher("StudentMessage.jsp"); 
+				rd.forward(request, response);}
+			else {
+				String message = "Error: there was an error with your application try again later";
+				request.setAttribute("message", message);
+				RequestDispatcher rd =  request.getRequestDispatcher("StudentMessage.jsp"); 
+				rd.forward(request, response);
+			}
 		}
 	}
 }
