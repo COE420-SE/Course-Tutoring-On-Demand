@@ -2,6 +2,8 @@ package ApplicationModel;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import JDBC.Feedback_Table;
@@ -150,11 +152,14 @@ public class Tutor extends User{
 			try {
 				sessionSet.beforeFirst();
 				while(sessionSet.next()){
+					java.sql.Date date = sessionSet.getDate("DATE_OF_SESSION");
+					DateFormat dateFormat = new SimpleDateFormat("dd-MM-yy");
+					String dateStr = dateFormat.format(date);
 				session.add(new Session_Detail(sessionSet.getString("SESSION_ID"), 
 						sessionSet.getString("STUDENT_NAME"), 
 						sessionSet.getString("S_COURSE_ID"),
 						sessionSet.getString("S_CLASSROOM_ID"),
-						sessionSet.getString("DATE_OF_SESSION"),
+						dateStr,
 						sessionSet.getString("START_TIME"),
 						sessionSet.getString("END_TIME"),
 						sessionSet.getString("MAX_CAPACITY")));

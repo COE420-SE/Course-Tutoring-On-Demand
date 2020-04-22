@@ -106,7 +106,7 @@ body {
 					<label for="session">Choose Tutor: </label>
 				</div>
 				<div class="col-75">
-					<select name="session" id ="session" required>
+					<select name="tutor" id ="session" required>
 						<%
 						 ArrayList<Feedback> tutors =  (ArrayList<Feedback>)request.getAttribute("tutor");
 	
@@ -125,8 +125,8 @@ body {
 					<label for="session">Send To Tutor: </label>
 				</div>
 				<div class="col-75">
-						<input type="radio" name="yes_no" >Yes/>
-						<input type="radio" name="yes_no" checked>No/>
+						<input type="radio" name="yes_no" >Yes
+						<input type="radio" name="yes_no" checked>No
 			</div>
 			</div>
 			<div class="row">

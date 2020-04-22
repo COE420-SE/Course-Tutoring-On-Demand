@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 
 
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -224,11 +226,16 @@ public String validateUser(String email, String password) {
 		try {
 			sessionSet.beforeFirst();
 			while(sessionSet.next()){
+				
+				java.sql.Date date = sessionSet.getDate("DATE_OF_SESSION");
+				DateFormat dateFormat = new SimpleDateFormat("dd-MM-yy");
+				String dateStr = dateFormat.format(date);
+				
 			session.add(new Session_Detail(sessionSet.getString("SESSION_ID"), 
 					sessionSet.getString("STUDENT_NAME"), 
 					sessionSet.getString("S_COURSE_ID"),
 					sessionSet.getString("S_CLASSROOM_ID"),
-					sessionSet.getString("DATE_OF_SESSION"),
+					dateStr,
 					sessionSet.getString("START_TIME"),
 					sessionSet.getString("END_TIME"),
 					sessionSet.getString("MAX_CAPACITY")));
@@ -244,7 +251,7 @@ public String validateUser(String email, String password) {
 	}
 	
 	
-	//get sessions booked by students
+	
 	public ArrayList<Session_Detail>getSessionsByStudnet(String student_id, boolean upcomming) {
 		ArrayList<Session_Detail> session = new ArrayList<Session_Detail>();
 		ResultSet sessionSet = session_Table.retreievSessionsOfStudent(student_id, upcomming);
@@ -252,11 +259,16 @@ public String validateUser(String email, String password) {
 		try {
 			sessionSet.beforeFirst();
 			while(sessionSet.next()){
+				
+				java.sql.Date date = sessionSet.getDate("DATE_OF_SESSION");
+				DateFormat dateFormat = new SimpleDateFormat("dd-MM-yy");
+				String dateStr = dateFormat.format(date);
+				
 			session.add(new Session_Detail(sessionSet.getString("SESSION_ID"), 
 					sessionSet.getString("STUDENT_NAME"), 
 					sessionSet.getString("S_COURSE_ID"),
 					sessionSet.getString("S_CLASSROOM_ID"),
-					sessionSet.getString("DATE_OF_SESSION"),
+					dateStr,
 					sessionSet.getString("START_TIME"),
 					sessionSet.getString("END_TIME"),
 					sessionSet.getString("MAX_CAPACITY")));

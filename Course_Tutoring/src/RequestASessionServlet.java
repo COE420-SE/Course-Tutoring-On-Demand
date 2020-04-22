@@ -1,5 +1,7 @@
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,7 +59,7 @@ public class RequestASessionServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 			String course = request.getParameter("course");
-			String date = request.getParameter("datemin");
+			String date = convertDate(request.getParameter("datemin"));
 			String tYPE = request.getParameter("session type");
 			String comment = request.getParameter("comment");
 			
@@ -77,4 +79,13 @@ public class RequestASessionServlet extends HttpServlet {
 			}
 
 	
-}}
+}
+	public String convertDate(String date) {
+
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	    DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd-MMM-yy");
+	    String newDate = LocalDate.parse(date, formatter).format(formatter2);
+	    
+	    return newDate;
+	}	
+}
