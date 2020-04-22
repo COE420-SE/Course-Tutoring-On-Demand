@@ -3,6 +3,8 @@ package ApplicationModel;
 public class Feedback {
 
 
+	
+
 	String STUDENT_ID;
 	String STUDENT_NAME;
 	String TUTOR_ID;
@@ -28,6 +30,11 @@ public class Feedback {
 		TUTOR_ID = tUTOR_ID;
 		COMMENTS = cOMMENTS;
 		SEND_TUTOR = sEND_TUTOR;
+	}
+	public Feedback(String tUTOR_ID, String tUTOR_NAME) {
+		super();
+		TUTOR_ID = tUTOR_ID;
+		TUTOR_NAME = tUTOR_NAME;
 	}
 
 	public String getSTUDENT_ID() {

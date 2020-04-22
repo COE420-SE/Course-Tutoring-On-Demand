@@ -12,6 +12,7 @@ import JDBC.Student_Session_Table;
 import JDBC.Student_Table;
 import JDBC.Tutor_Application_Table;
 import JDBC.Tutor_Courses_Table;
+import JDBC.Tutor_Table;
 import oracle.net.aso.f;
 
 public class Student extends User {
@@ -22,6 +23,7 @@ public class Student extends User {
 	Session_Requests_Table session_Requests_Table;
 	Tutor_Application_Table tutor_Application_Table;
 	Tutor_Courses_Table tutor_Courses_Table;
+	Tutor_Table tutor_Table;
 	Feedback_Table feedback_Table;
 	
 	ResultSet rSet;
@@ -34,6 +36,7 @@ public Student() {
 	tutor_Courses_Table = new Tutor_Courses_Table();
 	tutor_Application_Table = new Tutor_Application_Table();
 	feedback_Table = new Feedback_Table();
+	tutor_Table = new Tutor_Table();
 	// TODO Auto-generated constructor stub
 }
 
@@ -190,7 +193,27 @@ public boolean ApplyToBeTutor(Tutor_Application newApplication) {
 }
 
  //get tutor names and id
+  public ArrayList<Feedback> getTutorsofSessionDone(){
+	  
+	  ArrayList<Feedback> tutorList = new ArrayList<Feedback>();
+	  ResultSet sResultSet = tutor_Table.retreiveTutorsofStudent(getUser_ID());
+	  
+	  try {
+		if (sResultSet.isBeforeFirst()) {
+			while (sResultSet.next()) {
+				
+				tutorList.add(new Feedback(sResultSet.getString("STUDENT_ID"), sResultSet.getString("STUDENT_NAME")));
+				}
+			}
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	  return tutorList;
+  }
 
+  
+//check if student already applied
 public boolean alreadyApplied() {
 	
 	ResultSet  rSet = tutor_Application_Table.retreiveTutorApplicationTable(getUser_ID());
@@ -206,5 +229,7 @@ public boolean alreadyApplied() {
 	return false;
 }
 
+
 }
+
 

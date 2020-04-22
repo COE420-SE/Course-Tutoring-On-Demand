@@ -49,17 +49,37 @@ public class GiveFeedbackServlet extends HttpServlet{
 			throws ServletException, IOException{
 		
 			String tutor = request.getParameter("tutor");
-			String comments = request.getParameter("tutor");
-			String send_tutor = request.getParameter("tutor");
+			String comments = request.getParameter("comments");
+			String send_tutor = request.getParameter("yes_no");
 			
 			Feedback feed = new Feedback(student.getUser_ID(), tutor, comments, send_tutor);
 			
-			String comment = request.getParameter("comment");
-			System.out.println(comment);
-			//add the comment
-			response.sendRedirect("FeedbackSentSuccessfully.jsp");
+			if(student.givefeedback(feed)) {
 
+				String message = "Success: Feedback for tutor #"+tutor+" has been succesfully recorded";
+				request.setAttribute("message", message);
+				RequestDispatcher rd;
+				if(User.getUser_type().equals("student"))
+					rd =  request.getRequestDispatcher("StudentMessage.jsp"); 
+					else {
+					 rd =  request.getRequestDispatcher("TutorMessage.jsp"); 
+					}
+					rd.forward(request, response);
+				}
+				else {
+					String message = "Error: An error occured while giving feedback, Try again later";
+					request.setAttribute("message", message);
+					RequestDispatcher rd;
+					if(User.getUser_type().equals("student"))
+						rd =  request.getRequestDispatcher("StudentMessage.jsp"); 
+						else {
+						 rd =  request.getRequestDispatcher("TutorMessage.jsp"); 
+						}
+						rd.forward(request, response);
+					rd.forward(request, response);
+				}
+			}
+			
 	}
-	
-}
+
 

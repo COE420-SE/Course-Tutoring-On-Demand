@@ -1,3 +1,4 @@
+<%@page import="ApplicationModel.Feedback"%>
 <%@page import="ApplicationModel.Session_Detail"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
@@ -107,12 +108,11 @@ body {
 				<div class="col-75">
 					<select name="session" id ="session" required>
 						<%
-						 ArrayList<String> listID =  (ArrayList<String>)request.getAttribute("tutor_id");
-						 ArrayList<String> listName =  (ArrayList<String>)request.getAttribute("tutor_name");
+						 ArrayList<Feedback> tutors =  (ArrayList<Feedback>)request.getAttribute("tutor");
 	
-						for (int i =0; i<listID.size(); i++) {
+						for (Feedback s: tutors){
 						%>
-						<option value="<%=listID.get(i)%>"><%=listName.get(i)%></option>
+						<option value="<%=s.getTUTOR_ID()%>"><%=s.getTUTOR_NAME()%></option>
 						<%
 							}
 							
