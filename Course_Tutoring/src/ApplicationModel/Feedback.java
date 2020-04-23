@@ -1,10 +1,8 @@
 package ApplicationModel;
 
 public class Feedback {
-
-
 	
-
+	String FEEDBACK_ID;
 	String STUDENT_ID;
 	String STUDENT_NAME;
 	String TUTOR_ID;
