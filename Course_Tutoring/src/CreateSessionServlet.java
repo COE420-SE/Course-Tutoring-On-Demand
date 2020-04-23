@@ -91,7 +91,7 @@ public class CreateSessionServlet extends HttpServlet {
 			
 			if (success) {
 				
-            request.setAttribute("date", date);
+            //request.setAttribute("date", date);
 			
 			RequestDispatcher rd =  request.getRequestDispatcher("SessionSuccessfull.jsp"); 
 			
