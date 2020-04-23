@@ -17,19 +17,14 @@
 * {
 	box-sizing: border-box;
 }
-
-select{
-	height: 25px;
-	width: 250px;
-	
-}
-input[type=text], input[type=date], input[type=time], select, textarea {
+input[type=text], input[type=date], input[type=time],  select, textarea {
 	width: 100%;
 	padding: 12px;
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	resize: vertical;
 }
+
 
 label {
 	padding: 12px 12px 12px 0;
@@ -58,6 +53,7 @@ input[type=submit]:hover {
 	margin: 4% auto 15% auto;
 	border-radius: 5px;
 	background-color: #fefefe;
+	class:"w3-opacity";
 	padding: 20px;
 }
 
@@ -72,7 +68,7 @@ input[type=submit]:hover {
 .col-75 {
 	float: left;
 	width: 75%;
-	margin-top: 6px;
+	margin-top: 17px;
 }
 
 /* Clear floats after the columns */
@@ -91,7 +87,7 @@ input[type=submit]:hover {
 }
 
 body {
-	background-image: url(tutor.png);
+	background-image: url(feedback.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -103,7 +99,7 @@ body {
 		<form action="GiveFeedbackServlet" method="Post">
 			<div class="row">
 				<div class="col-25">
-					<label for="session">Choose Tutor: </label>
+					<label for="session">Tutor: </label>
 				</div>
 				<div class="col-75">
 					<select name="tutor" id ="session" required>
@@ -122,7 +118,7 @@ body {
 			</div>
 			<div class="row">
 				<div class="col-25">
-					<label for="session">Send To Tutor: </label>
+					<label for="session">Send Tutor: </label>
 				</div>
 				<div class="col-75">
 						<input type="radio" name="yes_no" >Yes
@@ -134,7 +130,7 @@ body {
 					<label for="comment">Comment: </label>
 				</div>
 				<div class="col-75">
-					<textarea rows="4" cols="30" name="comment"> Enter comment here...</textarea>
+					<textarea rows="4" cols="30" name="comment" placeholder = "Enter comment here"></textarea>
 
 			</div>
 			</div>

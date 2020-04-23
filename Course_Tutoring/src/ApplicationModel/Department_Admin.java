@@ -194,7 +194,12 @@ public class Department_Admin extends User{
 					}
  		return feedbacks;
 	}
-    
+     
+    // (Dhriti) can you please add this function
+    public Feedback getSpecificFeedbackFrom(String tutor_id) {
+
+    	
+    }
     
   //remove tutor
     public boolean removeTutor(String tutor_id) {

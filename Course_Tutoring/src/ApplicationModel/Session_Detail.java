@@ -25,11 +25,6 @@ public class Session_Detail {
 		Course_Name = course;
 		Classroom_ID = classroom_ID;
 		this.date_of_session = date_of_session;
-//    String dateStr = date_of_session;
-//    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:MM:ss:ms");
-//    DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd-MMM-yy");
-//	this.date_of_session = LocalDate.parse(dateStr, formatter).format(formatter2);
-//	
 		this.start_time = start_time;
 		this.end_time = end_time;
 		this.max_Seats = max_Seats;
@@ -46,7 +41,6 @@ public class Session_Detail {
 		this.end_time = end_time;
 		this.max_Seats = max_Seats;
 	}
-	
 	
 	
 	public String getSession_ID() {

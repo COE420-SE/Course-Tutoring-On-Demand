@@ -40,19 +40,13 @@
 
 body {
 	background-image:
-		url(Feedback.jpg);
+		url(AUS-campus.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
 
 h2 {
 	text-align: center;
-}
-body {
-	background-image:
-		url(tutor.PNG);
-	background-repeat: no-repeat;
-	background-size: cover;
 }
 
 label {
@@ -62,20 +56,16 @@ label {
 	padding: 4px;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 }
-
 </style>
 <body>
 	<div class="modal">
 		<form class = "modal-content">
 			<div class="container center">
 				<div class="w3-container w3-center" style = "padding: 20px 16px">
-				<%
-						String message = (String)request.getAttribute("message");
-					%>
-					<label for="user"><%=message%></label>
+				<label for="user">You have successfully removed a tutor!</label> 
 	</div>
 			<div class="form-group">
-				<p>You will be redirected to HomePage in 5 seconds, if not please click <a class = "w3-blue" href="Student.html">here</a></p>
+				<p>You will be redirected to Home Page in 5 seconds, if not please click <a class = "w3-blue" href="Student.html">here</a></p>
 			</div>
 		</div>
 		</form>

@@ -1,4 +1,5 @@
-<%@page import="ApplicationModel.Courses"%>
+<%@page import="ApplicationModel.Tutor_Application"%>
+<%@page import="ApplicationModel.Feedback"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="ApplicationModel.Classroom"%>
@@ -58,14 +59,14 @@ input[type=submit]:hover {
 .col-25 {
 	float: Right;
 	text-align: right;
-	width: 25%;
+	width: 15%;
 	margin-top: 6px;
 	margin-left: 10px;
 }
 
 .col-75 {
 	float: left;
-	width: 65%;
+	width: 75%;
 	margin-top: 6px;
 }
 
@@ -85,7 +86,7 @@ input[type=submit]:hover {
 }
 
 body {
-	background-image: url(tutor.PNG);
+	background-image: url(aus_campus.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -93,43 +94,36 @@ body {
 </head>
 <body>
 	<div class="container">
-		<form action='BeTutorServlet' method="Post">
-		<label for="Grades">Enter Grades for the Chosen Course: </label>
+		<form action='ProcessFeebackServlet' method="Post">
+		<%Feedback fed =  (Feedback)request.getAttribute("feedback"); %> 
+		<label for="tutor_name">Tutor Feedback: <%=fed.getTUTOR_NAME()%></label>
 			<div class="row">
 				<div class="col-25">
 				</div>
 				<div class="col-75">
-				<%
-						ArrayList<String> listChosen = (ArrayList<String>) request.getAttribute("course_list");
-						for (String course_chosen : listChosen) {
-					%>
-					<label><%=course_chosen%></label>
-					 <select name="grades" required>
-						<option>A</option>
-						<option>A- </option>
-						<option>B+ </option>
-						</select>
-					<%
-						}
-					%>
 				</div>
 			</div>
+			&nbsp;&nbsp;
 			<div class="row">
 				<div class="col-25">
-					<label for="Academic">Academic Standing: </label>
+					<label for="comment">Comment:</label>
 				</div>
 				<div class="col-75">
-					<select name = "standing" required>
-						<option>Good Standing</option>
-						<option>Probation 1/2 </option>
-					</select>
+					<input type="text"
+						name = "comment" value="<%=fed.getCOMMENTS()%>"readonly><br>
 				</div>
 			</div>
-			<div class="row">
-				<input type="submit" value="Submit" name="submit_button">
+			<div class="row w3-center">
+				<button onclick="goBack()">Go Back</button>
 			</div>
 		</form>
 	</div>
+
+<script>
+function goBack() {
+	  window.history.back();
+	}
+</script>
 
 </body>
 </html>
