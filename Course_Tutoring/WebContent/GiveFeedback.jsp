@@ -16,12 +16,6 @@
 * {
 	box-sizing: border-box;
 }
-
-select{
-	height: 25px;
-	width: 250px;
-	
-}
 input[type=text], input[type=date], input[type=time], select, textarea {
 	width: 100%;
 	padding: 12px;
