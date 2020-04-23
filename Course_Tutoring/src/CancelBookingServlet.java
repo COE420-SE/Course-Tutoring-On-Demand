@@ -51,9 +51,14 @@ public class CancelBookingServlet extends HttpServlet {
 			Boolean success = student.CancelABooking(session_id);
 			if (success) {
 				
+				String tutString = student.getTutorIDofSession(session_id);
+				//send notification to tutor
+				student.insertNotification(student.getUser_ID(), tutString, student.getUser_name()+" dropped from your session #"+session_id)
+				
 				String message = "Success: "+student.getUser_name()+" is succesfully dropped from session #"+session_id;
 				request.setAttribute("message", message);
 				RequestDispatcher rd;
+				
 				if(User.getUser_type().equals("student"))
 					rd =  request.getRequestDispatcher("StudentMessage.jsp"); 
 					else {
@@ -65,6 +70,7 @@ public class CancelBookingServlet extends HttpServlet {
 					String message = "Error: An error occured while cancelling booking, Try again later";
 					request.setAttribute("message", message);
 					RequestDispatcher rd;
+					
 					if(User.getUser_type().equals("student"))
 						rd =  request.getRequestDispatcher("StudentMessage.jsp"); 
 						else {

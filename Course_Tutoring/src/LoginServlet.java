@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import ApplicationModel.Department_Admin;
 import ApplicationModel.Faculty;
@@ -18,7 +17,6 @@ import ApplicationModel.System_Admin;
 import ApplicationModel.Tutor;
 import ApplicationModel.User;
 import JDBC.Faculty_Table;
-
 
 
 @WebServlet("/LoginServlet")

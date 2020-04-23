@@ -77,12 +77,12 @@ public class Tutor_Table {
 		return rs;
 	}
    
-   //retreive tutor students have done course in
+   //retreive tutor students have done course in that are completed
    public ResultSet retreiveTutorsofStudent(String student_id) {
 		// TODO Auto-generated method stub
 		String sqlString = "select * from student where student_id in (  select s_tutor_id "
 				+ "from sessions, student_session "
-				+ "where sessions.session_id = ss_session_id and ss_student_id = "+student_id+")";
+				+ "where sessions.session_id = ss_session_id and sessions.status = 0 and ss_student_id = "+student_id+")";
 		try {
 			rs = dbCon.executeStatement(sqlString);
 		} catch (SQLException e) {

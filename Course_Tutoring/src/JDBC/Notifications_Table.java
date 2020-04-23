@@ -19,7 +19,7 @@ public class Notifications_Table {
 		try {
 			
 			String sqlString = "INSERT INTO NOTIFICATION VALUES("+
-			sender+", "+receiver+", '"+message+"')";
+			sender+", "+receiver+", '"+message+"', (select max(ORDERS)+1 from NOTIFICATION))";
 			int result = dbCon.executePrepared(sqlString);
 			
 			if(result>0) {return true;}
@@ -33,7 +33,7 @@ public class Notifications_Table {
 	}
 	
 	public ResultSet getNotificationsFor(String userID) {
-		String sqlString = "SELECT MESSAGE FROM NOTIFICATION WHERE RECEIVER_ID = "+ userID;
+		String sqlString = "SELECT MESSAGE FROM NOTIFICATION WHERE RECEIVER_ID = "+ userID + " ORDER BY ORDERS DESC";
 		try {
 			rs = dbCon.executeStatement(sqlString);
 			if(!rs.isBeforeFirst()) {return rs;}
