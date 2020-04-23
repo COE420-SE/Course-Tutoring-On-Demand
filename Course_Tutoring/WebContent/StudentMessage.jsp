@@ -48,6 +48,12 @@ body {
 h2 {
 	text-align: center;
 }
+body {
+	background-image:
+		url(tutor.PNG);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
 
 label {
 	background-color: white;
@@ -56,6 +62,7 @@ label {
 	padding: 4px;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 }
+
 </style>
 <body>
 	<div class="modal">
