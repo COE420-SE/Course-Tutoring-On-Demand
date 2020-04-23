@@ -3,92 +3,84 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <style>
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
+
 .center {
 	display: block;
 	margin-left: 40%;
 	margin-right: auto;
 	max-width: 60%;
 }
+
 #myInput {
-  width: 100%;
-  font-size: 16px;
-  padding: 12px 20px 12px 20px;
-  border: 1px solid #ddd;
-  margin-bottom: 10px;
+	width: 100%;
+	font-size: 16px;
+	padding: 12px 20px 12px 20px;
+	border: 1px solid #ddd;
+	margin-bottom: 10px;
 }
+
 body {
 	background-image: url(AUS-campus.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+
 #myTable {
-  border-collapse: collapse;
-  width: 100%;
-  border: 1px solid #ddd;
-  font-size: 16px;
+	border-collapse: collapse;
+	width: 100%;
+	border: 1px solid #ddd;
+	font-size: 16px;
 }
 
 #myTable th, #myTable td {
-  text-align: left;
-  padding: 12px;
+	text-align: left;
+	padding: 12px;
 }
 
 #myTable tr {
-  border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
 }
 
 #myTable tr.header, #myTable tr:hover {
-  background-color: #f1f1f1;
+	background-color: #f1f1f1;
 }
 </style>
 </head>
 <body>
 
-<h2 class = "center"><b>Notification DashBoard</b></h2>
-
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for message.." title="Type">
-
-<table id="myTable" border ="1" width="500" align="center" color="green">
-        <tr class="header">
-    	<th style="width:100%;">Notifications</th>
- 		 </tr>
- 		     <%ArrayList<String> listnotification = (ArrayList<String>)request.getAttribute("notification"); 
-        for(String s:listnotification){%> 
-            <tr> 
-                <td><%=s%></td> 
-            </tr> 
-            <%}%>
-        </table> 
-        <div class = "container">
-         <button onclick="goBack()">Go Back</button>
-         </div>
+	<h2 class="w3-center">
+		<b>Notification DashBoard</b>
+	</h2>
+	<%
+		ArrayList<String> listnotification = (ArrayList<String>) request.getAttribute("notification");
+		for (String s : listnotification) {
+	%>
+	<div class="alert alert-info alert-dismissible">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<strong>Information!</strong>
+		<%=s%>
+	</div>
+	<%
+		}
+	%>
+	<div class="w3-center container">
+		<button onclick="goBack()">Go Back</button>
+	</div>
 <script>
-function goBack() {
-  window.history.back();
-}
-function myFunction() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
+	function goBack() {
+	window.history.back();
 </script>
-
 </body>
 </html>
