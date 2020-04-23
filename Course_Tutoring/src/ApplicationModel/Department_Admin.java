@@ -201,6 +201,11 @@ public class Department_Admin extends User{
     	
     }
     
+    // (Dhriti) can you please add this function
+    public ArrayList<Tutor> getListOfTutors() {
+		
+	}
+    
   //remove tutor
     public boolean removeTutor(String tutor_id) {
     
