@@ -1,6 +1,10 @@
 package ApplicationModel;
 
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Session_Detail {
 	
@@ -21,6 +25,11 @@ public class Session_Detail {
 		Course_Name = course;
 		Classroom_ID = classroom_ID;
 		this.date_of_session = date_of_session;
+//    String dateStr = date_of_session;
+//    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:MM:ss:ms");
+//    DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd-MMM-yy");
+//	this.date_of_session = LocalDate.parse(dateStr, formatter).format(formatter2);
+//	
 		this.start_time = start_time;
 		this.end_time = end_time;
 		this.max_Seats = max_Seats;
@@ -32,7 +41,18 @@ public class Session_Detail {
 		Session_ID = " ";
 		this.Course_Name = course_ID;
 		this.Classroom_ID = classroom_ID;
-		this.date_of_session = date_of_session;
+		
+		 String dateStr = date_of_session;
+		    SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd hh:MM:ss:ms");
+		    Date result = null;
+			try {
+				result = (Date) formater.parse(dateStr);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		    SimpleDateFormat newFormater = new SimpleDateFormat("dd-MM-yyyy");
+				this.date_of_session = newFormater.format(result);;
 		this.start_time = start_time;
 		this.end_time = end_time;
 		this.max_Seats = max_Seats;

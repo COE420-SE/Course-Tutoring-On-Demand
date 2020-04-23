@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import ApplicationModel.Classroom;
 import ApplicationModel.Courses;
 import ApplicationModel.Department;
+import ApplicationModel.Feedback;
 import ApplicationModel.Session_Detail;
 import ApplicationModel.Student;
 import ApplicationModel.Tutor;
@@ -77,9 +78,9 @@ public class StudentServlet extends HttpServlet {
 		} 
 		else if (null != request.getParameter("feedback_button")) {
 			
-			//get tutor
+			ArrayList<Feedback> tutor = studentModel.getTutorsofSessionDone();
 			
-			//request.setAttribute("tutor", listSession);
+			request.setAttribute("tutor", tutor);
 			RequestDispatcher rd =  request.getRequestDispatcher("GiveFeedback.jsp"); 
 			rd.forward(request, response);
 			

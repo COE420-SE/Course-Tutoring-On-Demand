@@ -20,7 +20,7 @@ input[type=text], input[type=password] {
   padding: 10px 20px;
   margin: 0px 8px;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 5px ;
   box-sizing: border-box;
   class: w3-center
 }
@@ -46,28 +46,26 @@ p {
 <div id ="parent">
 	<header class="w3-container" style="padding: auto;color:white">
 		<h1 class="w3-center w3-xjumbo" style ="font-family: Times New Roman, serif"><b>AUS COURSE TUTORING ON DEMAND</b></h1>
-		&nbsp;&nbsp;
+
 		<p class = "w3-large" style="color:white">This WebSite allows students to register for tutoring sessions
 			for any course offered by AUS. Students can also apply to become
 			tutors and offer tutoring sessions. AUS Faculty Members
 			can also login to our WebSite to monitor student activities as long
 			as they have been registered by an admin.</p>
 	</header>
-		&nbsp;&nbsp;
-		&nbsp;&nbsp;
+
 	<div class="w3-container w3-center">
 		<form method="Post" action="SimpleServlet">
 			<label for="register" class="w3-large w3-padding-large w3-black" style="border: 1px solid #ccc"> New
 				Student? Register with AUS ID: </label>
 			<div class="w3-center">
 				<input type="text" id="username"
-					placeholder="Enter xxxxx" name="username" required />
+					placeholder="Enter AUS e-mail" name="username" required />
 				<input type="submit" class = "w3-black" name="register_button" value="Register" style="padding: 10px 15px; margin:auto;border: 1px solid #ccc"/>
 			</div>
-			&nbsp;&nbsp;
 			<div class="form-group">
-				<button type="submit" class="w3-black  w3-large w3-padding-large" 
-					name="login_button" formnovalidate>Already Registered?
+				<button type="submit" class="w3-black w3-large w3-padding-large" 
+					name="login_button" formnovalidate style="border: 1px solid #ccc">Already Registered?
 					Click Here to Login!</button>
 			</div>
 		</form>

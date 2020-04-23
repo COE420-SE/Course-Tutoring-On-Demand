@@ -78,6 +78,18 @@ public class Tutor_Table {
 	}
    
    //retreive tutor students have done course in
-   
+   public ResultSet retreiveTutorsofStudent(String student_id) {
+		// TODO Auto-generated method stub
+		String sqlString = "select * from student where student_id in (  select s_tutor_id "
+				+ "from sessions, student_session "
+				+ "where sessions.session_id = ss_session_id and ss_student_id = "+student_id+")";
+		try {
+			rs = dbCon.executeStatement(sqlString);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rs;
+	}
 
 }
