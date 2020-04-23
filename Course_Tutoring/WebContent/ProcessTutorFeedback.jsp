@@ -97,12 +97,6 @@ body {
 		<form action='ProcessFeebackServlet' method="Post">
 		<%Feedback fed =  (Feedback)request.getAttribute("feedback"); %> 
 		<label for="tutor_name">Tutor Feedback: <%=fed.getTUTOR_NAME()%></label>
-			<div class="row">
-				<div class="col-25">
-				</div>
-				<div class="col-75">
-				</div>
-			</div>
 			&nbsp;&nbsp;
 			<div class="row">
 				<div class="col-25">

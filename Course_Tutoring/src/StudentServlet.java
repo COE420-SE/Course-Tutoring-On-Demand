@@ -95,8 +95,8 @@ public class StudentServlet extends HttpServlet {
 		}
 		
 		else if (null != request.getParameter("notify_button")) {
-			ArrayList<String> notify = studentModel.getNotificationsbyID(studentModel.getUser_ID());
-			request.setAttribute("message", notify);
+			//ArrayList<String> notify = studentModel.getNotificationsbyID(studentModel.getUser_ID());
+			//request.setAttribute("message", notify);
 			RequestDispatcher rd =  request.getRequestDispatcher("notification.jsp"); 
 			rd.forward(request, response);
 		}
