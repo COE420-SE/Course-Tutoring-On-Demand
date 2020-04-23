@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ApplicationModel.Classroom;
-import ApplicationModel.Courses;
 import ApplicationModel.Department;
 import ApplicationModel.Department_Admin;
+import ApplicationModel.Feedback;
 import ApplicationModel.Session_Detail;
 import ApplicationModel.Tutor;
 import ApplicationModel.Tutor_Application;
@@ -23,6 +22,7 @@ import ApplicationModel.User;
 public class DepartServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	Department_Admin deptAdmin = new Department_Admin();
+	Tutor tutor = new Tutor();
     
     /**
      * @see HttpServlet#HttpServlet()
@@ -71,7 +71,10 @@ public class DepartServlet extends HttpServlet{
 			
 		} 
 		else if (null != request.getParameter("view_feedback_button")) {
-			
+			ArrayList<Feedback> listFeedback = deptAdmin.getFeedback();
+			request.setAttribute("feedback", listFeedback); 
+			RequestDispatcher rd =  request.getRequestDispatcher("Display_Feedback.jsp"); 
+			rd.forward(request, response);
 		}
 		else if (null != request.getParameter("remove_tutor_button")) {
 			
