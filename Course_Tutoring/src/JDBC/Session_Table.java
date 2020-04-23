@@ -213,6 +213,20 @@ public class Session_Table {
 		
 		return false;	
 	}
+	   
+	 public ResultSet retreiveTutorDetailsOfSession(String sessionID){
+		   
+		 String sqlString = "select * from student right join sessions on sessions.s_tutor_id = student.student_id where sessions.session_id = "+sessionID;
+			
+			try {
+				rs = dbCon.executeStatement(sqlString);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return rs;
+	   }
 	
 	
 }

@@ -27,6 +27,7 @@ public class Student_Session_Table {
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				return false;
 			}
 		
 		return false;	
@@ -45,6 +46,7 @@ public class Student_Session_Table {
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				return false;
 			}
 		
 		return false;	

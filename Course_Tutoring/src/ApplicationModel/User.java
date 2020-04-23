@@ -41,6 +41,7 @@ public class User {
 	Department_Table depat_table;
 	Session_Table session_Table;
 	Classroom_Table classroom_Table ;
+	Notifications_Table notification;
 
 	public User(){
 		users_table = new Users_Database();
@@ -48,6 +49,7 @@ public class User {
 		depat_table = new Department_Table();
 		session_Table = new Session_Table();
 		classroom_Table = new Classroom_Table();
+		notification = new Notifications_Table();
 		
 		initializeAUSCourses();
 		initializeAUSDepartments();
@@ -121,9 +123,10 @@ public String getUser_ID() {
 	//getter and setter finish
 		
 	
-	//set everything including getting all the department and courses
-	public ArrayList<String >getNotifications(ResultSet messages) {
+	//get notification by passing the receiver_id
+	public ArrayList<String >getNotifications() {
 		ArrayList<String> message = new ArrayList<String>();
+		ResultSet messages = notification.getNotificationsFor(getUser_ID());
 		try {
 			if(!messages.isBeforeFirst()) {return null;}
 			while(messages.next()){
@@ -142,7 +145,7 @@ public String getUser_ID() {
 	//return true if inserted successfull and false otherwise
 	public boolean insertNotification(String sender, String receiver,String message) {
 		
-		Notifications_Table notification = new Notifications_Table();
+		
 		return notification.insertNotification(sender, receiver, message);
 	}
 	
@@ -225,7 +228,7 @@ public String validateUser(String email, String password) {
 		ResultSet sessionSet = session_Table.retreievAllSessions(upcomming);
 		
 		try {
-			sessionSet.beforeFirst();
+			if(!sessionSet.isBeforeFirst()) {return null;}
 			while(sessionSet.next()){
 				
 				java.sql.Date date = sessionSet.getDate("DATE_OF_SESSION");
@@ -258,7 +261,7 @@ public String validateUser(String email, String password) {
 		ResultSet sessionSet = session_Table.retreievSessionsOfStudent(student_id, upcomming);
 		
 		try {
-			sessionSet.beforeFirst();
+			if(!sessionSet.isBeforeFirst()) {return null;}
 			while(sessionSet.next()){
 				
 				java.sql.Date date = sessionSet.getDate("DATE_OF_SESSION");

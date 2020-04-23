@@ -269,6 +269,25 @@ public ArrayList<Session_Detail>getBookableSessionforStudent(String student_id) 
 	}
 	return session;
 }
+
+public String getTutorIDofSession(String sessioString) {
+	String tutoridString = null;
+	
+	ResultSet rSet = session_Table.retreiveTutorDetailsOfSession(sessioString);
+	
+	
+		try {
+			rSet.beforeFirst();
+			while(rSet.next()) {
+			tutoridString = rSet.getString("STUDENT_ID");}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return tutoridString;
+}
+
 }
 
 
