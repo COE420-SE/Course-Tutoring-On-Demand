@@ -81,7 +81,13 @@ public class DepartServlet extends HttpServlet{
 			rd.forward(request, response);
 		}
 		else if (null != request.getParameter("remove_tutor_button")) {
-			
+			ArrayList<Tutor> listTutor = deptAdmin.getListOfTutors();
+			for (int i = 0; i < listTutor.size(); i++) {
+				System.out.println(listTutor.get(i).getUser_ID());
+			}
+			request.setAttribute("tutor", listTutor);
+			RequestDispatcher rd = request.getRequestDispatcher("RemoveATutor.jsp");
+			rd.forward(request, response);
 		}
 		else if (null != request.getParameter("display_session_button")) {
 			ArrayList<Session_Detail> listSessions = deptAdmin.getAllSessionsinfo(true);
