@@ -13,6 +13,7 @@ import ApplicationModel.Classroom;
 import ApplicationModel.Courses;
 import ApplicationModel.Department;
 import ApplicationModel.Department_Admin;
+import ApplicationModel.Feedback;
 import ApplicationModel.Session_Detail;
 import ApplicationModel.Tutor;
 import ApplicationModel.Tutor_Application;
@@ -71,6 +72,7 @@ public class DepartServlet extends HttpServlet{
 			
 		} 
 		else if (null != request.getParameter("view_feedback_button")) {
+			ArrayList<Feedback> feedbacks = deptAdmin.getFeedback();
 			
 		}
 		else if (null != request.getParameter("remove_tutor_button")) {

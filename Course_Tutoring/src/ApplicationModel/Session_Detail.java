@@ -41,18 +41,7 @@ public class Session_Detail {
 		Session_ID = " ";
 		this.Course_Name = course_ID;
 		this.Classroom_ID = classroom_ID;
-		
-		 String dateStr = date_of_session;
-		    SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd hh:MM:ss:ms");
-		    Date result = null;
-			try {
-				result = (Date) formater.parse(dateStr);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		    SimpleDateFormat newFormater = new SimpleDateFormat("dd-MM-yyyy");
-				this.date_of_session = newFormater.format(result);;
+		this.date_of_session = date_of_session;
 		this.start_time = start_time;
 		this.end_time = end_time;
 		this.max_Seats = max_Seats;

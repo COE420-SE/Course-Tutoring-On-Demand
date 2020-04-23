@@ -52,6 +52,7 @@ public class User {
 		initializeAUSCourses();
 		initializeAUSDepartments();
 		initializeAUSClassrooms();
+		session_Table.updateSessionStatus();
 	}
 	
 	public ArrayList<Courses> getAUScourses() {

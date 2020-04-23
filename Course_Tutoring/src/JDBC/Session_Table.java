@@ -142,36 +142,34 @@ public class Session_Table {
 	
 	//updateSessionStatus by system date
 	public void updateSessionStatus() {
-//		 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MMM-yy HH:mm");
-//		   LocalDateTime now = LocalDateTime.now();
-//		   System.out.println(dtf.format(now));
-		   
-//		select * from sessions;
-//		UPDATE sessions SET status = 1
-//		where date_of_session<sysdate;
+		
+		String sqlString = "UPDATE sessions SET status = 1 where date_of_session<=sysdate";
+		try {
+			
+			int result = dbCon.executePrepared(sqlString);
+	
+			if(result>0) {System.out.println("updation is successfull");}
+	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		System.out.println("updation of session staus is not successfull");
 		   
 	}
 
 	
 	
 	
-//	Select * from sessions
-//	INNER JOIN student stud ON ses.S_TUTOR_ID = stud.STUDENT_ID 
-//	WHERE ses.status = 0 AND ses.session_id not in (SELECT t.ss_session_id from STUDENT_SESSION t WHERE t.ss_student_id = 30938;
-//		
-//	select * from sessions
-//	where max_capacity > (select COUNT(*)+1 from student_session where ss_student_id = 30984);
-//	
-	public ResultSet retreieveBookableSessionOfStudent(String student_id, boolean upcomming) {
-		int status;
-		if(upcomming) {
-			status = 0; //upcomming
-		}
-		else status = 1; //completed
-		String sqString = "Select ses.session_id, stud.student_name, ses.s_course_id, ses.s_classroom_id, ses.date_of_session, ses.start_time, ses.end_time, ses.max_capacity " + 
-				"From sessions ses " + 
-				"INNER JOIN student stud ON ses.S_TUTOR_ID = stud.STUDENT_ID " + 
-				"WHERE ses.status = "+status+" AND ses.session_id not in (SELECT t.ss_session_id from STUDENT_SESSION t WHERE t.ss_student_id = " +student_id+")";
+//retreive session_id, max_capacity and count for unbookale sessions	
+	public ResultSet retreieveBookableSessionOfStudent(String student_id) {
+		
+		String sqString = "select  max_capacity, session_id, count(ss_student_id) as NO_OF_STUDENTS " + 
+				"from sessions " + 
+				"left join student_session on student_session.ss_session_id = sessions.session_id " + 
+				"where status = 0 AND session_id not in (SELECT t.ss_session_id from STUDENT_SESSION t WHERE t.ss_student_id = "+student_id+") AND s_tutor_id != " +student_id+ 
+				" group by session_id, max_capacity";
 		try {
 			rs = dbCon.executeStatement(sqString);
 		} catch (SQLException e) {
@@ -179,6 +177,22 @@ public class Session_Table {
 		//	e.printStackTrace();
 			return null;
 		}
+		return rs;
+	}
+	
+	public ResultSet retreiveSessionBySessionID(String session_id) {
+		
+		String sqlString = "Select ses.session_id, stud.student_name, ses.s_course_id, ses.s_classroom_id, ses.date_of_session, ses.start_time, ses.end_time, ses.max_capacity " + 
+				"From sessions ses " + 
+				"INNER JOIN student stud ON ses.S_TUTOR_ID = stud.STUDENT_ID WHERE ses.session_id = "+session_id;
+		
+		try {
+			rs = dbCon.executeStatement(sqlString);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return rs;
 	}
 	

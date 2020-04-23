@@ -54,9 +54,7 @@ public class StudentServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		if (null != request.getParameter("book_button")) {
-					ArrayList<Session_Detail> listSessions = studentModel.getAllSessions(true);
-					
-			
+					ArrayList<Session_Detail> listSessions = studentModel.getBookableSessionforStudent(studentModel.getUser_ID());
 					request.setAttribute("session", listSessions); 
 					
 					RequestDispatcher rd =  request.getRequestDispatcher("Book_Session.jsp"); 
