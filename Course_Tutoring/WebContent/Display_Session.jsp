@@ -63,15 +63,15 @@ body {
         for(Session_Detail s:listSession){%> 
         <%-- Arranging data in tabular form 
         --%>
-            <tr> 
-                <td><%=s.getSession_ID()%></td> 
+            <tr>  
                 <td><%=s.getTutor_Name()%></td> 
                 <td><%=s.getCourse_ID()%></td> 
-                <td><%=s.getClassroom_ID()%></td> 
                 <td><%=s.getDate_of_session()%></td>
-                 <td><%=s.getStart_time()%></td>
-                 <td><%=s.getEnd_time()%></td>
-                 <td><%=s.getMax_Seats()%></td>
+                <%ArrayList<String> student = (ArrayList<String>) s.getstudentList();%>
+                 <td>
+                 	<%for(String t:student){%> 
+                 		[<%=t%>]
+                 </td>
             </tr> 
                 
             <%}%>
