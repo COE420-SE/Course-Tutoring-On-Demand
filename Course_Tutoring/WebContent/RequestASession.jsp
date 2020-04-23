@@ -60,14 +60,14 @@ input[type=submit]:hover {
 .col-25 {
 	float: Right;
 	text-align: right;
-	width: 15%;
+	width: 25%;
 	margin-top: 6px;
 	margin-left: 10px;
 }
 
 .col-75 {
 	float: left;
-	width: 75%;
+	width: 65%;
 	margin-top: 6px;
 }
 
@@ -96,6 +96,7 @@ body {
 <body>
 	<div class="container">
 		<h2 class="w3-center">Request A Session</h2>
+		&nbsp;&nbsp;
 		<form action="RequestASessionServlet" method="Post">
 					<div class="row">
 				<div class="col-25">
@@ -144,6 +145,7 @@ body {
 					<textarea rows="4" cols="30" name="comment"> Enter comment here...</textarea>
 			</div>
 			</div>
+			&nbsp;&nbsp;
 			<div class="row">
 				<input type="submit" value="Submit">
 			</div>
