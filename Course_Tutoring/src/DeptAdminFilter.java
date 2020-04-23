@@ -20,7 +20,7 @@ public class DeptAdminFilter implements Filter {
     private HttpServletRequest httpRequest;
  
     private static final String[] loginRequiredURLs = {
-            "/DepartmentAdmin.html", "/AddFaculty.jsp", "/Choose_Application.jsp","/ProcessTutorRequest.jsp" 
+            "/DepartmentAdmin.html", "/AddFaculty.jsp", "/Choose_Application.jsp","/ProcessTutorRequest.jsp" , "/Choose_Tutor_Feedback.jsp", "/ProcessTutorFeedback"
             
             //add approve/reject.jsp, //getfeedback.jsp //deletetutor.jsp
     };

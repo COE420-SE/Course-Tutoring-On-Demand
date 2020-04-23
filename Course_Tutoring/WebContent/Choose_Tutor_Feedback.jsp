@@ -51,6 +51,7 @@ tfoot input {
         <tr style= "background-color:green">
           <th>Choose</th> 
           <th>Tutor Name</th>
+          <th>Feedback Given By:</th>
           
         </tr>
     </thead>
@@ -61,9 +62,8 @@ tfoot input {
         --%>
             <tr> 
                 <td><input type="radio" name="tutor_id" value=<%=s.getTUTOR_ID()%> required></td> 
-              
                 <td><%=s.getTUTOR_NAME()%></td> 
-                 
+                <td><%=s.getSTUDENT_NAME()%></td> 
             </tr> 
             <%}%>
             </tbody>

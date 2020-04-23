@@ -88,7 +88,7 @@ public class TutorServlet extends HttpServlet{
 			RequestDispatcher rd = request.getRequestDispatcher("View_Feedback.jsp");
 			rd.forward(request, response);
 		}
-		else if (null != request.getParameter("notify_button")) {
+		else if (null != request.getParameter("dsession_button")) {
 			
 		}
 	}
