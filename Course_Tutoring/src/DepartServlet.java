@@ -73,7 +73,11 @@ public class DepartServlet extends HttpServlet{
 		else if (null != request.getParameter("view_feedback_button")) {
 			ArrayList<Feedback> listFeedback = deptAdmin.getFeedback();
 			request.setAttribute("feedback", listFeedback); 
-			RequestDispatcher rd =  request.getRequestDispatcher("Display_Feedback.jsp"); 
+			for (int i = 0; i < listFeedback.size(); i++) {
+				
+				System.out.println(listFeedback.get(i).getTUTOR_NAME());
+			}
+			RequestDispatcher rd =  request.getRequestDispatcher("Choose_Tutor_Feedback.jsp"); 
 			rd.forward(request, response);
 		}
 		else if (null != request.getParameter("remove_tutor_button")) {
