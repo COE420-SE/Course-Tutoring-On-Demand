@@ -42,6 +42,7 @@ public class User {
 	Session_Table session_Table;
 	Classroom_Table classroom_Table ;
 	Notifications_Table notification;
+	Admins_Table admins_Table;
 
 	public User(){
 		users_table = new Users_Database();
@@ -50,6 +51,7 @@ public class User {
 		session_Table = new Session_Table();
 		classroom_Table = new Classroom_Table();
 		notification = new Notifications_Table();
+		admins_Table = new Admins_Table();
 		
 		initializeAUSCourses();
 		initializeAUSDepartments();
@@ -286,6 +288,26 @@ public String validateUser(String email, String password) {
 		
 		return session;
 	}
+	
+	public ArrayList<String> getDeptAdminID(String dept) {
+		ArrayList<String> deptadmins = new ArrayList<String>();
+		
+		ResultSet resultSet = admins_Table.getDeptAdminDetailSetBYDept(dept);
+		
+		
+			try {
+				if (!resultSet.isAfterLast()) admins_Table = null;
+				while(resultSet.next()) {
+				deptadmins.add(resultSet.getString("ADMIN_ID"));}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return deptadmins;
+	}
+	
+	
 	
 	
 	}

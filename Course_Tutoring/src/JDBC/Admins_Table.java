@@ -68,5 +68,23 @@ public class Admins_Table {
 		return false;
 	}
 	
+	public ResultSet getDeptAdminDetailSetBYDept(String dept) {
+		String adminString = "select * from admins where admin_type='D' and a_department_id = '"+dept+"'";
+		
+		
+		try {
+			rs = dbCon.executeStatement(adminString);
+			if(rs.isBeforeFirst()) 
+				return rs;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		return null;
+	}
+	
+	
 
 }

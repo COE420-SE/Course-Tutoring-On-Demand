@@ -66,6 +66,14 @@ public class RequestASessionServlet extends HttpServlet {
 			Session_Requests req =new Session_Requests(studentModel.getUser_ID(),course, date, tYPE, comment);
 			
 			if(studentModel.RequestASession(req)) {
+				//insert notification to tutor about session request;
+				ArrayList<String> tutList = new ArrayList<String>();
+				tutList = studentModel.getTutorsByCourseTaught(course);
+				
+				for (String string : tutList) {
+					studentModel.insertNotification(studentModel.getUser_ID(), string, "There is a new session request for course: "+course+"");    
+				}
+				
 				String message = "Success: Session request for "+course+" is successfull";
 				request.setAttribute("message", message);
 				RequestDispatcher rd =  request.getRequestDispatcher("StudentMessage.jsp"); 

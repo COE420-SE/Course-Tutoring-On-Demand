@@ -53,7 +53,8 @@ public class CancelBookingServlet extends HttpServlet {
 				
 				String tutString = student.getTutorIDofSession(session_id);
 				//send notification to tutor
-				student.insertNotification(student.getUser_ID(), tutString, student.getUser_name()+" dropped from your session #"+session_id)
+				String meString = student.getUser_name()+" dropped from your session #"+session_id;
+				student.insertNotification(student.getUser_ID(), tutString, meString);  
 				
 				String message = "Success: "+student.getUser_name()+" is succesfully dropped from session #"+session_id;
 				request.setAttribute("message", message);
@@ -77,7 +78,6 @@ public class CancelBookingServlet extends HttpServlet {
 						 rd =  request.getRequestDispatcher("TutorMessage.jsp"); 
 						}
 						rd.forward(request, response);
-					rd.forward(request, response);
 				}
 			}
     	}

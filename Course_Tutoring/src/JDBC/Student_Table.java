@@ -62,6 +62,21 @@ public class Student_Table {
 	}
 	
 	
+     public ResultSet retreiveStudentTableDetails(String student_id){
+		
+		String student = "SELECT * FROM STUDENT WHERE STUDENT_ID = " +student_id;
+		try {
+			rs = dbCon.executeStatement(student);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error querying select student");
+			e.printStackTrace();
+		}
+		
+		return rs;
+	}
+	
 	//insert new student in the STUDENT table
 	//return true if insertion is succesfull false otherwise
 	public boolean insertStudent(ResultSet old, String password) {

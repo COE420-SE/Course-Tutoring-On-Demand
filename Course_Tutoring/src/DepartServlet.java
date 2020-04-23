@@ -90,7 +90,7 @@ public class DepartServlet extends HttpServlet{
 			rd.forward(request, response);
 		}
 		else if (null != request.getParameter("display_session_button")) {
-			ArrayList<Session_Detail> listSessions = deptAdmin.getAllSessionsinfo(true);
+			ArrayList<Session_Detail> listSessions = deptAdmin.getAllSessions(true);
 			request.setAttribute("session", listSessions); 
 			RequestDispatcher rd =  request.getRequestDispatcher("Display_Session.jsp"); 
 			rd.forward(request, response);

@@ -66,4 +66,18 @@ public class Tutor_Courses_Table {
 		}
 		return rs;
 	}
+	
+	//retreive tutor course by courses
+	public ResultSet retreiveTutorCourseTableBYCourse(String courses) {
+		// TODO Auto-generated method stub
+		String sqlString = "select * from tutor_courses where tc_course_id = "+courses;
+		
+		try {
+			rs = dbCon.executeStatement(sqlString);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rs;
+	}
 }

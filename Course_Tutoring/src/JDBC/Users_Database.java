@@ -62,6 +62,19 @@ public class Users_Database {
 		
 		else return null;
 		}
+	
+	public ResultSet customSQL(String sql) {
+		// TODO Auto-generated method stub
+		String sqlString = sql;
+		
+		try {
+			rs = dbCon.executeStatement(sqlString);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rs;
+	}
 
 	
 }

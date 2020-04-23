@@ -86,24 +86,37 @@ public class CreateSessionServlet extends HttpServlet {
 			Session_Detail newSession_Detail = new Session_Detail(course_name, classroom_id, date, Start, End, Max_seats);
 			
 			//get session from database if exist then error
+			if (tutor.checkIFSessionExists(date)) {
+				String message = "Error: You have another section on that day, Try again on another dat";
+				request.setAttribute("message", message);
+				RequestDispatcher rd;
+					rd =  request.getRequestDispatcher("TutorMessage.jsp"); 
+					rd.forward(request, response);
+			}
 			
 			Boolean success = tutor.createSession(newSession_Detail);
 			
 			if (success) {
-				
-            //request.setAttribute("date", date);
+
+				String message = "Success: Feedback for tutor #"+tutor+" has been succesfully recorded";
+				request.setAttribute("message", message);
+				RequestDispatcher rd;
+					 rd =  request.getRequestDispatcher("TutorMessage.jsp"); 
+					rd.forward(request, response);
+				}
+				else {
+					String message = "Error: An error occured while giving feedback, Try again later";
+					request.setAttribute("message", message);
+					RequestDispatcher rd;
+						 rd =  request.getRequestDispatcher("TutorMessage.jsp"); 
+						rd.forward(request, response);
+				}
 			
-			RequestDispatcher rd =  request.getRequestDispatcher("SessionSuccessfull.jsp"); 
-			
-			rd.forward(request, response);
 			}
 			
-			else response.sendRedirect("error_action.html");
-	}
-				 
-
-	//}
-	}
+		}
+	
+			
 	
 	public String convertDate(String date) {
 

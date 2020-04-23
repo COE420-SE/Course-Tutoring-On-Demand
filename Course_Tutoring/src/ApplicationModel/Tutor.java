@@ -6,6 +6,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import com.sun.tools.classfile.Annotation.element_value;
+
 import JDBC.Feedback_Table;
 import JDBC.Session_Requests_Table;
 import JDBC.Session_Table;
@@ -173,5 +175,24 @@ public class Tutor extends User{
 			
 			return session;
 		}
+		
+		public boolean checkIFSessionExists(String date) {
+			
+			String sqlString = "select * from sessions where s_tutor_id = "+getUser_ID()+" and date_of_session = '"+date+"'";
+			ResultSet sessionSet = users_table.customSQL(sqlString);
+			
+			try {
+				if (sessionSet.isBeforeFirst()) {
+					sessionSet.next();
+					return true;
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		return false;
+		}
+		
+		
 
 }

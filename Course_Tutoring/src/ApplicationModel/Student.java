@@ -247,15 +247,15 @@ public ArrayList<Session_Detail>getBookableSessionforStudent(String student_id) 
 			if (sessionSet.isBeforeFirst()) {
 				sessionSet.next();
 				
-//				java.sql.Date date = sessionSet.getDate("DATE_OF_SESSION");
-//				DateFormat dateFormat = new SimpleDateFormat("dd-MM-yy");
-//				String dateStr = dateFormat.format(date);
+				java.sql.Date date = sessionSet.getDate("DATE_OF_SESSION");
+				DateFormat dateFormat = new SimpleDateFormat("dd-MM-yy");
+				String dateStr = dateFormat.format(date);
 				
 			session.add(new Session_Detail(sessionSet.getString("SESSION_ID"), 
 					sessionSet.getString("STUDENT_NAME"), 
 					sessionSet.getString("S_COURSE_ID"),
 					sessionSet.getString("S_CLASSROOM_ID"),
-					sessionSet.getString("DATE_OF_SESSION"),
+					dateStr,
 					sessionSet.getString("START_TIME"),
 					sessionSet.getString("END_TIME"),
 					sessionSet.getString("MAX_CAPACITY")));
@@ -288,6 +288,44 @@ public String getTutorIDofSession(String sessioString) {
 		return tutoridString;
 }
 
+
+//get tutor dept for notifying adminabout feedback
+public String getTutorDept(String tutor_id) {
+	
+String tutoridString = null;
+	
+	ResultSet rSet = student_table.retreiveStudentTableDetails(tutor_id);
+	
+		try {
+			rSet.beforeFirst();
+			while(rSet.next()) {
+			tutoridString = rSet.getString("STUDENT_MAJOR");}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return tutoridString;
+}
+
+public ArrayList<String> getTutorsByCourseTaught(String course) {
+
+	ArrayList<String> tutor = new ArrayList<String>();
+	
+	ResultSet resultSet = tutor_Courses_Table.retreiveTutorCourseTableBYCourse(course);
+	
+	
+		try {
+			if (!resultSet.isAfterLast()) admins_Table = null;
+			while(resultSet.next()) {
+			tutor.add(resultSet.getString("TC_TUTOR_ID"));}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return tutor;
+}
 }
 
 
