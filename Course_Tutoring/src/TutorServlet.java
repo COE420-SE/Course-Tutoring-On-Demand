@@ -1,4 +1,5 @@
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import ApplicationModel.Classroom;
 import ApplicationModel.Courses;
 import ApplicationModel.Feedback;
 import ApplicationModel.Session_Detail;
+import ApplicationModel.Session_Requests;
 import ApplicationModel.Tutor;
 import ApplicationModel.User;
 import oracle.net.aso.o;
@@ -93,6 +95,12 @@ public class TutorServlet extends HttpServlet{
 			ArrayList<Session_Detail> listSessions = tutor.getSessionsofTutor(tutor.getUser_ID(), true);
 			request.setAttribute("session", listSessions); 
 			RequestDispatcher rd =  request.getRequestDispatcher("Display_Session.jsp"); 
+			rd.forward(request, response);
+		}
+		else if (null != request.getParameter("vrequest_button")) {
+			ArrayList<Session_Requests> rsession = tutor.retreiveSessionRequestsforTutor(tutor.getUser_ID());
+			request.setAttribute("request", rsession);
+			RequestDispatcher rd = request.getRequestDispatcher("View_Request.jsp");
 			rd.forward(request, response);
 		}
 	}
