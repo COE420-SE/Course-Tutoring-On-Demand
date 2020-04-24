@@ -18,7 +18,7 @@ public class Session_Detail {
 	String start_time;
 	String end_time;
 	String max_Seats;
-	ArrayList<String> student_names;
+	ArrayList<String> student_names = new ArrayList<String>();
 	
 	public Session_Detail(String session_ID, String tutor_Name, String course, String classroom_ID,
 			String date_of_session, String start_time, String end_time, String max_Seats) {

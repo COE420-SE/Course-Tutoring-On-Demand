@@ -133,6 +133,8 @@ public String getUser_ID() {
 			if(!messages.isBeforeFirst()) {return null;}
 			while(messages.next()){
 				message.add(messages.getString("MESSAGE"));
+				System.out.println(messages.getString("MESSAGE"));
+				System.out.println(messages.getString("hello"));
 				}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -270,11 +272,11 @@ public String validateUser(String email, String password) {
 		ResultSet studentResultSet = users_table.customExecuteSQL(sqlString);
 		
 		try {
-			if(!studentResultSet.isBeforeFirst()) {return null;}
+			if(studentResultSet.isBeforeFirst()) {
 			while(studentResultSet.next()){
 			
 				student_name.add(studentResultSet.getString("STUDENT_NAME"));
-					}
+					}}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -315,7 +317,7 @@ public ArrayList<String> getAllStudentIDsOfSession(String session_id){
 		ResultSet sessionSet = session_Table.retreievSessionsOfStudent(student_id, upcomming);
 		
 		try {
-			if(!sessionSet.isBeforeFirst()) {return null;}
+			if(!sessionSet.isBeforeFirst()) 
 			while(sessionSet.next()){
 				
 				java.sql.Date date = sessionSet.getDate("DATE_OF_SESSION");
