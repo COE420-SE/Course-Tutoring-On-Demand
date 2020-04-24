@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
- <meta http-equiv = "refresh" content = "5; url = Tutor_Student.html" />
+ <meta http-equiv = "refresh" content = "5; url = SystemAdmin.html" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min
 .css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -40,13 +40,19 @@
 
 body {
 	background-image:
-		url(AUS-campus.jpg);
+		url(Feedback.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
 
 h2 {
 	text-align: center;
+}
+body {
+	background-image:
+		url(tutor.PNG);
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 label {
@@ -56,23 +62,20 @@ label {
 	padding: 4px;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 }
+
 </style>
 <body>
 	<div class="modal">
 		<form class = "modal-content">
 			<div class="container center">
-				<img src="https://www.w3schools.com/howto/img_avatar2.png" class = "center"style= "width: 50%; border-radius:50%;">
 				<div class="w3-container w3-center" style = "padding: 20px 16px">
-				<label for="user">Success</label> 
-		<%
-		String Session_ID = request.getParameter("session");
-		String date = request.getParameter("date");
-		out.println("Session " + Session_ID+ " successfully created on "+date);
-	%>
+				<%
+						String message = (String)request.getAttribute("message");
+					%>
+					<label for="user"><%=message%></label>
 	</div>
 			<div class="form-group">
-				
-				<p>You will be redirected to homepage in 3 seconds, if not please click <a class = "w3-blue" href="Tutor_Student.html">here</a></p>
+				<p>You will be redirected to HomePage in 5 seconds, if not please click <a class = "w3-blue" href="SystemAdmin.html">here</a></p>
 			</div>
 		</div>
 		</form>

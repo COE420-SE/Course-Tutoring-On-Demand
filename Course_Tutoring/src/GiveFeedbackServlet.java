@@ -55,6 +55,15 @@ public class GiveFeedbackServlet extends HttpServlet{
 			Feedback feed = new Feedback(student.getUser_ID(), tutor, comments, send_tutor);
 			
 			if(student.givefeedback(feed)) {
+				
+				//send notification to tutor
+				if(send_tutor.equals("Y")){
+				student.insertNotification(student.getUser_ID(), tutor, student.getUser_name()+" gave a feedback on you");}
+			
+				//send notification to admin
+				 ArrayList<String> notifydept = student.getDeptAdminID(student.getTutorDept(tutor));
+				for (String s : notifydept) {
+				 student.insertNotification(student.getUser_ID(), s, student.getUser_name()+" gave a feedback on tutor #"+tutor);}
 
 				String message = "Success: Feedback for tutor #"+tutor+" has been succesfully recorded";
 				request.setAttribute("message", message);
@@ -76,7 +85,6 @@ public class GiveFeedbackServlet extends HttpServlet{
 						 rd =  request.getRequestDispatcher("TutorMessage.jsp"); 
 						}
 						rd.forward(request, response);
-					rd.forward(request, response);
 				}
 			}
 			

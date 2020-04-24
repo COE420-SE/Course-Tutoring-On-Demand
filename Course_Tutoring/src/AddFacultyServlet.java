@@ -69,16 +69,15 @@ public class AddFacultyServlet extends HttpServlet {
 			
 			if (success) {
 				
-			
-				
-			RequestDispatcher rd =  request.getRequestDispatcher("DepartmentAdmin.html"); 
-			rd.forward(request, response);
-			
-			}
-			
+				String message = "Faculty user: "+name+" successfully added";
+				request.setAttribute("message", message);
+				RequestDispatcher rd =  request.getRequestDispatcher("DepartMessage.jsp"); 
+				rd.forward(request, response);}
 			else {
-				RequestDispatcher error =  request.getRequestDispatcher("error.html");
-				error.forward(request, response);
+				String message = "Error: there was an error with adding a faculty user, try again later";
+				request.setAttribute("message", message);
+				RequestDispatcher rd =  request.getRequestDispatcher("DepartMessage.jsp"); 
+				rd.forward(request, response);
 			}
 	}
 				 

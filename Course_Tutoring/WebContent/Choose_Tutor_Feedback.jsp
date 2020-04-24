@@ -61,7 +61,7 @@ tfoot input {
         <%-- Arranging data in tabular form 
         --%>
             <tr> 
-                <td><input type="radio" name="tutor_id" value=<%=s.getTUTOR_ID()%> required></td> 
+                <td><input type="radio" name="feedback_id" value=<%=s.getFEEDBACK_ID()%> required></td> 
                 <td><%=s.getTUTOR_NAME()%></td> 
                 <td><%=s.getSTUDENT_NAME()%></td> 
             </tr> 

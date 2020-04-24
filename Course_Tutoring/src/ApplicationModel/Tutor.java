@@ -129,7 +129,8 @@ public class Tutor extends User{
 			try {
 				feedbackSet.beforeFirst();
 				while(feedbackSet.next()){
-				feedbacks.add(new Feedback(feedbackSet.getString("SF_STUDENT_ID"), 
+				feedbacks.add(new Feedback(feedbackSet.getString("FEEDBACK_ID"),
+						feedbackSet.getString("SF_STUDENT_ID"), 
 						feedbackSet.getString("STUDENT_NAME"), 
 						feedbackSet.getString("SF_TUTOR_ID"), 
 						feedbackSet.getString("TUTOR_NAME"), 
@@ -156,14 +157,21 @@ public class Tutor extends User{
 					java.sql.Date date = sessionSet.getDate("DATE_OF_SESSION");
 					DateFormat dateFormat = new SimpleDateFormat("dd-MM-yy");
 					String dateStr = dateFormat.format(date);
-				session.add(new Session_Detail(sessionSet.getString("SESSION_ID"), 
-						sessionSet.getString("STUDENT_NAME"), 
-						sessionSet.getString("S_COURSE_ID"),
-						sessionSet.getString("S_CLASSROOM_ID"),
-						dateStr,
-						sessionSet.getString("START_TIME"),
-						sessionSet.getString("END_TIME"),
-						sessionSet.getString("MAX_CAPACITY")));
+					
+					Session_Detail sDetail = new Session_Detail(sessionSet.getString("SESSION_ID"), 
+							sessionSet.getString("STUDENT_NAME"), 
+							sessionSet.getString("S_COURSE_ID"),
+							sessionSet.getString("S_CLASSROOM_ID"),
+							dateStr,
+							sessionSet.getString("START_TIME"),
+							sessionSet.getString("END_TIME"),
+							sessionSet.getString("MAX_CAPACITY"));
+					
+					ArrayList<String> student_name= getAllStudentNamesOfSession(sessionSet.getString("SESSION_ID"));
+					
+					sDetail.setStudent_names(student_name);
+					
+				session.add(sDetail);
 				
 						}
 			} catch (SQLException e) {

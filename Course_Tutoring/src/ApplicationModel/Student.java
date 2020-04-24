@@ -240,7 +240,9 @@ public ArrayList<Session_Detail>getBookableSessionforStudent(String student_id) 
 		countSet.beforeFirst();
 		while(countSet.next()){
 			
-		if (countSet.getInt("NO_OF_STUDENTS")+1 < countSet.getInt("MAX_CAPACITY") ) {
+			int seats_left = countSet.getInt("MAX_CAPACITY")-countSet.getInt("NO_OF_STUDENTS");
+			
+		if (seats_left >0) {
 			
 			ResultSet sessionSet = session_Table.retreiveSessionBySessionID(countSet.getString("SESSION_ID"));
 			
@@ -258,7 +260,7 @@ public ArrayList<Session_Detail>getBookableSessionforStudent(String student_id) 
 					dateStr,
 					sessionSet.getString("START_TIME"),
 					sessionSet.getString("END_TIME"),
-					sessionSet.getString("MAX_CAPACITY")));
+					Integer.toString(seats_left)));
 			}
 		}
 				}
@@ -289,23 +291,23 @@ public String getTutorIDofSession(String sessioString) {
 }
 
 
-//get tutor dept for notifying adminabout feedback
+//get tutor dept for notifying dept admin about feedback
 public String getTutorDept(String tutor_id) {
 	
-String tutoridString = null;
+String tutorDept = null;
 	
 	ResultSet rSet = student_table.retreiveStudentTableDetails(tutor_id);
 	
 		try {
 			rSet.beforeFirst();
 			while(rSet.next()) {
-			tutoridString = rSet.getString("STUDENT_MAJOR");}
+			tutorDept = rSet.getString("STUDENT_MAJOR");}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return tutoridString;
+		return tutorDept;
 }
 
 public ArrayList<String> getTutorsByCourseTaught(String course) {

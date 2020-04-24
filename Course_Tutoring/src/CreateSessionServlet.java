@@ -98,14 +98,14 @@ public class CreateSessionServlet extends HttpServlet {
 			
 			if (success) {
 
-				String message = "Success: Feedback for tutor #"+tutor+" has been succesfully recorded";
+				String message = "Success: Session on "+date+" has been succesfully created";
 				request.setAttribute("message", message);
 				RequestDispatcher rd;
 					 rd =  request.getRequestDispatcher("TutorMessage.jsp"); 
 					rd.forward(request, response);
 				}
 				else {
-					String message = "Error: An error occured while giving feedback, Try again later";
+					String message = "Error: An error occured while creating, Try again later";
 					request.setAttribute("message", message);
 					RequestDispatcher rd;
 						 rd =  request.getRequestDispatcher("TutorMessage.jsp"); 

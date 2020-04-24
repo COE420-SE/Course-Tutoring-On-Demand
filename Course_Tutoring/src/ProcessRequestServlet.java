@@ -78,18 +78,37 @@ public class ProcessRequestServlet extends HttpServlet {
 				RequestDispatcher rd =  request.getRequestDispatcher("DepartmentMessage.jsp"); 
 				rd.forward(request, response);
 				
+				//insert notification
 			dept_Admin.insertNotification(dept_Admin.getUser_ID(), student_id, "Your application has been approved, you are a tutor now");
+			}
+			else {
+				String message = "There has been an error with accepting the application. Try again later";
+				request.setAttribute("message", message);
+				RequestDispatcher rd =  request.getRequestDispatcher("DepartmentMessage.jsp"); 
+				rd.forward(request, response);
 			}
 				
 			}
 		else if(null!= request.getParameter("reject")){
 			
+			
+			
 			if(dept_Admin.rejectTutor(application)) {
 				String message = "Tutor application for "+student_id+" has been rejected";
 				request.setAttribute("message", message);
 				RequestDispatcher rd =  request.getRequestDispatcher("DepartmentMessage.jsp"); 
-				rd.forward(request, response);}
+				rd.forward(request, response);
 				
+				//insert notification
+				dept_Admin.insertNotification(dept_Admin.getUser_ID(), student_id, "Your application has been rejected");	
+			}
+			else {
+				String message = "There has been an error with rejecting the application. Try again later";
+				request.setAttribute("message", message);
+				RequestDispatcher rd =  request.getRequestDispatcher("DepartmentMessage.jsp"); 
+				rd.forward(request, response);
+			}
+			
 			}
 		else {
 			String message = "There has been an error with processing the application. Try again later";

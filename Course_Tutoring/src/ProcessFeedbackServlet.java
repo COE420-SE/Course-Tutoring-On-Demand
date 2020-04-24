@@ -29,7 +29,7 @@ import ApplicationModel.Tutor_Application;
 public class ProcessFeedbackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	Department_Admin dept_Admin = new Department_Admin();
-	String tutor_id;
+	String feedback_id;
 	Feedback form;
 
 	/**
@@ -62,19 +62,25 @@ public class ProcessFeedbackServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		if (null!= request.getParameter("next")) {
-			tutor_id = request.getParameter("tutor_id");
-			System.out.println(tutor_id);
+			feedback_id = request.getParameter("feedback_id");
+			System.out.println(feedback_id);
 			
-			form = dept_Admin.getSpecificFeedbackFrom(tutor_id);
+			form = dept_Admin.getSpecificFeedbackFrom(feedback_id);
+			
 			request.setAttribute("feedback", form); 
 			RequestDispatcher rd =  request.getRequestDispatcher("ProcessTutorFeedback.jsp"); 
 			rd.forward(request, response);
 			}
 		
 		else {
+			RequestDispatcher rd ;
 			String message = "There has been an error. Try again later";
 			request.setAttribute("message", message);
-			RequestDispatcher rd =  request.getRequestDispatcher("DepartmentMessage.jsp"); 
+			if (Department_Admin.getUser_type().equals("tutor")) {
+				rd =  request.getRequestDispatcher("TutorMessage.jsp"); 
+			}
+			else {rd =  request.getRequestDispatcher("DepartmentMessage.jsp");} 
+			
 			rd.forward(request, response);
 		}
 			

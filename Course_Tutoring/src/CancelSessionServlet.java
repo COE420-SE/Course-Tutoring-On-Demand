@@ -1,5 +1,6 @@
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -49,11 +50,27 @@ public class CancelSessionServlet extends HttpServlet {
 
 			Boolean success = tutor.cancelSession(session_id);
 			if (success) {
-				RequestDispatcher rd = request.getRequestDispatcher("CancelSessionSuccessful.jsp");
+				
+				//insert notification
+				ArrayList<String> student_id = tutor.getAllStudentIDsOfSession(session_id);
+				
+				for (String string : student_id) {
+					tutor.insertNotification(tutor.getUser_ID(), string, tutor.getUser_name()+" cancelled session #"+session_id);
+
+				}
+				
+				//redirect to success page
+					String message = "Session #"+session_id+" has been cancelled successfully";
+					request.setAttribute("message", message);
+					RequestDispatcher rd =  request.getRequestDispatcher("TutorMessage.jsp"); 
+					rd.forward(request, response);}
+					
+				}
+			else {
+				String message = "There has been an error with cancelling the session. Try again later";
+				request.setAttribute("message", message);
+				RequestDispatcher rd =  request.getRequestDispatcher("TutorMessage.jsp"); 
 				rd.forward(request, response);
 			}
-			else
-				response.sendRedirect("error_action.html");
-		}
 	}
 }

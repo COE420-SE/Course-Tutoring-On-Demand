@@ -237,16 +237,22 @@ public String validateUser(String email, String password) {
 				DateFormat dateFormat = new SimpleDateFormat("dd-MM-yy");
 				String dateStr = dateFormat.format(date);
 				
-			session.add(new Session_Detail(sessionSet.getString("SESSION_ID"), 
-					sessionSet.getString("STUDENT_NAME"), 
-					sessionSet.getString("S_COURSE_ID"),
-					sessionSet.getString("S_CLASSROOM_ID"),
-					dateStr,
-					sessionSet.getString("START_TIME"),
-					sessionSet.getString("END_TIME"),
-					sessionSet.getString("MAX_CAPACITY")));
-			
-					}
+				Session_Detail sDetail = new Session_Detail(sessionSet.getString("SESSION_ID"), 
+						sessionSet.getString("STUDENT_NAME"), 
+						sessionSet.getString("S_COURSE_ID"),
+						sessionSet.getString("S_CLASSROOM_ID"),
+						dateStr,
+						sessionSet.getString("START_TIME"),
+						sessionSet.getString("END_TIME"),
+						sessionSet.getString("MAX_CAPACITY"));
+				
+				ArrayList<String> student_name= getAllStudentNamesOfSession(sessionSet.getString("SESSION_ID"));
+				
+				sDetail.setStudent_names(student_name);
+				
+			session.add(sDetail);
+					
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -254,6 +260,52 @@ public String validateUser(String email, String password) {
 		}
 		
 		return session;
+	}
+	
+	public ArrayList<String> getAllStudentNamesOfSession(String session_id){
+		
+		ArrayList<String> student_name= new ArrayList<String>();
+		String sqlString = "select STUDENT_NAME from student_session, student where ss_student_id = student_id and ss_session_id = "+session_id;
+		
+		ResultSet studentResultSet = users_table.customExecuteSQL(sqlString);
+		
+		try {
+			if(!studentResultSet.isBeforeFirst()) {return null;}
+			while(studentResultSet.next()){
+			
+				student_name.add(studentResultSet.getString("STUDENT_NAME"));
+					}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
+		return student_name;
+		
+	}
+	
+public ArrayList<String> getAllStudentIDsOfSession(String session_id){
+		
+		ArrayList<String> student_id= new ArrayList<String>();
+		String sqlString = "select STUDENT_NAME, STUDENT_ID from student_session, student where ss_student_id = student_id and ss_session_id = "+session_id;
+		
+		ResultSet studentResultSet = users_table.customExecuteSQL(sqlString);
+		
+		try {
+			if(!studentResultSet.isBeforeFirst()) {return null;}
+			while(studentResultSet.next()){
+			
+				student_id.add(studentResultSet.getString("STUDENT_ID"));
+					}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
+		return student_id;
+		
 	}
 	
 	
@@ -307,7 +359,34 @@ public String validateUser(String email, String password) {
 			return deptadmins;
 	}
 	
-	
-	
-	
+	 
+    // (Dhriti) can you please add this function
+    public Feedback getSpecificFeedbackFrom(String session_id) {
+    	Feedback feedback = null;
+    	String sqString = "select f.feedback_id, f.sf_student_id, s.student_name, f.sf_tutor_id, t.student_name TUTOR_NAME, f.tutor_also, f.comments " + 
+				"from student_feedback f, student s, student t " + 
+				"where f.sf_student_id = s.student_id and f.feedback_id = "+session_id;
+    	
+    	ResultSet feedbackSet = users_table.customExecuteSQL(sqString);
+		
+		try {
+			feedbackSet.beforeFirst();
+			while(feedbackSet.next()){
+			feedback = new Feedback(feedbackSet.getString("FEEDBACK_ID"),
+					feedbackSet.getString("SF_STUDENT_ID"), 
+					feedbackSet.getString("STUDENT_NAME"), 
+					feedbackSet.getString("SF_TUTOR_ID"), 
+					feedbackSet.getString("TUTOR_NAME"), 
+					feedbackSet.getString("COMMENTS"), 
+					feedbackSet.getString("TUTOR_ALSO"));
+					}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();}
+		
+			return feedback;
 	}
+    	
+    }
+	
+	

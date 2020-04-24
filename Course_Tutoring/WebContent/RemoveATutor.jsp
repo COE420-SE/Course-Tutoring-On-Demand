@@ -1,3 +1,4 @@
+<%@page import="ApplicationModel.Feedback"%>
 <%@page import="ApplicationModel.Tutor"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
@@ -88,22 +89,16 @@ tfoot input {
 						<th>Choose</th>
 						<th>Tutor ID</th>
 						<th>Tutor Name</th>
-						<th>Tutor Email</th>
-						<th>Tutor Department</th>
 					</tr>
 				</thead>
 				<tbody>
-					<%ArrayList<Tutor> listTutor =  
-            (ArrayList<Tutor>)request.getAttribute("tutor"); 
-        for(Tutor s:listTutor){%>
+					<%ArrayList<Feedback> listTutor =   (ArrayList<Feedback>)request.getAttribute("tutor"); 
+        for(Feedback s:listTutor){%>
 					<%-- Arranging data in tabular form 
         --%>
 					<tr>
-						<td><input type="radio" name="tutor"
-							value=<%=s.getUser_ID()%> required></td>
-						<td><%=s.getUser_name()%></td>
-						<td><%=s.getUser_email()%></td>
-						<td><%=s.getUser_department()%></td>
+						<td><input type="radio" name="tutor" value=<%=s.getTUTOR_ID()%> required></td>
+						<td><%=s.getTUTOR_NAME()%></td>
 					</tr>
 
 					<%}%>

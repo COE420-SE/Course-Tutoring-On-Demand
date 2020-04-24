@@ -58,8 +58,7 @@ body {
         </tr>
     </thead>
     <tbody> 
-        <%ArrayList<Session_Detail> listSession =  
-            (ArrayList<Session_Detail>)request.getAttribute("session"); 
+        <%ArrayList<Session_Detail> listSession =  (ArrayList<Session_Detail>)request.getAttribute("session"); 
         for(Session_Detail s:listSession){%> 
         <%-- Arranging data in tabular form 
         --%>
@@ -67,11 +66,12 @@ body {
                 <td><%=s.getTutor_Name()%></td> 
                 <td><%=s.getCourse_ID()%></td> 
                 <td><%=s.getDate_of_session()%></td>
-                <%ArrayList<String> student = (ArrayList<String>) s.getstudentList();%>
+                <%ArrayList<String> student = (ArrayList<String>) s.getStudent_names();%>
                  <td>
                  	<%for(String t:student){%> 
                  		[<%=t%>]
                  </td>
+                  <%}%>
             </tr> 
                 
             <%}%>

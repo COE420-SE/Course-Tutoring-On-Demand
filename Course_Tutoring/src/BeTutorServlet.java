@@ -90,6 +90,13 @@ public class BeTutorServlet extends HttpServlet {
 			
 			//add the grades and acadamic standing 
 			if(studentModel.ApplyToBeTutor(newApplication)) {
+				
+				ArrayList<String> notifyStrings= studentModel.getDeptAdminID(Student.getUser_department());
+				
+				for (String string : notifyStrings) {
+					studentModel.insertNotification(studentModel.getUser_ID(), string, "New Tutor request from "+studentModel.getUser_name());
+				}
+				
 				String message = studentModel.getUser_name()+ "successfully completed tutor applications";
 				request.setAttribute("message", message);
 				RequestDispatcher rd =  request.getRequestDispatcher("StudentMessage.jsp"); 

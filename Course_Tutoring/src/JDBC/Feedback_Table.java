@@ -22,7 +22,7 @@ public class Feedback_Table {
 		String sqlString = "INSERT INTO STUDENT_FEEDBACK VALUES("+feedback.getSTUDENT_ID()+", "
 		     +feedback.getTUTOR_ID()+", '"
 			 +feedback.getSEND_TUTOR()+"', '"
-		     +feedback.getCOMMENTS()+"')";
+		     +feedback.getCOMMENTS()+"', (SELECT max(feedback_id)+1 FROM student_feedback))";
 
 				try {
 					int result = dbCon.executePrepared(sqlString);
@@ -37,7 +37,7 @@ public class Feedback_Table {
 		
 		//retreive feedback of tutor
 	public ResultSet retreiveFeedbackofTutor(String tutor_id) {
-			String sQLstString = "select f.sf_student_id, s.student_name, f.sf_tutor_id, t.student_name TUTOR_NAME, f.tutor_also, f.comments " + 
+			String sQLstString = "select f.feedback_id, f.sf_student_id, s.student_name, f.sf_tutor_id, t.student_name TUTOR_NAME, f.tutor_also, f.comments " + 
 					"from student_feedback f, student s, student t " + 
 					"where f.sf_student_id = s.student_id and f.sf_tutor_id = t.student_id and f.sf_tutor_id ="+tutor_id;
 				try {
@@ -52,7 +52,7 @@ public class Feedback_Table {
 		
 	//retreive feedbacks that a tutor can see
 	public ResultSet retreiveFeedbackforTutor(String tutor_id) {
-		String sQLstString = "select f.sf_student_id, s.student_name, f.sf_tutor_id, t.student_name TUTOR_NAME, f.tutor_also, f.comments " + 
+		String sQLstString = "select f.feedback_id, f.sf_student_id, s.student_name, f.sf_tutor_id, t.student_name TUTOR_NAME, f.tutor_also, f.comments " + 
 				"from student_feedback f, student s, student t " + 
 				"where f.sf_student_id = s.student_id and f.sf_tutor_id = t.student_id and  f.tutor_also = 'Y' and f.sf_tutor_id ="+tutor_id;
 			try {

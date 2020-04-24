@@ -90,6 +90,10 @@ public class TutorServlet extends HttpServlet{
 		}
 		else if (null != request.getParameter("dsession_button")) {
 			
+			ArrayList<Session_Detail> listSessions = tutor.getSessionsofTutor(tutor.getUser_ID(), true);
+			request.setAttribute("session", listSessions); 
+			RequestDispatcher rd =  request.getRequestDispatcher("Display_Session.jsp"); 
+			rd.forward(request, response);
 		}
 	}
 	

@@ -195,17 +195,31 @@ public class Department_Admin extends User{
 					}
  		return feedbacks;
 	}
-     
-    // (Dhriti) can you please add this function
-    public Feedback getSpecificFeedbackFrom(String tutor_id) {
-
-    	
-    }
     
-    // (Dhriti) can you please add this function
-    public ArrayList<Tutor> getListOfTutors() {
-		
+    
+   //  (Dhriti) can you please add this function
+    public ArrayList<Feedback> getListOfTutors() {
+    	
+    	ArrayList<Feedback> feedbacks = new ArrayList<Feedback>();
+    	String sqlString = "select tutor_ID, STUDENT_NAME " + 
+    			"from tutor, student" + 
+    			"where student.student_id=tutor_id and student_major = '"+getUser_department()+"'";
+	
+    ResultSet rSet = users_table.customExecuteSQL(sqlString);
+    
+    try {
+		if (!rSet.isBeforeFirst()) feedbacks = null;
+		  while(rSet.next()) {
+		    	
+		    	feedbacks.add(new Feedback(rSet.getString("TUTOR_ID"), rSet.getString("STUDENT_NAME")));
+		    }
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
 	}
+  
+    return feedbacks;
+    }
     
   //remove tutor
     public boolean removeTutor(String tutor_id) {
@@ -216,7 +230,7 @@ public class Department_Admin extends User{
     }
     
     return false;}
-    
+
 
     }
     

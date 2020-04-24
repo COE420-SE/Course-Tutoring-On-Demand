@@ -2,7 +2,6 @@ package ApplicationModel;
 
 public class Session_Requests {
 	
-	String REQUEST_ID;
 	String STUDENT_ID;
 	String COURSE_ID;
 	String DATE;

@@ -76,22 +76,22 @@ public class AddDepartServlet extends HttpServlet {
 			boolean success = system_Admin.addDepartmentAdmin(name, email, pass, dept);
 
 			if (success) {
-				
 			
-				
-				RequestDispatcher rd =  request.getRequestDispatcher("SystemAdmin.html"); 
+				String message = "Department Admin: "+name+" successfully added";
+				request.setAttribute("message", message);
+				RequestDispatcher rd =  request.getRequestDispatcher("SystemMessage.jsp"); 
 				rd.forward(request, response);
 				
 			}
 			
 			else {
-				RequestDispatcher error =  request.getRequestDispatcher("error.html");
+				String message = "Error: An error occured adding Department Admin, Try again later";
+				request.setAttribute("message", message);
+				RequestDispatcher error =  request.getRequestDispatcher("SystemMessage.jsp");
 			 error.forward(request, response);
 			}
 	}
 				 
-
-	//}
 	}
 	
 	

@@ -53,17 +53,27 @@ public class RemoveATutorServlet extends HttpServlet {
 		if (null != request.getParameter("submit")) {
 			String tutor_id = request.getParameter("tutor");
 			System.out.println(tutor_id);
+		
 
 			Boolean success = depart_Admin.removeTutor(tutor_id);
 			if (success) {
-				RequestDispatcher rd = request.getRequestDispatcher("RemoveATutorSuccessful.jsp");
+				
+				//insert notification
+				depart_Admin.insertNotification(depart_Admin.getUser_ID(), tutor_id, "You have lost your Tutor privileges, you are a student now");
+				
+				String message = "Successfully removed tutor #"+tutor_id;
+				request.setAttribute("message", message);
+				RequestDispatcher rd =  request.getRequestDispatcher("DepartMessage.jsp"); 
+				rd.forward(request, response);}
+			else {
+				String message = "Error: there was an error with removing a tutor, try again later";
+				request.setAttribute("message", message);
+				RequestDispatcher rd =  request.getRequestDispatcher("DepartMessage.jsp"); 
 				rd.forward(request, response);
 			}
-			else
-				response.sendRedirect("error_action.html");
-		}
 
+	}
+		}
 	}
 	
 	
-}

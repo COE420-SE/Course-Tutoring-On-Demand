@@ -65,12 +65,23 @@ public class BookSessionServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	
+		//get session id
 			String session_id = request.getParameter("session");
 			
+			//book a session
 			if(student.BookASession(session_id)) {
-				String message = "Success: "+student.getUser_name()+" succesfully booked session "+session_id;
+				//send a success message
+				String message = "Success: "+student.getUser_name()+" has succesfully booked session #"+session_id;
 				request.setAttribute("message", message);
+				
 				RequestDispatcher rd;
+				
+				String tutorString= student.getTutorIDofSession(session_id);
+				
+				//insert notification for booking
+				student.insertNotification(student.getUser_ID(), tutorString, student.getUser_name()+" has booked your session #"+session_id);  
+				
+				//dispatch to the respective successpage.
 				if(User.getUser_type().equals("student"))
 				rd =  request.getRequestDispatcher("StudentMessage.jsp"); 
 				else {
@@ -78,6 +89,7 @@ public class BookSessionServlet extends HttpServlet {
 				}
 				rd.forward(request, response);
 			}
+			//if error occured while booking
 			else {
 				String message = "Error: An error occured while booking, Try again later";
 				request.setAttribute("message", message);

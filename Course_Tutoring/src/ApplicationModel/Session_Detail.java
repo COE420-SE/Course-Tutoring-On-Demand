@@ -5,9 +5,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 public class Session_Detail {
 	
+
 	String Session_ID;
 	String Tutor_Name;
 	String Course_Name;
@@ -16,6 +18,7 @@ public class Session_Detail {
 	String start_time;
 	String end_time;
 	String max_Seats;
+	ArrayList<String> student_names;
 	
 	public Session_Detail(String session_ID, String tutor_Name, String course, String classroom_ID,
 			String date_of_session, String start_time, String end_time, String max_Seats) {
@@ -96,4 +99,12 @@ public class Session_Detail {
 		return Course_Name;
 	}
 
+
+	public ArrayList<String> getStudent_names() {
+		return student_names;
+	}
+
+	public void setStudent_names(ArrayList<String> student_names) {
+		this.student_names = student_names;
+	}
 }

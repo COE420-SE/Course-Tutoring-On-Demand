@@ -81,11 +81,10 @@ public class DepartServlet extends HttpServlet{
 			rd.forward(request, response);
 		}
 		else if (null != request.getParameter("remove_tutor_button")) {
-			ArrayList<Tutor> listTutor = deptAdmin.getListOfTutors();
-			for (int i = 0; i < listTutor.size(); i++) {
-				System.out.println(listTutor.get(i).getUser_ID());
-			}
-			request.setAttribute("tutor", listTutor);
+			
+			ArrayList<Feedback> feedbacks = deptAdmin.getListOfTutors();
+			
+			request.setAttribute("tutor", feedbacks);
 			RequestDispatcher rd = request.getRequestDispatcher("RemoveATutor.jsp");
 			rd.forward(request, response);
 		}
@@ -97,6 +96,10 @@ public class DepartServlet extends HttpServlet{
 			
 		}
 		else if (null != request.getParameter("notify_button")) {
+			ArrayList<String>notification = deptAdmin.getNotifications();
+			request.setAttribute("notification", notification); 
+			RequestDispatcher rd =  request.getRequestDispatcher("notification.jsp"); 
+			rd.forward(request, response);
 			
 		}
 	}

@@ -21,7 +21,8 @@ public class StudentFilter implements Filter {
     private HttpServletRequest httpRequest;
  
     private static final String[] loginRequiredURLs = {
-            "/Student.html", "/Book_Session.jsp", "/Apply_Tutor.jsp", "/Apply_Tutor_Grade.jsp", "/StudentMessage.jsp", "/RequestASession.jsp"
+            "/Student.html", "/Book_Session.jsp", "/Apply_Tutor.jsp", "/Apply_Tutor_Grade.jsp", "/StudentMessage.jsp", "/RequestASession.jsp", "/Cancel_Booking.jsp"
+            , "/GiveFeedback.jsp", "/RequestASession.jsp"
             //add request a session, feedback and cancel booking after done
     };
  
