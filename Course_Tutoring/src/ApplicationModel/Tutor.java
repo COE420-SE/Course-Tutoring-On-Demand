@@ -178,7 +178,7 @@ public class Tutor extends User{
 		public boolean checkIFSessionExists(String date) {
 			
 			String sqlString = "select * from sessions where s_tutor_id = "+getUser_ID()+" and date_of_session = '"+date+"'";
-			ResultSet sessionSet = users_table.customSQL(sqlString);
+			ResultSet sessionSet = users_table.customExecuteSQL(sqlString);
 			
 			try {
 				if (sessionSet.isBeforeFirst()) {

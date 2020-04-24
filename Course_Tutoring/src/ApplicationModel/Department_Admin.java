@@ -181,7 +181,8 @@ public class Department_Admin extends User{
  			rSet.isBeforeFirst();
 				while(rSet.next())
 				
-				feedbacks.add(new Feedback(rSet.getString("SF_STUDENT_ID"), 
+				feedbacks.add(new Feedback(rSet.getString("FEEDBACK_ID"),
+						rSet.getString("SF_STUDENT_ID"), 
 						rSet.getString("STUDENT_NAME"), 
 						rSet.getString("SF_TUTOR_ID"), 
 						rSet.getString("TUTOR_NAME"),

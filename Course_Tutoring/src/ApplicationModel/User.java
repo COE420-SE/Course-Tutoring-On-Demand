@@ -291,12 +291,12 @@ public String validateUser(String email, String password) {
 	
 	public ArrayList<String> getDeptAdminID(String dept) {
 		ArrayList<String> deptadmins = new ArrayList<String>();
+		String sqlString = "select * from admins where admin_type='D' and a_department_id =  '"+dept+"'";
 		
-		ResultSet resultSet = admins_Table.getDeptAdminDetailSetBYDept(dept);
-		
+		ResultSet resultSet = users_table.customExecuteSQL(sqlString);
 		
 			try {
-				if (!resultSet.isAfterLast()) admins_Table = null;
+				if (!resultSet.isAfterLast()) deptadmins = null;
 				while(resultSet.next()) {
 				deptadmins.add(resultSet.getString("ADMIN_ID"));}
 			} catch (SQLException e) {

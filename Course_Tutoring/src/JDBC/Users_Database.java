@@ -63,7 +63,7 @@ public class Users_Database {
 		else return null;
 		}
 	
-	public ResultSet customSQL(String sql) {
+	public ResultSet customExecuteSQL(String sql) {
 		// TODO Auto-generated method stub
 		String sqlString = sql;
 		
@@ -74,6 +74,23 @@ public class Users_Database {
 			e.printStackTrace();
 		}
 		return rs;
+	}
+	
+	 public boolean customPreparedSQL(String sql) {
+			
+			String sqlString = sql;
+			try {
+				
+				int result = dbCon.executePrepared(sqlString);
+		
+				if(result>0) {return true;}
+		
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		return false;
 	}
 
 	

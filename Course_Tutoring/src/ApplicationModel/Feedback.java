@@ -1,7 +1,7 @@
 package ApplicationModel;
 
 public class Feedback {
-	
+
 	String FEEDBACK_ID;
 	String STUDENT_ID;
 	String STUDENT_NAME;
@@ -11,9 +11,10 @@ public class Feedback {
 	String SEND_TUTOR;
 
 
-	public Feedback(String sTUDENT_ID, String sTUDENT_NAME, String tUTOR_ID, String tUTOR_NAME, String cOMMENTS,
+	public Feedback(String feedback,String sTUDENT_ID, String sTUDENT_NAME, String tUTOR_ID, String tUTOR_NAME, String cOMMENTS,
 			String sEND_TUTOR) {
 		super();
+		FEEDBACK_ID = feedback;
 		STUDENT_ID = sTUDENT_ID;
 		STUDENT_NAME = sTUDENT_NAME;
 		TUTOR_ID = tUTOR_ID;
@@ -83,5 +84,15 @@ public class Feedback {
 	public void setTUTOR_NAME(String tUTOR_NAME) {
 		TUTOR_NAME = tUTOR_NAME;
 	}
+	
+	
+	public String getFEEDBACK_ID() {
+		return FEEDBACK_ID;
+	}
+
+	public void setFEEDBACK_ID(String fEEDBACK_ID) {
+		FEEDBACK_ID = fEEDBACK_ID;
+	}
+
 
 }
