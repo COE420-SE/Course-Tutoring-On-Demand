@@ -20,7 +20,6 @@ public class NotiDisplayFilter implements Filter {
  
     private static final String[] loginRequiredURLs = {
             "/notification.jsp", "/Display_Session.jsp", "/error.html", "/error_action.html", "/doesnotexist.html"
-            //add cancel a session when done
     };
  
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)

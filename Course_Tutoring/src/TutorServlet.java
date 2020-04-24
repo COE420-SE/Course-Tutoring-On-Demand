@@ -75,23 +75,18 @@ public class TutorServlet extends HttpServlet{
 			for (int i = 0; i < listSession.size(); i++) {
 				System.out.println(listSession.get(i).getSession_ID());
 			}
-			
 			request.setAttribute("session", listSession);
-			RequestDispatcher rd = request.getRequestDispatcher("Cancel_Session.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("Cancel_Session2.jsp");
 			rd.forward(request, response);
-
-
-		// response.sendRedirect("Cancel a session.jsp");
 		} 
-		else if (null != request.getParameter("feedback_button")) {
+		else if (null != request.getParameter("vfeedback_button")) {
 			
 			ArrayList<Feedback> feedbacks = tutor.retreiveFeedbacksforTutor(tutor.getUser_ID());
 			request.setAttribute("feedback", feedbacks);
-			RequestDispatcher rd = request.getRequestDispatcher("View_Feedback.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("ProcessTutorFeedback.jsp");
 			rd.forward(request, response);
 		}
 		else if (null != request.getParameter("dsession_button")) {
-			
 			ArrayList<Session_Detail> listSessions = tutor.getSessionsofTutor(tutor.getUser_ID(), true);
 			request.setAttribute("session", listSessions); 
 			RequestDispatcher rd =  request.getRequestDispatcher("Display_Session.jsp"); 
@@ -104,7 +99,6 @@ public class TutorServlet extends HttpServlet{
 			rd.forward(request, response);
 		}
 	}
-	
 	public ArrayList<String> timining() {
 		ArrayList<String> time = new ArrayList<String>();
 

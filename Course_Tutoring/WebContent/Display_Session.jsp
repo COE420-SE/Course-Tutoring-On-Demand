@@ -66,12 +66,12 @@ body {
                 <td><%=s.getTutor_Name()%></td> 
                 <td><%=s.getCourse_ID()%></td> 
                 <td><%=s.getDate_of_session()%></td>
-                <%ArrayList<String> student = (ArrayList<String>) s.getStudent_names();%>
+                <%ArrayList<String> student = (ArrayList<String>)s.getStudent_names();%>
                  <td>
                  	<%for(String t:student){%> 
-                 		[<%=t%>]
-                 </td>
+                 		<%=t%>
                  <%}%>
+                 </td>
             </tr> 
             <%}%>
             </tbody>

@@ -1,5 +1,6 @@
 <%@page import="ApplicationModel.Session_Detail"%>
-<%@page import="java.util.List"%>			<!-- do we need to include this?? -->
+<%@page import="java.util.List"%>
+<!-- do we need to include this?? -->
 <%@page import="java.util.ArrayList"%>
 
 <!DOCTYPE html>
@@ -15,7 +16,8 @@
 	box-sizing: border-box;
 }
 
-input[type=text], input[type=date], input[type=time], input[type=number], select, textarea {
+input[type=text], input[type=date], input[type=time], input[type=number],
+	select, textarea {
 	width: 100%;
 	padding: 12px;
 	border: 1px solid #ccc;
@@ -49,7 +51,6 @@ input[type=submit]:hover {
 .container {
 	margin: 4% auto 15% auto;
 	border-radius: 5px;
-	background-color: #fefefe;
 	padding: 20px;
 }
 
@@ -90,12 +91,11 @@ body {
 </style>
 </head>
 <body>
-
-	<div class="modal">
-		<h2 class="center" style="color: black"><b>Cancel a Session</b></h2>
-		
-		<form class="modal-content" action="CancelSessionServlet" method="Post">
-			<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for course.." title="Type in a course">
+		<h2 class="center" style="color: black">
+			<b>Cancel a Session</b>
+		</h2>
+		<form action="CancelSessionServlet"
+			method="Post">
 			<table id="myTable" class="table table-bordered compact"
 				style="width: 100%; background-color: white" data-page-length="25"
 				data-order="[[ 1, &quot;asc&quot; ]]">
@@ -114,7 +114,7 @@ body {
 				<tbody>
 					<%
 						ArrayList<Session_Detail> listSession = (ArrayList<Session_Detail>) request.getAttribute("session");
-					for (Session_Detail s : listSession) {
+						for (Session_Detail s : listSession) {
 					%>
 					<%-- Arranging data in tabular form --%>
 					<tr>
@@ -136,45 +136,11 @@ body {
 			</table>
 			<div class="container">
 				<input type="submit"
-					style="background-color: #4CAF50; 
-					color: white; 
-					padding: 8px 20px; 
-					margin: 8px 0; 
-					border: none; 
-					align: left cursor: pointer; 
-					width: auto; 
-					font-size: 16px"
+					style="background-color: #4CAF50; color: white; padding: 8px 20px; margin: 8px 0; border: none; align: left cursor: pointer; width: auto; font-size: 16px"
 					value="Cancel Session">
-				<button onclick="goBack()"
-					style="background-color: grey; 
-					color: black; 
-					padding: 8px 20px; 
-					margin: 8px 0; 
-					border: none; 
-					align: left cursor: pointer; 
-					width: auto; 
-					font-size: 16px">Go Back</button>
 			</div>
 		</form>
 		<script>
-			function myFunction() {
-				var input, filter, table, tr, td, i, txtValue;
-				input = document.getElementById("myInput");
-				filter = input.value.toUpperCase();
-				table = document.getElementById("myTable");
-				tr = table.getElementsByTagName("tr");
-				for (i = 0; i < tr.length; i++) {
-					td = tr[i].getElementsByTagName("td")[2];
-					if (td) {
-						txtValue = td.textContent || td.innerText;
-						if (txtValue.toUpperCase().indexOf(filter) > -1) {
-							tr[i].style.display = "";
-						} else {
-							tr[i].style.display = "none";
-						}
-					}
-				}
-			}
 			function goBack() {
 				window.history.back();
 			}
@@ -182,6 +148,5 @@ body {
 				$('#myTable').DataTable();
 			});
 		</script>
-	</div>
 </body>
 </html>

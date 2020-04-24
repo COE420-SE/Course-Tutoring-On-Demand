@@ -76,7 +76,7 @@ tfoot input {
 <body>
 <div class="modal">
 <h2 class = "center" style="color: black"><b>Book a Session</b></h2>
-<form class = "modal-content" action="BookSessionServlet" method = "Post">
+<form class = "model-content" action="BookSessionServlet" method = "Post">
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for course.." title="Type in a course">
 <table id="myTable" class="table table-bordered compact" style = "width:100%; background-color:white" data-page-length="25" data-order="[[ 1, &quot;asc&quot; ]]">
     <thead>
@@ -99,7 +99,6 @@ tfoot input {
         --%>
             <tr> 
                 <td><input type="radio" name="session" value=<%=s.getSession_ID()%> required></td> 
-                <td><input type="hidden" name="tutor" value=<%=s.getTutor_Name()%>>
                 <td><%=s.getTutor_Name()%></td> 
                 <td><%=s.getCourse_ID()%></td> 
                 <td><%=s.getClassroom_ID()%></td> 
@@ -120,13 +119,6 @@ tfoot input {
   align: left
   cursor: pointer;
   width: auto; font-size: 16px" value="Submit">
-         <button onclick="goBack()" style="background-color: grey; color: black;
-  padding: 8px 20px;
-  margin: 8px 0;
-  border: none;
-  align: left
-  cursor: pointer;
-  width: auto; font-size: 16px">Go Back</button>
          </div>
 </form>
 <script>

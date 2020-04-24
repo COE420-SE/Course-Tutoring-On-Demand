@@ -64,7 +64,7 @@ body {
 		<b>Notification DashBoard</b>
 	</h2>
 	<%
-		ArrayList<String> listnotification = (ArrayList<String>) request.getAttribute("notification");
+		ArrayList<String> listnotification = (ArrayList<String>) request.getAttribute("message");
 		for (String s : listnotification) {
 	%>
 	<div class="alert alert-info alert-dismissible">
@@ -80,7 +80,8 @@ body {
 	</div>
 <script>
 	function goBack() {
-	window.history.back();
+	window.history.back()
+	}
 </script>
 </body>
 </html>

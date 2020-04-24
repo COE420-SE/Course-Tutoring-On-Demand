@@ -77,7 +77,6 @@ public class StudentServlet extends HttpServlet {
 		else if (null != request.getParameter("feedback_button")) {
 			
 			ArrayList<Feedback> tutor = studentModel.getTutorsofSessionDone();
-			
 			request.setAttribute("tutor", tutor);
 			RequestDispatcher rd =  request.getRequestDispatcher("GiveFeedback.jsp"); 
 			rd.forward(request, response);

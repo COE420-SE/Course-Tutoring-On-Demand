@@ -238,7 +238,7 @@ public class Session_Table {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+			if (rs == null) System.out.print("fix this");
 			return rs;
 	   }
 	

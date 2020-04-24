@@ -94,7 +94,6 @@ body {
 </head>
 <body>
 	<div class="container">
-		<form action='ProcessFeebackServlet' method="Post">
 		<%Feedback fed =  (Feedback)request.getAttribute("feedback"); %> 
 		<label for="tutor_name">Tutor Feedback: <%=fed.getTUTOR_NAME()%></label>
 			&nbsp;&nbsp;
@@ -110,7 +109,6 @@ body {
 			<div class="row w3-center">
 				<button onclick="goBack()">Go Back</button>
 			</div>
-		</form>
 	</div>
 
 <script>

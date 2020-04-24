@@ -21,7 +21,7 @@ public class FacultyFilter implements Filter {
     private HttpServletRequest httpRequest;
  
     private static final String[] loginRequiredURLs = {
-            "/Faculty.html", "/Display_Session.jsp"
+            "/Faculty.html"
     };
  
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
