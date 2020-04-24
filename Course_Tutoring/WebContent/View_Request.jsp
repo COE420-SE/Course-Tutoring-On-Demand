@@ -1,6 +1,7 @@
 <%@page import="ApplicationModel.Session_Detail"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="ApplicationModel.Session_Requests"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +22,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style>
 body {
-	background-image: url(AUS-campus.jpg);
+	background-image: url(tutor.PNG);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -42,37 +43,29 @@ body {
 </head>
 <body>
 
-<h2 class = "center"><b>Display a Session</b></h2>
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for course.." title="Type in a course">
+<h2 class = "center"><b>Session Requests</b></h2>
 <table id="myTable" class="table table-white table-bordered compact" style = "width:100%; background-color:white " data-page-length="25" data-order="[[ 1, &quot;asc&quot; ]]">
     <thead>
         <tr style= "background-color:green">
-          <th>Session ID</th> 
-          <th>Tutor Name</th> 
+          <th>Student ID</th> 
           <th>Course Name</th> 
-           <th>Classroom</th> 
             <th>Session Date</th> 
-             <th>StartTime</th> 
-              <th>EndTime</th> 
-               <th>No of Seats</th> 
+             <th>Type of Session</th> 
+              <th>Comment</th> 
         </tr>
     </thead>
     <tbody> 
-        <%ArrayList<Session_Detail> listSession =  
-            (ArrayList<Session_Detail>)request.getAttribute("session"); 
-        for(Session_Detail s:listSession){%> 
+        <%ArrayList<Session_Requests> listSession =  
+            (ArrayList<Session_Requests>)request.getAttribute("request"); 
+        for(Session_Requests s:listSession){%> 
         <%-- Arranging data in tabular form 
         --%>
             <tr>  
-                <td><%=s.getTutor_Name()%></td> 
-                <td><%=s.getCourse_ID()%></td> 
-                <td><%=s.getDate_of_session()%></td>
-                <%ArrayList<String> student = (ArrayList<String>)s.getstudentList();%>
-                 <td>
-                 	<%for(String t:student){%> 
-                 		[<%=t%>]
-                 </td>
-                 <%}%>
+                <td><%=s.getSTUDENT_ID()%></td> 
+                <td><%=s.getCOURSE_ID()%></td> 
+                <td><%=s.getDATE()%></td>
+                <td><%=s.getTYPE()%></td>
+                <td><%=s.getCOMMENT()%></td>
             </tr> 
             <%}%>
             </tbody>
@@ -81,24 +74,6 @@ body {
          <button onclick="goBack()">Go Back</button>
          </div>
 <script>
-function myFunction() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[2];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
 function goBack() {
 	  window.history.back();
 	}
