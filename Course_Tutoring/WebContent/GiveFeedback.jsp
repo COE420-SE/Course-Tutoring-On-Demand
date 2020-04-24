@@ -121,8 +121,8 @@ body {
 					<label for="session">Send Tutor: </label>
 				</div>
 				<div class="col-75">
-						<input type="radio" name="yes_no" value = "y">Yes
-						<input type="radio" name="yes_no" value = "n" checked>No
+						<input type="radio" name="yes_no" value = "Y">Yes
+						<input type="radio" name="yes_no" value = "N" checked>No
 			</div>
 			</div>
 			<div class="row">
