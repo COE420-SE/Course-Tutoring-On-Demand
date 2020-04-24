@@ -99,7 +99,6 @@ public class Session_Detail {
 		return Course_Name;
 	}
 
-
 	public ArrayList<String> getStudent_names() {
 		return student_names;
 	}
