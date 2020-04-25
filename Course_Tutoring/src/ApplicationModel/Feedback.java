@@ -30,8 +30,9 @@ public class Feedback {
 		COMMENTS = cOMMENTS;
 		SEND_TUTOR = sEND_TUTOR;
 	}
-	public Feedback(String tUTOR_ID, String tUTOR_NAME) {
+	public Feedback(String feedback, String tUTOR_ID, String tUTOR_NAME) {
 		super();
+		FEEDBACK_ID = feedback;
 		TUTOR_ID = tUTOR_ID;
 		TUTOR_NAME = tUTOR_NAME;
 	}

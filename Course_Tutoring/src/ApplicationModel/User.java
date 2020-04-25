@@ -130,12 +130,11 @@ public String getUser_ID() {
 		ArrayList<String> message = new ArrayList<String>();
 		ResultSet messages = notification.getNotificationsFor(getUser_ID());
 		try {
-			if(!messages.isBeforeFirst()) {return null;}
+			if(messages.isBeforeFirst()) {
 			while(messages.next()){
 				message.add(messages.getString("MESSAGE"));
 				System.out.println(messages.getString("MESSAGE"));
-				System.out.println(messages.getString("hello"));
-				}
+				}}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -232,7 +231,7 @@ public String validateUser(String email, String password) {
 		ResultSet sessionSet = session_Table.retreievAllSessions(upcomming);
 		
 		try {
-			if(!sessionSet.isBeforeFirst()) {return null;}
+			if(sessionSet.isBeforeFirst()) {
 			while(sessionSet.next()){
 				
 				java.sql.Date date = sessionSet.getDate("DATE_OF_SESSION");
@@ -254,7 +253,7 @@ public String validateUser(String email, String password) {
 				
 			session.add(sDetail);
 					
-			}
+			}}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -295,11 +294,11 @@ public ArrayList<String> getAllStudentIDsOfSession(String session_id){
 		ResultSet studentResultSet = users_table.customExecuteSQL(sqlString);
 		
 		try {
-			if(!studentResultSet.isBeforeFirst()) {return null;}
+			if(studentResultSet.isBeforeFirst()) {
 			while(studentResultSet.next()){
 			
 				student_id.add(studentResultSet.getString("STUDENT_ID"));
-					}
+					}}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -350,9 +349,9 @@ public ArrayList<String> getAllStudentIDsOfSession(String session_id){
 		ResultSet resultSet = users_table.customExecuteSQL(sqlString);
 		
 			try {
-				if (!resultSet.isAfterLast()) deptadmins = null;
+				if (resultSet.isAfterLast()) {
 				while(resultSet.next()) {
-				deptadmins.add(resultSet.getString("ADMIN_ID"));}
+				deptadmins.add(resultSet.getString("ADMIN_ID"));}}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -363,11 +362,11 @@ public ArrayList<String> getAllStudentIDsOfSession(String session_id){
 	
 	 
     // (Dhriti) can you please add this function
-    public Feedback getSpecificFeedbackFrom(String session_id) {
-    	Feedback feedback = null;
+    public Feedback getSpecificFeedbackFrom(String feedback_id) {
+    	Feedback feedback =  null;
     	String sqString = "select f.feedback_id, f.sf_student_id, s.student_name, f.sf_tutor_id, t.student_name TUTOR_NAME, f.tutor_also, f.comments " + 
 				"from student_feedback f, student s, student t " + 
-				"where f.sf_student_id = s.student_id and f.feedback_id = "+session_id;
+				"where f.sf_student_id = s.student_id and f.feedback_id = "+feedback_id;
     	
     	ResultSet feedbackSet = users_table.customExecuteSQL(sqString);
 		

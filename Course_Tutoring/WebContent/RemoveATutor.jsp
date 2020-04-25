@@ -98,6 +98,7 @@ tfoot input {
         --%>
 					<tr>
 						<td><input type="radio" name="tutor" value=<%=s.getTUTOR_ID()%> required></td>
+						<td><%=s.getTUTOR_ID()%></td>
 						<td><%=s.getTUTOR_NAME()%></td>
 					</tr>
 

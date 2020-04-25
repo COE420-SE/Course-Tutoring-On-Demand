@@ -194,7 +194,7 @@ public boolean ApplyToBeTutor(Tutor_Application newApplication) {
 	  return false;
 }
 
- //get tutor names and id
+ //get tutor names and id hack using feedback even though its not
   public ArrayList<Feedback> getTutorsofSessionDone(){
 	  
 	  ArrayList<Feedback> tutorList = new ArrayList<Feedback>();
@@ -204,7 +204,7 @@ public boolean ApplyToBeTutor(Tutor_Application newApplication) {
 		if (sResultSet.isBeforeFirst()) {
 			while (sResultSet.next()) {
 				
-				tutorList.add(new Feedback(sResultSet.getString("STUDENT_ID"), sResultSet.getString("STUDENT_NAME")));
+				tutorList.add(new Feedback("", sResultSet.getString("STUDENT_ID"), sResultSet.getString("STUDENT_NAME")));
 				}
 			}
 	} catch (SQLException e) {

@@ -83,7 +83,7 @@ public class TutorServlet extends HttpServlet{
 			
 			ArrayList<Feedback> feedbacks = tutor.retreiveFeedbacksforTutor(tutor.getUser_ID());
 			request.setAttribute("feedback", feedbacks);
-			RequestDispatcher rd = request.getRequestDispatcher("ProcessTutorFeedback.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("Choose_Tutor_Feedback.jsp");
 			rd.forward(request, response);
 		}
 		else if (null != request.getParameter("dsession_button")) {

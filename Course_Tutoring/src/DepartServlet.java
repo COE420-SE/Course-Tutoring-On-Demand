@@ -96,8 +96,8 @@ public class DepartServlet extends HttpServlet{
 			
 		}
 		else if (null != request.getParameter("notify_button")) {
-			ArrayList<String>notification = deptAdmin.getNotifications();
-			request.setAttribute("notification", notification); 
+			ArrayList<String>notifi = deptAdmin.getNotifications();
+			request.setAttribute("notification", notifi); 
 			RequestDispatcher rd =  request.getRequestDispatcher("notification.jsp"); 
 			rd.forward(request, response);
 			
