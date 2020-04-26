@@ -59,9 +59,10 @@ public class RequestASessionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 			String course = request.getParameter("course");
 			String date = convertDate(request.getParameter("datemin"));
-			String tYPE = request.getParameter("session type");
+			String tYPE = request.getParameter("session_type");
 			String comment = request.getParameter("comment");
 			
 			Session_Requests req =new Session_Requests(studentModel.getUser_ID(),course, date, tYPE, comment);

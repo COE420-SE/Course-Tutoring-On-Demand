@@ -131,9 +131,9 @@ body {
 				</div>
 				<div class="col-75">
 				 <select name = "session_type">
-					<option>Group Session</option>
-					<option>Semi-Private Session</option>
-					<option>Private Session</option>
+					<option value="Group Session">Group Session</option>
+					<option value="Semi-Private Session">Semi-Private Session</option>
+					<option value="Private Sesssion">Private Session</option>
 					</select>
 				</div>
 			</div>

@@ -105,14 +105,14 @@ public class Tutor extends User{
 		ResultSet requestSet = requests_table.retreiveSessionRequestsforTutor(tutor_id);
 		
 		try {
-			requestSet.beforeFirst();
+			if(requestSet.isBeforeFirst()) {
 			while(requestSet.next()){
 			requests.add(new Session_Requests(requestSet.getString("SR_STUDENT_ID"),
 					requestSet.getString("SR_COURSE_ID"), 
 					requestSet.getString("REQUEST_DATE"),
 					requestSet.getString("TYPE_OF_SESSION"),
-					requestSet.getString("COMMENT")));
-					}
+					requestSet.getString("COMMENTS")));
+					}}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
