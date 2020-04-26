@@ -1,6 +1,7 @@
 
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -72,9 +73,6 @@ public class CreateSessionServlet extends HttpServlet {
 			String Start = convertTime(request.getParameter("start_time"));
 			String End = convertTime(request.getParameter("end_time"));
 			String Max_seats = request.getParameter("seats");
-			
-			
-			
 			System.out.println(course_name);
 			System.out.println(classroom_id);
 			System.out.println(date);
