@@ -111,7 +111,7 @@ public class Tutor extends User{
 					requestSet.getString("SR_COURSE_ID"), 
 					requestSet.getString("REQUEST_DATE"),
 					requestSet.getString("TYPE_OF_SESSION"),
-					requestSet.getString("COMMENT")));
+					requestSet.getString("COMMENTS")));
 					}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

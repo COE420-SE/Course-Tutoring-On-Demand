@@ -165,15 +165,16 @@ body {
 				</div>
 			</div>
 			<div class="row">
-				<input type="submit" value="Submit" name="submit_button" onClick = TimePickerCtrl()>
+				<input type="submit" value="Submit" name="submit_button">
 			</div>
 		</form>
 	</div>
 <script>
 function TimePickerCtrl($) {
 	var startTime = Time.parse($('#starttime').val());
-	 var endTime = Time.parse($('#enter').val());
-	 if (startTime >= endTime) { alert("Please enter proper time") }
+	 var endTime = Time.parse($('#endtime').val());
+	 if (startTime >= endTime) { alert("Please enter proper time"); }
+	 window.TimePickerCtrl()
 	</script>
 </body>
 </html>
