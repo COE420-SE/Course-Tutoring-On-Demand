@@ -87,7 +87,7 @@ input[type=submit]:hover {
 }
 
 body {
-	background-image: url(feedback.jpg);
+	background-image: url(tutor.PNG);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -130,7 +130,7 @@ body {
 					<label for="comment">Comment: </label>
 				</div>
 				<div class="col-75">
-					<textarea rows="4" cols="30" name="comments" placeholder = "Enter comment here"></textarea>
+					<textarea rows="4" cols="30" name="comments" placeholder = "Enter comment here" required></textarea>
 
 			</div>
 			</div>

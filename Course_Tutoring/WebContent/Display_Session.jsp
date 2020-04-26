@@ -52,9 +52,11 @@ body {
           <th>Course Name</th> 
            <th>Classroom</th> 
             <th>Session Date</th> 
-             <th>StartTime</th> 
-              <th>EndTime</th> 
-               <th>No of Seats</th> 
+             <th>Start Time</th> 
+              <th>End Time</th> 
+               <th>No of Seats</th>
+                <th>Students Attending</th>
+                
         </tr>
     </thead>
     <tbody> 
@@ -63,9 +65,14 @@ body {
         <%-- Arranging data in tabular form 
         --%>
             <tr>  
+                 <td><%=s.getSession_ID()%></td>
                 <td><%=s.getTutor_Name()%></td> 
                 <td><%=s.getCourse_ID()%></td> 
+                 <td><%=s.getClassroom_ID()%></td>
                 <td><%=s.getDate_of_session()%></td>
+                 <td><%=s.getStart_time()%></td>
+                  <td><%=s.getEnd_time()%></td>
+                   <td><%=s.getMax_Seats()%></td>
                 <%ArrayList<String> student = (ArrayList<String>)s.getStudent_names();%>
                  <td>
                  	<%for(String t:student){%> 

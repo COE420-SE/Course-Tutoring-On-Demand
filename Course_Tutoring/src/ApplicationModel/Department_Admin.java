@@ -202,17 +202,18 @@ public class Department_Admin extends User{
     	
     	ArrayList<Feedback> feedbacks = new ArrayList<Feedback>();
     	String sqlString = "select tutor_ID, STUDENT_NAME " + 
-    			"from tutor, student" + 
+    			"from tutor, student " + 
     			"where student.student_id=tutor_id and student_major = '"+getUser_department()+"'";
 	
     ResultSet rSet = users_table.customExecuteSQL(sqlString);
     
     try {
-		if (!rSet.isBeforeFirst()) feedbacks = null;
+		if (rSet.isBeforeFirst()) {
 		  while(rSet.next()) {
 		    	
-		    	feedbacks.add(new Feedback(rSet.getString("TUTOR_ID"), rSet.getString("STUDENT_NAME")));
-		    }
+		    	feedbacks.add(new Feedback("", rSet.getString("TUTOR_ID"), rSet.getString("STUDENT_NAME")));
+		    
+		    }}
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
