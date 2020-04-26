@@ -145,7 +145,7 @@ body {
 					<label for="s_time">Start Time: </label>
 				</div>
 				<div class="col-75">
-					<input type="time" id="timemin" name="start_time" min="17:00" required>
+					<input type="time" id="timemin" name="start_time" id = starttime min="17:00" required>
 				</div>
 			</div>
 			<div class="row">
@@ -153,7 +153,7 @@ body {
 					<label for="e_time">End Time: </label>
 				</div>
 				<div class="col-75">
-					<input type="time" id="timemin" name="end_time" min="18:00" required>
+					<input type="time" id="timemin" name="end_time" id = endtime required>
 				</div>
 			</div>
 			<div class="row">
@@ -161,14 +161,19 @@ body {
 					<label for="n_seats">Max No of Seats: </label>
 				</div>
 				<div class="col-75">
-					<input type="number" id="seat" name="seats" required>
+					<input type="number" id="seat" name="seats" min = "1" max = "10" required>
 				</div>
 			</div>
 			<div class="row">
-				<input type="submit" value="Submit" name="submit_button">
+				<input type="submit" value="Submit" name="submit_button" onClick = TimePickerCtrl()>
 			</div>
 		</form>
 	</div>
-
+<script>
+function TimePickerCtrl($) {
+	var startTime = Time.parse($('#starttime').val());
+	 var endTime = Time.parse($('#enter').val());
+	 if (startTime >= endTime) { alert("Please enter proper time") }
+	</script>
 </body>
 </html>

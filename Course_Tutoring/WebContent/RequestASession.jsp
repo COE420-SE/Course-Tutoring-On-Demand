@@ -142,7 +142,7 @@ body {
 					<label for="comment">Comment: </label>
 				</div>
 				<div class="col-75">
-					<textarea rows="4" cols="30" name="comment"> Enter comment here...</textarea>
+					<textarea rows="4" cols="30" name="comment" placeholder = "Enter comment" ></textarea>
 			</div>
 			</div>
 			&nbsp;&nbsp;
