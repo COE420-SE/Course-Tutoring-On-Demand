@@ -109,9 +109,6 @@ tfoot input {
 				<input type="submit"
 					style="background-color: #4CAF50; color: white; padding: 8px 20px; margin: 8px 0; border: none; align: left cursor: pointer; width: auto; font-size: 16px"
 					value="Submit">
-				<button onclick="goBack()"
-					style="background-color: grey; color: black; padding: 8px 20px; margin: 8px 0; border: none; align: left cursor: pointer; width: auto; font-size: 16px">Go
-					Back</button>
 			</div>
 		</form>
 		<script>

@@ -68,10 +68,18 @@ public class BeTutorServlet extends HttpServlet {
 			for (int i = 0; i < CourseChosen.size(); i++) {
 				System.out.println(CourseChosen.get(i));
 			}
+			if (CourseChosen.size() > 10) {
+				String message = "Error: you cannot tutor more than 10 courses :)";
+				request.setAttribute("message", message);
+				RequestDispatcher rd =  request.getRequestDispatcher("StudentMessage.jsp"); 
+				rd.forward(request, response);
+			}
 			//add the courses to tutorcourse table (dhriti)
-			request.setAttribute("course_list", CourseChosen);
+			else {
+				request.setAttribute("course_list", CourseChosen);
 			RequestDispatcher rd =  request.getRequestDispatcher("Apply_Tutor_Grade.jsp"); 
 			rd.forward(request, response);
+			}
 		}
 		// TODO Auto-generated method stub
 		else {
