@@ -19,7 +19,7 @@ public class NotiDisplayFilter implements Filter {
     private HttpServletRequest httpRequest;
  
     private static final String[] loginRequiredURLs = {
-            "/notification.jsp", "/Display_Session.jsp", "/error.html", "/error_action.html", "/doesnotexist.html"
+            "/notification.jsp", "/Display_Session.jsp", "/error.html", "/error_action.html"
     };
  
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
