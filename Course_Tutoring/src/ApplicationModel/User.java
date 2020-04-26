@@ -316,7 +316,7 @@ public ArrayList<String> getAllStudentIDsOfSession(String session_id){
 		ResultSet sessionSet = session_Table.retreievSessionsOfStudent(student_id, upcomming);
 		
 		try {
-			if(!sessionSet.isBeforeFirst()) 
+			if(sessionSet.isBeforeFirst()) {
 			while(sessionSet.next()){
 				
 				java.sql.Date date = sessionSet.getDate("DATE_OF_SESSION");
@@ -332,7 +332,7 @@ public ArrayList<String> getAllStudentIDsOfSession(String session_id){
 					sessionSet.getString("END_TIME"),
 					sessionSet.getString("MAX_CAPACITY")));
 			
-					}
+					}}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

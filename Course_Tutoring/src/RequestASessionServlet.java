@@ -27,6 +27,7 @@ public class RequestASessionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	Student studentModel = new Student();
+	RequestDispatcher rd;
 
 	
 
@@ -76,13 +77,25 @@ public class RequestASessionServlet extends HttpServlet {
 				
 				String message = "Success: Session request for "+course+" is successfull";
 				request.setAttribute("message", message);
-				RequestDispatcher rd =  request.getRequestDispatcher("StudentMessage.jsp"); 
+				
+				
+				if (Student.getUser_type().equals("student")) {
+					rd = request.getRequestDispatcher("StudentMessage.jsp"); 	
+				}
+				else {
+					rd = request.getRequestDispatcher("TutorMessage.jsp"); 	
+				}
 				rd.forward(request, response);
 			}
 			else {
 				String message = "Error: Session request is unsuccesfull, Try again later";
 				request.setAttribute("message", message);
-				RequestDispatcher rd =  request.getRequestDispatcher("DepartmentMessage.jsp"); 
+				if (Student.getUser_type().equals("student")) {
+					rd = request.getRequestDispatcher("StudentMessage.jsp"); 	
+				}
+				else {
+					rd = request.getRequestDispatcher("TutorMessage.jsp"); 	
+				}
 				rd.forward(request, response);
 			}
 

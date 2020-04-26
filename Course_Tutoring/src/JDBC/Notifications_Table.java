@@ -36,7 +36,6 @@ public class Notifications_Table {
 		String sqlString = "SELECT MESSAGE FROM NOTIFICATION WHERE RECEIVER_ID = "+ userID + " ORDER BY ORDERS DESC";
 		try {
 			rs = dbCon.executeStatement(sqlString);
-			if(!rs.isBeforeFirst()) {return rs;}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -70,7 +70,7 @@ public class Tutor_Courses_Table {
 	//retreive tutor course by courses
 	public ResultSet retreiveTutorCourseTableBYCourse(String courses) {
 		// TODO Auto-generated method stub
-		String sqlString = "select * from tutor_courses where tc_course_id = "+courses;
+		String sqlString = "select * from tutor_courses where tc_course_id = '"+courses+"'";
 		
 		try {
 			rs = dbCon.executeStatement(sqlString);
