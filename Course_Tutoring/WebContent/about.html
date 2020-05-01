@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0;
+}
+
+html {
+	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+.column {
+	float: left;
+	width: 50%;
+	margin-bottom: 16px;
+	padding: 0 8px;
+}
+
+.card {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	margin: 8px;
+}
+
+.about-section {
+	padding: 50px;
+	text-align: center;
+	background-color: #474e5d;
+	color: white;
+}
+
+.container {
+	padding: 0 16px;
+}
+
+.container::after, .row::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+.title {
+	color: grey;
+}
+
+.button {
+	border: none;
+	outline: 0;
+	display: inline-block;
+	padding: 8px;
+	color: white;
+	background-color: #000;
+	text-align: center;
+	cursor: pointer;
+	width: 100%;
+}
+
+.button:hover {
+	background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+	.column {
+		width: 100%;
+		display: block;
+	}
+}
+</style>
+</head>
+<body>
+	<div class="about-section">
+		<h1>About Page</h1>
+		<p class="w3-large" style="color: white">This WebSite allows
+			students to register and request for tutoring sessions for any course
+			offered by AUS.</p>
+		<p class="w3-large" style="color: white">Students can also apply
+			to become tutors and offer tutoring sessions as long as they have a
+			grade of B+ or above in that course. Tutor requests are processed by
+			our Department Admins, the student will be notified when a decision
+			is made.</p>
+		<p class="w3-large" style="color: white">AUS Faculty Members can
+			use our WebSite to monitor student and tutor activities as long as
+			they have been registered by a Department Admin.</p>
+	</div>
+	<h2 style="text-align: center">Our Team</h2>
+	<div class="card w3-center">
+		<img src="ourpic.JPG" alt="Jane" style="width: 50%">
+		<div class="container" style="text-align: center">
+			<h2>Dhriti Adyanthaya and Najia Mustafa</h2>
+			<p class="title">Developers</p>
+			<p>We are computer engineering students who have built this
+				website to provide AUS Students a Course Tutoring on Demand Platform.</p>
+			<p>Feel Free to contact us at our emails: g00074266@aus.edu and
+				g00076147@aus.edu</p>
+		</div>
+	</div>
+
+</body>
+</html>
