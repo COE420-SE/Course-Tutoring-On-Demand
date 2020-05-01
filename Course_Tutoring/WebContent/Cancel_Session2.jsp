@@ -1,97 +1,50 @@
 <%@page import="ApplicationModel.Session_Detail"%>
 <%@page import="java.util.List"%>
-<!-- do we need to include this?? -->
 <%@page import="java.util.ArrayList"%>
-
+<%@page import="ApplicationModel.Session_Requests"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min
-.css">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+	<link rel="stylesheet"
+	href="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
+		<link rel="stylesheet"
+	href="https://code.jquery.com/jquery-3.3.1.js">
+	<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js">
+	<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet"
+	href="https://cdn.datatables.net/searchpanes/1.0.1/css/searchpanes.dataTables.min.css">
+	<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style>
-* {
-	box-sizing: border-box;
+body {
+	background-image: url(tutor.PNG);
+	background-repeat: no-repeat;
+	background-size: cover;
 }
+#myInput {
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 20px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 80%;
+	margin-left: 50px;
+}
+
 .center {
 	display: block;
 	margin-left: 40%;
 	margin-right: auto;
 	max-width: 60%;
-}
-
-input[type=text], input[type=date], input[type=time], input[type=number],
-	select, textarea {
-	width: 100%;
-	padding: 12px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	resize: vertical;
-}
-label {
-	padding: 12px 12px 12px 0;
-	display: inline-block;
-}
-
-input[type=submit] {
-	background-color: #4CAF50;
-	color: white;
-	padding: 12px 20px;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	float: right;
-	margin-left: auto;
-	margin-right: auto;
-	max-width: 80%;
-	height: auto
-}
-
-input[type=submit]:hover {
-	background-color: #45a049;
-}
-
-.container {
-	margin: 4% auto 15% auto;
-	border-radius: 5px;
-	padding: 20px;
-}
-
-.col-25 {
-	float: Right;
-	text-align: right;
-	width: 15%;
-	margin-top: 6px;
-	margin-left: 10px;
-}
-
-.col-75 {
-	float: left;
-	width: 75%;
-	margin-top: 6px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-	.col-25, .col-75, input[type=submit] {
-		width: 80%;
-		margin-top: 0;
-	}
-}
-
-body {
-	background-image: url(tutor.PNG);
-	background-repeat: no-repeat;
-	background-size: cover;
 }
 </style>
 </head>
@@ -101,7 +54,7 @@ body {
 	</h2>
 	<form action="CancelSessionServlet" method="Post">
 		<table id="myTable" class="table table-bordered compact"
-			style="width: 100%; background-color: white" data-page-length="25"
+			style="width: 90%; background-color: white" data-page-length="25"
 			data-order="[[ 1, &quot;asc&quot; ]]">
 			<thead>
 				<tr style="background-color: #4CAF50">
@@ -138,8 +91,8 @@ body {
 				%>
 			</tbody>
 		</table>
-		<input type="submit" class = ""
-			style="background-color: #4CAF50; color: white; padding: 8px 10px; margin: 8px 0; border: none; cursor: pointer; width: auto; font-size: 16px"
+		<input type="submit" class = "center"
+			style="background-color: #4CAF50; color: white; padding: 8px 10px;border: none; cursor: pointer; width: auto; font-size: 16px"
 			value="Cancel Session" name="submit_button">
 	</form>
 		<button onclick="goBack()">Go Back</button>
