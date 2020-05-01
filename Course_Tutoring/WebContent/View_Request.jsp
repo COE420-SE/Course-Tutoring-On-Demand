@@ -33,6 +33,13 @@ body {
   border: 1px solid #ddd;
   margin-bottom: 10px;
 }
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 80%;
+	margin-left: 50px;
+}
+
 .center {
 	display: block;
 	margin-left: 40%;
@@ -44,7 +51,7 @@ body {
 <body>
 
 <h2 class = "center"><b>Session Requests</b></h2>
-<table id="myTable" class="table table-white table-bordered compact" style = "width:100%; background-color:white " data-page-length="25" data-order="[[ 1, &quot;asc&quot; ]]">
+<table id="myTable" class="table table-white table-bordered compact" style = "width:90%; background-color:white " data-page-length="25" data-order="[[ 1, &quot;asc&quot; ]]">
     <thead>
         <tr style= "background-color:green">
           <th>Student ID</th> 

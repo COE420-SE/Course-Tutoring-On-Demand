@@ -30,7 +30,6 @@ input[type=text], input[type=date], input[type=time], input[type=number],
 	border-radius: 4px;
 	resize: vertical;
 }
-
 label {
 	padding: 12px 12px 12px 0;
 	display: inline-block;

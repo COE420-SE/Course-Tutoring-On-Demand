@@ -22,6 +22,13 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 80%;
+	margin-left: 50px;
+}
+
 tfoot input {
         width: 100%;
         padding: 3px;
@@ -46,7 +53,7 @@ tfoot input {
 
 <h2 class = "center"><b>Tutor Applications</b></h2>
 <form action="ProcessRequestServlet" method = "Post">
-<table id="myTable" class="table table-bordered compact" style = "width:100%; background-color:white" data-page-length="25" data-order="[[ 1, &quot;asc&quot; ]]">
+<table id="myTable" class="table table-bordered compact" style = "width:90%; background-color:white" data-page-length="25" data-order="[[ 1, &quot;asc&quot; ]]">
     <thead>
         <tr style= "background-color:green">
           <th>Choose</th> 

@@ -27,6 +27,13 @@ tfoot input {
         padding: 3px;
         box-sizing: border-box;
     }
+    table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 80%;
+	margin-left: 50px;
+}
+    
 #myInput {
   width: 100%;
   font-size: 16px;
@@ -46,7 +53,7 @@ tfoot input {
 
 <h2 class = "center"><b>View Tutor Feedback</b></h2>
 <form action="ProcessFeedbackServlet" method = "Post">
-<table id="myTable" class="table table-bordered compact" style = "width:100%; background-color:white" data-page-length="25" data-order="[[ 1, &quot;asc&quot; ]]">
+<table id="myTable" class="table table-bordered compact" style = "width:90%; background-color:white" data-page-length="25" data-order="[[ 1, &quot;asc&quot; ]]">
     <thead>
         <tr style= "background-color:green">
           <th>Choose</th> 
@@ -72,9 +79,7 @@ tfoot input {
         <input type="submit" name="next" style="background-color:green; color:white; font-size: 16px" value="Submit">
          </div>
 </form>
-	<div class="w3-center">
-				<button onclick="goBack()">Go Back</button>
-			</div>
+				<button style="margin:70px" onclick="goBack()">Go Back</button>
 <script>
 $(document).ready(function() {
     $('#myTable').DataTable();
