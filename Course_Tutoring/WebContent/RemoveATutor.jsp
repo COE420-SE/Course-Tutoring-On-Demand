@@ -107,10 +107,14 @@ tfoot input {
 			</table>
 			<div class="container">
 				<input type="submit"
-					style="background-color: #4CAF50; color: white; padding: 8px 20px; margin: 8px 0; border: none; align: left cursor: pointer; width: auto; font-size: 16px"
+					style="background-color: #4CAF50; color: white; padding: 8px 20px; margin: 8px 0; border: none; align: left; cursor: pointer; width: auto; font-size: 16px"
 					value="Submit">
 			</div>
 		</form>
+		&nbsp;&nbsp;
+		<div class = "container">
+		<button onclick="goBack()">Go Back</button>
+		</div>
 		<script>
 function goBack() {
 	  window.history.back();

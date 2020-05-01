@@ -151,7 +151,12 @@ body {
 			</div>
 			&nbsp;&nbsp;
 		</form>
+		<button onclick="goBack()">Go Back</button>
 	</div>
-
+<script>
+function goBack() {
+	  window.history.back();
+	}
+</script>
 </body>
 </html>

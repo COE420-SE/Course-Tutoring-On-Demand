@@ -72,10 +72,16 @@ tfoot input {
         <input type="submit" name="next" style="background-color:green; color:white; font-size: 16px" value="Submit">
          </div>
 </form>
+	<div class="w3-center">
+				<button onclick="goBack()">Go Back</button>
+			</div>
 <script>
 $(document).ready(function() {
     $('#myTable').DataTable();
 } );
+function goBack() {
+	  window.history.back();
+	}
 </script>
 
 </body>

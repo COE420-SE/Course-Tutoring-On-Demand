@@ -3,7 +3,7 @@
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en">
-<title>AUS Course Tutoring</title>
+<title>Add Faculty</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -57,7 +57,7 @@ label {
 	margin: 4% auto 15% auto;
 	/* 5% from the top, 15% from the bottom and centered */
 	border: 1px solid #888;
-	width: 40%;
+	width: 50%;
 	height: auto /* Could be more or less, depending on screen size */
 }
 button {
@@ -90,12 +90,12 @@ button {
 
 #message p {
 	padding: 10px 55px;
-	font-size: 14px;
+	font-size: 10px;
 }
 
 #message2 p {
 	padding: 10px 55px;
-	font-size: 14px;
+	font-size: 10px;
 }
 /* Add a green text color and a checkmark when the requirements are right */
 .valid {
@@ -217,6 +217,9 @@ button {
 				document.getElementById("button").style.display = "block";
 			}
 		}
+		function goBack() {
+			  window.history.back();
+			}
 	</script>
 </body>
 </html>

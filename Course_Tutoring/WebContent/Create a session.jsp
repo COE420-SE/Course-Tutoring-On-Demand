@@ -168,13 +168,12 @@ body {
 				<input type="submit" value="Submit" name="submit_button">
 			</div>
 		</form>
+		<button onclick="goBack()" style="paddimg:50px 16px">Go Back</button>
 	</div>
 <script>
-function TimePickerCtrl($) {
-	var startTime = Time.parse($('#starttime').val());
-	 var endTime = Time.parse($('#endtime').val());
-	 if (startTime >= endTime) { alert("Please enter proper time"); }
-	 window.TimePickerCtrl()
+function goBack() {
+	  window.history.back();
+	}
 	</script>
 </body>
 </html>

@@ -52,7 +52,7 @@ input[type=submit]:hover {
 	margin: 4% auto 15% auto;
 	border-radius: 5px;
 	background-color: #fefefe;
-	padding: 20px;
+	padding: 60px;
 }
 
 .col-25 {

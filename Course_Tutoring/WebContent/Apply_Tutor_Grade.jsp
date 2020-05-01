@@ -129,7 +129,12 @@ body {
 				<input type="submit" value="Submit" name="submit_button">
 			</div>
 		</form>
+		<button onclick="goBack()">Go Back</button>
 	</div>
-
+<script>
+function goBack() {
+	  window.history.back();
+	}
+	</script>
 </body>
 </html>

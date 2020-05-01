@@ -32,7 +32,7 @@
 }
 .modal-content {
 	background-color: #fefefe;
-	margin: 0% auto 0% auto;
+	margin: 5% auto 15% auto;
 	/* 5% from the top, 15% from the bottom and centered */
 	border: 1px solid #888;
 	width: 90%; /* Could be more or less, depending on screen size */
@@ -75,8 +75,8 @@ tfoot input {
 </head>
 <body>
 <div class="modal">
-<h2 class = "center" style="color: black"><b>Book a Session</b></h2>
 <form class = "model-content" action="BookSessionServlet" method = "Post">
+<h2 class = "center" style="color: black"><b>Book a Session</b></h2>
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for course.." title="Type in a course">
 <table id="myTable" class="table table-bordered compact" style = "width:100%; background-color:white" data-page-length="25" data-order="[[ 1, &quot;asc&quot; ]]">
     <thead>
@@ -121,6 +121,7 @@ tfoot input {
   width: auto; font-size: 16px" value="Submit">
          </div>
 </form>
+		<button onclick="goBack()" style="paddimg:50px 16px">Go Back</button>
 <script>
 function myFunction() {
   var input, filter, table, tr, td, i, txtValue;
@@ -140,12 +141,12 @@ function myFunction() {
     }       
   }
 }
-function goBack() {
-	  window.history.back();
-	}
 $(document).ready(function() {
     $('#myTable').DataTable();
 } );
+function goBack() {
+	  window.history.back();
+	}
 </script>
 </div>
 </body>

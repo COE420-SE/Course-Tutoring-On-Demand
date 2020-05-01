@@ -70,9 +70,9 @@ tfoot input {
 </table>
         <div class = "container center">
         <input type="submit" name="next" style="background-color:green; color:white; font-size: 16px" value="Submit">
-         <button onclick="goBack()">Go Back</button>
          </div>
 </form>
+<button onclick="goBack()">Go Back</button>
 <script>
 function goBack() {
 	  window.history.back();

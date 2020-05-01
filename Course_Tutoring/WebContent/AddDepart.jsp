@@ -4,7 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<title>AUS Course Tutoring</title>
+<title>Add Department Admin</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"

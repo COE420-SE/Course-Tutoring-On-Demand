@@ -15,6 +15,12 @@
 * {
 	box-sizing: border-box;
 }
+.center {
+	display: block;
+	margin-left: 40%;
+	margin-right: auto;
+	max-width: 60%;
+}
 
 input[type=text], input[type=date], input[type=time], input[type=number],
 	select, textarea {
@@ -91,62 +97,60 @@ body {
 </style>
 </head>
 <body>
-		<h2 class="center" style="color: black">
-			<b>Cancel a Session</b>
-		</h2>
-		<form action="CancelSessionServlet"
-			method="Post">
-			<table id="myTable" class="table table-bordered compact"
-				style="width: 100%; background-color: white" data-page-length="25"
-				data-order="[[ 1, &quot;asc&quot; ]]">
-				<thead>
-					<tr style="background-color: #4CAF50">
-						<th>Choose</th>
-						<th>Tutor Name</th>
-						<th>Course Name</th>
-						<th>Classroom</th>
-						<th>Session Date</th>
-						<th>StartTime</th>
-						<th>EndTime</th>
-						<th>No of Seats</th>
-					</tr>
-				</thead>
-				<tbody>
-					<%
-						ArrayList<Session_Detail> listSession = (ArrayList<Session_Detail>) request.getAttribute("session");
-						for (Session_Detail s : listSession) {
-					%>
-					<%-- Arranging data in tabular form --%>
-					<tr>
-						<td><input type="radio" name="session"
-							value=<%=s.getSession_ID()%> required></td>
-						<td><%=s.getTutor_Name()%></td>
-						<td><%=s.getCourse_ID()%></td>
-						<td><%=s.getClassroom_ID()%></td>
-						<td><%=s.getDate_of_session()%></td>
-						<td><%=s.getStart_time()%></td>
-						<td><%=s.getEnd_time()%></td>
-						<td><%=s.getMax_Seats()%></td>
-					</tr>
+	<h2 class="center" style="color: black">
+		<b>Cancel a Session</b>
+	</h2>
+	<form action="CancelSessionServlet" method="Post">
+		<table id="myTable" class="table table-bordered compact"
+			style="width: 100%; background-color: white" data-page-length="25"
+			data-order="[[ 1, &quot;asc&quot; ]]">
+			<thead>
+				<tr style="background-color: #4CAF50">
+					<th>Choose</th>
+					<th>Tutor Name</th>
+					<th>Course Name</th>
+					<th>Classroom</th>
+					<th>Session Date</th>
+					<th>StartTime</th>
+					<th>EndTime</th>
+					<th>No of Seats</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%
+					ArrayList<Session_Detail> listSession = (ArrayList<Session_Detail>) request.getAttribute("session");
+					for (Session_Detail s : listSession) {
+				%>
+				<%-- Arranging data in tabular form --%>
+				<tr>
+					<td><input type="radio" name="session"
+						value=<%=s.getSession_ID()%> required></td>
+					<td><%=s.getTutor_Name()%></td>
+					<td><%=s.getCourse_ID()%></td>
+					<td><%=s.getClassroom_ID()%></td>
+					<td><%=s.getDate_of_session()%></td>
+					<td><%=s.getStart_time()%></td>
+					<td><%=s.getEnd_time()%></td>
+					<td><%=s.getMax_Seats()%></td>
+				</tr>
 
-					<%
-						}
-					%>
-				</tbody>
-			</table>
-			<div class="container">
-				<input type="submit"
-					style="background-color: #4CAF50; color: white; padding: 8px 20px; margin: 8px 0; border: none; align: left cursor: pointer; width: auto; font-size: 16px"
-					value="Cancel Session" name="submit_button">
-			</div>
-		</form>
-		<script>
-			function goBack() {
-				window.history.back();
-			}
-			$(document).ready(function() {
-				$('#myTable').DataTable();
-			});
-		</script>
+				<%
+					}
+				%>
+			</tbody>
+		</table>
+		<input type="submit" class = ""
+			style="background-color: #4CAF50; color: white; padding: 8px 10px; margin: 8px 0; border: none; cursor: pointer; width: auto; font-size: 16px"
+			value="Cancel Session" name="submit_button">
+	</form>
+		<button onclick="goBack()">Go Back</button>
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+		$(document).ready(function() {
+			$('#myTable').DataTable();
+		});
+	</script>
 </body>
 </html>
