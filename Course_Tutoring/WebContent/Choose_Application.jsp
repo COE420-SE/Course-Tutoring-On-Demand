@@ -79,7 +79,7 @@ tfoot input {
         <input type="submit" name="next" style="background-color:green; color:white; font-size: 16px" value="Submit">
          </div>
 </form>
-<button onclick="goBack()">Go Back</button>
+<button onclick="goBack()" style = "margin-left: 20px">Go Back</button>
 <script>
 function goBack() {
 	  window.history.back();

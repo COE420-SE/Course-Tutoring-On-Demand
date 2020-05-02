@@ -19,7 +19,7 @@
 	href="https://cdn.datatables.net/searchpanes/1.0.1/css/searchpanes.dataTables.min.css">
 <style>
 body {
-	background-image: url(tutor.PNG); <!-- change to a student.PNG -->
+	background-image: url(tutor.PNG);
 	background-repeat : no-repeat;
 	background-size: cover;
 }
@@ -85,11 +85,11 @@ table {
 		</table>
 
 		<div class="center"
-			style="background-color: #4CAF50; color: white; padding: 8px 10px; border: none; cursor: pointer; width: auto; font-size: 16px">
-			<input type="submit" value="Cancel Session" name="submit_button">
+			style="padding: 8px 10px; border: none; cursor: pointer; width: auto; font-size: 16px">
+			<input type="submit" value="Cancel Session" name="submit_button" style="background-color:green; color:white; border-color:green; padding: 10px">
 		</div>
 	</form>
-	<button onclick="goBack()">Go Back</button>
+	<button onclick="goBack()" style = "margin-left: 20px">Go Back</button>
 	<script>
 		function goBack() {
 			window.history.back();

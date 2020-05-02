@@ -110,7 +110,7 @@ table {
 					value="Submit">
 			</div>
 		</form>
-		<button onclick="goBack()" style="paddimg: 50px 16px">Go Back</button>
+		<button onclick="goBack()" style = "margin-left: 20px">Go Back</button>
 	<script>
 		function myFunction() {
 			var input, filter, table, tr, td, i, txtValue;

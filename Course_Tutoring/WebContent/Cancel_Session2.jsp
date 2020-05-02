@@ -94,7 +94,7 @@ table {
 			style="background-color: #4CAF50; color: white; padding: 8px 10px; border: none; cursor: pointer; width: auto; font-size: 16px"
 			value="Cancel Session" name="submit_button">
 	</form>
-	<button onclick="goBack()">Go Back</button>
+	<button onclick="goBack()" style = "margin-left: 20px">Go Back</button>
 	<script>
 		function goBack() {
 			window.history.back();

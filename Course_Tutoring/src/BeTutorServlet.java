@@ -96,7 +96,7 @@ public class BeTutorServlet extends HttpServlet {
 			Tutor_Application newApplication = new Tutor_Application(studentModel.getUser_ID(), studentModel.getUser_name(),CourseChosen,grade, AcademicStanding);
 			
 			
-			//add the grades and acadamic standing 
+			//add the grades and academic standing 
 			if(studentModel.ApplyToBeTutor(newApplication)) {
 				
 				ArrayList<String> notifyStrings= studentModel.getDeptAdminID(Student.getUser_department());

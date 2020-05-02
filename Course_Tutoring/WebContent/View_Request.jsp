@@ -77,9 +77,7 @@ table {
             <%}%>
             </tbody>
 </table>
-        <div class = "container">
-         <button onclick="goBack()">Go Back</button>
-         </div>
+<button onclick="goBack()" style = "margin-left: 20px">Go Back</button>
 <script>
 function goBack() {
 	  window.history.back();
