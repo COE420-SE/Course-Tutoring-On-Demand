@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
- <meta http-equiv = "refresh" content = "5; url = Student.html" />
+ <meta http-equiv = "refresh" content = "5; url = DepartmentAdmin.html" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min
 .css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -40,7 +40,7 @@
 
 body {
 	background-image:
-		url(Feedback.jpg);
+		url(AUS-campus.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }

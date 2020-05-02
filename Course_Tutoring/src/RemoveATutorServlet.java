@@ -58,7 +58,7 @@ public class RemoveATutorServlet extends HttpServlet {
 			if (depart_Admin.TutorHasSession(tutor_id)) {
 				String message = "Tutor #"+tutor_id+" has upcomming sessions, please ask tutor to drop their sessions before proceeding";
 				request.setAttribute("message", message);
-				RequestDispatcher rd =  request.getRequestDispatcher("DepartMessage.jsp"); 
+				RequestDispatcher rd =  request.getRequestDispatcher("DepartmentMessage.jsp"); 
 				rd.forward(request, response);
 				}
 			
@@ -69,12 +69,12 @@ public class RemoveATutorServlet extends HttpServlet {
 				
 				String message = "Successfully removed tutor #"+tutor_id;
 				request.setAttribute("message", message);
-				RequestDispatcher rd =  request.getRequestDispatcher("DepartMessage.jsp"); 
+				RequestDispatcher rd =  request.getRequestDispatcher("DepartmentMessage.jsp"); 
 				rd.forward(request, response);}
 			else {
 				String message = "Error: there was an error with removing a tutor, try again later";
 				request.setAttribute("message", message);
-				RequestDispatcher rd =  request.getRequestDispatcher("DepartMessage.jsp"); 
+				RequestDispatcher rd =  request.getRequestDispatcher("DepartmentMessage.jsp"); 
 				rd.forward(request, response);
 			}
 

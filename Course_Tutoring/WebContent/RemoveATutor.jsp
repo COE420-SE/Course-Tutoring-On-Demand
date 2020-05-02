@@ -108,7 +108,7 @@ tfoot input {
 			<div class="container">
 				<input type="submit"
 					style="background-color: #4CAF50; color: white; padding: 8px 20px; margin: 8px 0; border: none; align: left; cursor: pointer; width: auto; font-size: 16px"
-					value="Submit">
+					name = "submit" value="Submit">
 			</div>
 		</form>
 		&nbsp;&nbsp;
