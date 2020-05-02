@@ -40,7 +40,7 @@
 
 body {
 	background-image:
-		url(Feedback.jpg);
+		url(error.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }

@@ -85,11 +85,20 @@ public class CreateSessionServlet extends HttpServlet {
 			
 			//get session from database if exist then error
 			if (tutor.checkIFSessionExists(date)) {
-				String message = "Error: You have another section on that day, Try again on another dat";
+				String message = "Error: You have another section on that day, Try again on another date";
 				request.setAttribute("message", message);
 				RequestDispatcher rd;
 					rd =  request.getRequestDispatcher("TutorMessage.jsp"); 
 					rd.forward(request, response);
+			}
+			
+			if(!isStartLessThanEnd(Start, End)) {
+				String message = "Error: Your start time is after your end time, Try again with the correct timmings";
+				request.setAttribute("message", message);
+				RequestDispatcher rd;
+					rd =  request.getRequestDispatcher("TutorMessage.jsp"); 
+					rd.forward(request, response);
+				
 			}
 			
 			Boolean success = tutor.createSession(newSession_Detail);
@@ -146,6 +155,31 @@ public class CreateSessionServlet extends HttpServlet {
 	    	  output = outputformat.format(date);
 	    	  return output;
 	    	  }
+
+	
+public boolean isStartLessThanEnd(String start_time, String end_time) {
+	
+	 DateFormat df = new SimpleDateFormat("HH:mm");
+     java.util.Date start = null;
+     java.util.Date end = null;
+     
+        //Conversion of input String to date
+  	  try {
+			start = df.parse(start_time);
+			end = df.parse(end_time);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+  	  
+  	  if (start.before(end)) {
+		return true;
+  	  }
+  	  else {
+		return false;
+	}
+	
+}
 }
 
 
