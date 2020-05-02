@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- Mobile Metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!-- Bootstrap CSS -->
@@ -11,7 +13,6 @@
 <!-- ALL VERSION CSS -->
 <link rel="stylesheet" href="css/versions.css">
 <!-- Responsive CSS -->
-<link rel="stylesheet" href="css/responsive.css">
 <!-- Custom CSS -->
 <link rel="stylesheet" href="css/custom.css">
 
@@ -129,6 +130,7 @@ html {
 			<div class="card">
 				<img src="ourpic.JPG" style="width: 100%">
 				<div class="container" style="text-align: center">
+				&nbsp;&nbsp;
 					<h2>Dhriti and Najia</h2>
 					<p class="title">Developers</p>
 					<p>Feel Free to contact us at our emails: g00074266@aus.edu and
@@ -140,9 +142,21 @@ html {
 				<div class="card">
 					<img src="farah.jpeg"  style="width: 100%">
 					<div class="container" style="text-align: center">
+					&nbsp;&nbsp;
 						<h2>Farah Balaha</h2>
 						<p class="title">Developer</p>
 						<p>Feel Free to contact me at this email: g00071029@aus.edu</p>
+					</div>
+				</div>
+			</div>
+			<div class="column">
+				<div class="card">
+					<img src="Natasha.jpg"  style="width: 100%">
+					<div class="container" style="text-align: center">
+					&nbsp;&nbsp;
+						<h2>Natasha Madhu</h2>
+						<p class="title">Developer</p>
+						<p>Feel Free to contact me at this email: g00076735@aus.edu</p>
 					</div>
 				</div>
 			</div>
@@ -151,5 +165,19 @@ html {
 			<a class="w3-black w3-center w3-large" href="index.html">Home
 				Page</a>
 				</div>
+					<!-- ALL JS FILES -->
+	<script src="js/all.js"></script>
+	<!-- ALL PLUGINS -->
+	<script src="js/custom.js"></script>
+	<script src="js/timeline.min.js"></script>
+	<script>
+		timeline(document.querySelectorAll('.timeline'), {
+			forceVerticalMode : 700,
+			mode : 'horizontal',
+			verticalStartPosition : 'left',
+			visibleItems : 4
+		});
+	</script>
+				
 </body>
 </html>
