@@ -8,31 +8,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-	<link rel="stylesheet"
+<link rel="stylesheet"
 	href="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
-		<link rel="stylesheet"
-	href="https://code.jquery.com/jquery-3.3.1.js">
-	<link rel="stylesheet"
+<link rel="stylesheet" href="https://code.jquery.com/jquery-3.3.1.js">
+<link rel="stylesheet"
 	href="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js">
-	<link rel="stylesheet"
+<link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet"
+<link rel="stylesheet"
 	href="https://cdn.datatables.net/searchpanes/1.0.1/css/searchpanes.dataTables.min.css">
-	<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style>
 body {
 	background-image: url(tutor.PNG);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+
 #myInput {
-  width: 100%;
-  font-size: 16px;
-  padding: 12px 20px 12px 20px;
-  border: 1px solid #ddd;
-  margin-bottom: 10px;
+	width: 100%;
+	font-size: 16px;
+	padding: 12px 20px 12px 20px;
+	border: 1px solid #ddd;
+	margin-bottom: 10px;
 }
+
 table {
 	font-family: arial, sans-serif;
 	border-collapse: collapse;
@@ -91,11 +90,11 @@ table {
 				%>
 			</tbody>
 		</table>
-		<input type="submit" class = "center"
-			style="background-color: #4CAF50; color: white; padding: 8px 10px;border: none; cursor: pointer; width: auto; font-size: 16px"
+		<input type="submit" class="center"
+			style="background-color: #4CAF50; color: white; padding: 8px 10px; border: none; cursor: pointer; width: auto; font-size: 16px"
 			value="Cancel Session" name="submit_button">
 	</form>
-		<button onclick="goBack()">Go Back</button>
+	<button onclick="goBack()">Go Back</button>
 	<script>
 		function goBack() {
 			window.history.back();
