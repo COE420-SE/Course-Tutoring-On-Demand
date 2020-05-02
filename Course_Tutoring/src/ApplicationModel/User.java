@@ -366,7 +366,7 @@ public ArrayList<String> getAllStudentIDsOfSession(String session_id){
     	Feedback feedback =  null;
     	String sqString = "select f.feedback_id, f.sf_student_id, s.student_name, f.sf_tutor_id, t.student_name TUTOR_NAME, f.tutor_also, f.comments " + 
 				"from student_feedback f, student s, student t " + 
-				"where f.sf_student_id = s.student_id and f.feedback_id = "+feedback_id;
+				"where f.sf_student_id = s.student_id and f.sf_tutor_id = t.student_id and f.feedback_id = "+feedback_id;
     	
     	ResultSet feedbackSet = users_table.customExecuteSQL(sqString);
 		

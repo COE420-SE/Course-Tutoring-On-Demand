@@ -233,9 +233,30 @@ public class Department_Admin extends User{
     return false;}
 
 
+    public boolean TutorHasSession(String tutor_id) {
+    	
+    	String sqlString = "select * from sessions where s_tutor_id = "+tutor_id+" and status = 1";
+
+    ResultSet rSet = users_table.customExecuteSQL(sqlString);
+
+    try {
+    	if (rSet.isBeforeFirst()) {
+    	  while(rSet.next()) {
+    	    	
+    	    return true;
+    	    }}
+    } catch (SQLException e) {
+    	// TODO Auto-generated catch block
+    	e.printStackTrace();
     }
+
+    return false;
+    }
+
+	
     
-     
+    }
+
 
 	
 

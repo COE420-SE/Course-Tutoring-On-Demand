@@ -17,7 +17,6 @@ import ApplicationModel.Department_Admin;
 public class RemoveATutorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	Department_Admin depart_Admin = new Department_Admin();
-	Tutor tutor = new Tutor();
 	
 
 	/**
@@ -53,10 +52,17 @@ public class RemoveATutorServlet extends HttpServlet {
 		if (null != request.getParameter("submit")) {
 			String tutor_id = request.getParameter("tutor");
 			System.out.println(tutor_id);
-		
-
-			Boolean success = depart_Admin.removeTutor(tutor_id);
-			if (success) {
+			
+			//check if tutor has sessions
+			
+			if (depart_Admin.TutorHasSession(tutor_id)) {
+				String message = "Tutor #"+tutor_id+" has upcomming sessions, please ask tutor to drop their sessions before proceeding";
+				request.setAttribute("message", message);
+				RequestDispatcher rd =  request.getRequestDispatcher("DepartMessage.jsp"); 
+				rd.forward(request, response);
+				}
+			
+			else if (depart_Admin.removeTutor(tutor_id)) {
 				
 				//insert notification
 				depart_Admin.insertNotification(depart_Admin.getUser_ID(), tutor_id, "You have lost your Tutor privileges, you are a student now");
