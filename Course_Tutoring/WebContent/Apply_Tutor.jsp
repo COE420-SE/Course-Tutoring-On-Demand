@@ -85,7 +85,7 @@ input[type=submit]:hover {
 }
 
 body {
-	background-image: url(tutor.PNG);
+	background-image: url(student.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -119,7 +119,12 @@ body {
 				</div>
 			</div>
 		</form>
+		<button onclick="goBack()" style = "margin-left: 20px">Go Back</button>
 	</div>
-
+<script>
+function goBack() {
+	window.history.back();
+}
+</script>
 </body>
 </html>

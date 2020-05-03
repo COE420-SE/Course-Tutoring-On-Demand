@@ -58,7 +58,7 @@ label {
 	margin: 4% auto 15% auto;
 	/* 5% from the top, 15% from the bottom and centered */
 	border: 1px solid #888;
-	width: 40%;
+	width: 50%;
 	height: auto /* Could be more or less, depending on screen size */
 }
 button {

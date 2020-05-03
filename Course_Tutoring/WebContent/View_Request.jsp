@@ -22,7 +22,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style>
 body {
-	background-image: url(tutor.PNG);
+	background-image: url(tutor1.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }

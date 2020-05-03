@@ -17,7 +17,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style>
 body {
-	background-image: url(tutor.PNG);
+	background-image: url(student.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -60,7 +60,7 @@ table {
 </head>
 <body>
 		<form action="BookSessionServlet" method="Post">
-			<h2 class="center" style="color: black">
+			<h2 class="center" style="color: white">
 				<b>Book a Session</b>
 			</h2>
 			<input type="text" id="myInput" onkeyup="myFunction()"

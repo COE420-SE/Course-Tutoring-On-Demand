@@ -19,7 +19,7 @@
 	href="https://cdn.datatables.net/searchpanes/1.0.1/css/searchpanes.dataTables.min.css">
 <style>
 body {
-	background-image: url(tutor.PNG);
+	background-image: url(student.jpg);
 	background-repeat : no-repeat;
 	background-size: cover;
 }
@@ -41,7 +41,7 @@ table {
 </head>
 <body>
 
-	<h2 class="center">
+	<h2 class="center" style="color:white">
 		<b>Cancel a Booking</b>
 	</h2>
 	<form action="CancelBookingServlet" method="Post">
