@@ -68,7 +68,7 @@ public class BeTutorServlet extends HttpServlet {
 			for (int i = 0; i < CourseChosen.size(); i++) {
 				System.out.println(CourseChosen.get(i));
 			}
-			if (CourseChosen.size() > 10) {
+			if (CourseChosen.size() >= 10) {
 				String message = "Error: you cannot tutor more than 10 courses :)";
 				request.setAttribute("message", message);
 				RequestDispatcher rd =  request.getRequestDispatcher("StudentMessage.jsp"); 
