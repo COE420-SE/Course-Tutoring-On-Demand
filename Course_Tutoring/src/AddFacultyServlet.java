@@ -61,6 +61,8 @@ public class AddFacultyServlet extends HttpServlet {
 			System.out.println(email);
 			System.out.println(dept);
 			System.out.println(pass);
+			
+			//check if faculty exists
 	
 		
 			//make a instance of session detail
@@ -71,12 +73,12 @@ public class AddFacultyServlet extends HttpServlet {
 				
 				String message = "Faculty user: "+name+" successfully added";
 				request.setAttribute("message", message);
-				RequestDispatcher rd =  request.getRequestDispatcher("DepartMessage.jsp"); 
+				RequestDispatcher rd =  request.getRequestDispatcher("DepartmentMessage.jsp"); 
 				rd.forward(request, response);}
 			else {
 				String message = "Error: there was an error with adding a faculty user, try again later";
 				request.setAttribute("message", message);
-				RequestDispatcher rd =  request.getRequestDispatcher("DepartMessage.jsp"); 
+				RequestDispatcher rd =  request.getRequestDispatcher("DepartmentMessage.jsp"); 
 				rd.forward(request, response);
 			}
 	}

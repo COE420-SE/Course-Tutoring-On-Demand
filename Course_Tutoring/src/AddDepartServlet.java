@@ -71,7 +71,7 @@ public class AddDepartServlet extends HttpServlet {
 			System.out.println(pass);
 	
 		
-			//make a instance of session detail
+			//check if dept email exists 
 			
 			boolean success = system_Admin.addDepartmentAdmin(name, email, pass, dept);
 

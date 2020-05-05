@@ -235,7 +235,7 @@ public class Department_Admin extends User{
 
     public boolean TutorHasSession(String tutor_id) {
     	
-    	String sqlString = "select * from sessions where s_tutor_id = "+tutor_id+" and status = 1";
+    	String sqlString = "select * from sessions where s_tutor_id = "+tutor_id+" and status = 0";
 
     ResultSet rSet = users_table.customExecuteSQL(sqlString);
 

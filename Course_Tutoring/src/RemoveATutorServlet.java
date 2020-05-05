@@ -61,7 +61,6 @@ public class RemoveATutorServlet extends HttpServlet {
 				RequestDispatcher rd =  request.getRequestDispatcher("DepartmentMessage.jsp"); 
 				rd.forward(request, response);
 				}
-			
 			else if (depart_Admin.removeTutor(tutor_id)) {
 				
 				//insert notification

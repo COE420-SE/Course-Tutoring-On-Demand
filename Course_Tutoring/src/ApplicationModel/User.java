@@ -349,7 +349,7 @@ public ArrayList<String> getAllStudentIDsOfSession(String session_id){
 		ResultSet resultSet = users_table.customExecuteSQL(sqlString);
 		
 			try {
-				if (resultSet.isAfterLast()) {
+				if (resultSet.isBeforeFirst()) {
 				while(resultSet.next()) {
 				deptadmins.add(resultSet.getString("ADMIN_ID"));}}
 			} catch (SQLException e) {

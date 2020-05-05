@@ -50,7 +50,7 @@ h2 {
 }
 body {
 	background-image:
-		url(tutor.PNG);
+		url(student.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
