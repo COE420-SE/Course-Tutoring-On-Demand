@@ -46,7 +46,7 @@ public class Session_Table {
 		else status = 1; //completed
 		String sqlString = "Select ses.session_id, stud.student_name, ses.s_course_id, ses.s_classroom_id, ses.date_of_session, ses.start_time, ses.end_time, ses.max_capacity " + 
 				"From sessions ses " + 
-				"INNER JOIN student stud ON ses.S_TUTOR_ID = stud.STUDENT_ID WHERE ses.status = "+status;
+				"INNER JOIN student stud ON ses.S_TUTOR_ID = stud.STUDENT_ID";
 		
 		try {
 			rs = dbCon.executeStatement(sqlString);
