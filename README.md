@@ -9,7 +9,7 @@
 * [Installation](#install)
 * [Images](#images)
 
-## General info
+## Description
 This project is 
 	
 ## Installation
@@ -21,3 +21,7 @@ Project is created with:
 ## Images
 Student Portal
 ![Student portal](https://user-images.githubusercontent.com/50911194/82947603-61610f00-9fb1-11ea-9934-36dabd27d276.PNG)
+---
+Student requesting a session
+![request a session](https://user-images.githubusercontent.com/50911194/82948167-58247200-9fb2-11ea-9d91-399c1d1380dd.PNG)
+
