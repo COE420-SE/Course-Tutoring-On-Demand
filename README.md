@@ -2,7 +2,7 @@
 
 >short explanation of the project
 
-![Project Image](AUS-Landing page.PNG)
+![AUS-Landing page](https://user-images.githubusercontent.com/50911194/82946198-fdd5e200-9fae-11ea-80a7-45fdc720442a.PNG)
 
 ## Table of contents
 * [Description](#description)
@@ -10,7 +10,7 @@
 * [Images](#images)
 
 ## General info
-This project is simple Lorem ipsum dolor generator.
+This project is 
 	
 ## Installation
 Project is created with:
@@ -18,3 +18,6 @@ Project is created with:
 * Eclipse version: 
 * Bootstrap version: 
 
+## Images
+Student Portal
+![Student portal](https://user-images.githubusercontent.com/50911194/82947603-61610f00-9fb1-11ea-9934-36dabd27d276.PNG)
