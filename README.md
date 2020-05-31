@@ -1,6 +1,7 @@
 # Course Tutoring On Demand
+<b>This project is under development</b>
 
->short explanation of the project
+Our team has built a web applicatioin where students from an university can offer/avail on demand course tutoring services. The system allows alumni and enrolled students to apply to become tutors and offer tutoring sessions or register for sessions offered by other tutors. The system is monitored by system and departmental administrators who have control over which users can use the platform. University faculty members, once added to the system by department administrators, can also view the tutoring sessions offered for courses in their department. 
 
 ![AUS-Landing page](https://user-images.githubusercontent.com/50911194/82946198-fdd5e200-9fae-11ea-80a7-45fdc720442a.PNG)
 
@@ -10,7 +11,35 @@
 * [Images](#images)
 
 ## Description
-This project is 
+This web application was made and desined specifically for the American University of Sharjah(AUS). This app manages the interaction between 5 types of users: <b> Student, Tutor, Departmental Admin, System Admin, Faculty User. </b>
+
+The following are the functionaities of different users
+
+<b>Student</b>
+* Booking a Session
+* Canceling a Booking
+* Requestion a Session
+* Giving a feedback on a Tutor
+* Applying to be a Tutor
+
+<b>Tutor</b>
+* Creating a New Session
+* Deleting a Session
+* Viewing Tutor Feeback and Session Requests
+
+<b>System Admin</b>
+* Adding a new Department Admin
+
+<b>Department Admin</b>
+* Approve/Reject Tutor Applications
+* Removing a Tutor
+* View Tutor Feedback
+* Adding a new Faculty User
+* View Completed Sessions
+* View Sessions
+
+<b>Faculty User</b>
+* View Sessions
 	
 ## Installation
 Project is created with:
