@@ -7,7 +7,7 @@ Our team has built a web application where students from an university can offer
 
 ## Table of contents
 * [Description](#description)
-* [Installation](#install)
+* [Installation](#installation)
 * [Images](#images)
 
 ## Description
