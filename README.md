@@ -1,5 +1,4 @@
 # Course Tutoring On Demand
-<b>This project is under development</b>
 
 Our team has built a web application where students from an university can offer/avail on demand course tutoring services. The system allows alumni and enrolled students to apply to become tutors and offer tutoring sessions or register for sessions offered by other tutors. The system is monitored by system and departmental administrators who have control over which users can use the platform. University faculty members, once added to the system by department administrators, can also view the tutoring sessions offered for courses in their department. 
 
